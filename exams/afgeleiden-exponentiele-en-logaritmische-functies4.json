@@ -1,0 +1,19 @@
+{
+  "name": "Afgeleiden (met exponentiële en logaritmische functies)",
+  "question_groups": [
+    {
+      "name": "exponentiële",
+      "picking_strategy": "random_subset",
+      "pick_questions": 4,
+      "questions": [
+          "afgeleide-exponentiele-functie",
+          "afgeleide-exponentiele-functie-en-kettingregel",
+          "afgeleide-exponentiele-functie-en-productregel",
+          "afgeleide-exponentiele-functie-en-quotientregel",
+          "afgeleide-exponentiele-functie-en-veelterm",
+          "afgeleide-exponentiele-functie-en-quotientregel-eenvoudiger",
+          "afgeleide-meerdere-exponentiele-functies"
+      ]
+    }
+  ]
+}

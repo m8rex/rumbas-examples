@@ -1,0 +1,40 @@
+{
+  "variables": {
+    "b": "random(5,10)",
+    "c": "random(7,9)"
+  },
+  "advice": "<p>Het is fout om</p>\n<ul>\n<li>twee breuken die je met elkaar optelt kruiselings te vereenvoudigen.</li>\n<li>bij de optelling van breuken de tellers en de noemers met elkaar op te tellen, dit geldt alleen bij de vermenigvuldiging van breuken, waarbij je de tellers met elkaar vermenigvuldigt en de noemers.</li>\n</ul>\n<p>De enige manier om breuken correct bij elkaar op te tellen is door ze op een gelijke noemer te zetten en dan de tellers op te tellen.</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 3: Rekenen met breuken. Succes!</em></p>",
+  "statement": "<p>Stel je hebt de volgende som:<br/>\\[\\frac{\\var{b}}{2} + \\frac{\\var{c}}{\\var{2*b}}\\]<br/>Welke uitspraak is JUIST?</p>",
+  "variable_groups": [],
+  "parts": [
+    {
+      "marks": 0,
+      "type": "choose_one",
+      "answers": [
+        {
+          "statement": "Je kan deze breuken vereenvoudigen dankzij de teller $\\var{b}$ en de noemer $\\var{2*b}$, je verkrijgt: $\\frac{1}{2} + \\frac{\\var{c}}{2}$.",
+          "feedback": "Fout, twee breuken die je met elkaar optelt mag je niet kruiselings vereenvoudigen.",
+          "marks": 0
+        },
+        {
+          "statement": "Je kan deze som niet verder uitwerken omdat het geen gelijknamige breuken zijn (verschillende noemers).",
+          "feedback": "Fout, je kan deze breuken wel gelijknamig maken zodat je ze kan optellen.",
+          "marks": 0
+        },
+        {
+        "statement": "Een gelijke noemer is $\\var{2*b}$, dan bekom je $\\frac{\\var{b*b}}{\\var{2*b}} + \\frac{\\var{c}}{\\var{2*b}}$.",
+          "feedback": "Juist, dit is inderdaad hoe je de breuken kan optellen.",
+          "marks": 1
+        },
+        {
+          "statement": "Je moet de tellers bij elkaar optellen en de noemers bij elkaar, de som is dan gelijk aan $\\frac{\\var{b+c}}{\\var{2+2*b}}$.",
+          "feedback": "Fout, bij de vermenigvuldiging van breuken, mag je tellers met elkaar vermenigvuldigen en de noemers, dit geldt niet bij de optelling.",
+          "marks": 0
+        }
+      ],
+      "columns": 1,
+      "display": "radio"
+    }
+  ],
+  "functions": {}
+}

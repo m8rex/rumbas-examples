@@ -1,0 +1,39 @@
+{
+  "variables": {
+    "b": "random(2..10)",
+    "a": "random(2..10)"
+  },
+  "statement": "<p>Welke uitspraak is JUIST voor de volgende vermenigvuldiging:</p>",
+  "variablesTest": {
+    "condition": "a<>b and a*b <> a+b",
+    "maxRuns": 100
+  },
+  "parts": [
+    {
+      "prompt": "\\[ \\sqrt{µ{a}} \\cdot \\sqrt{µ{b}}\\]",
+      "type": "choose_one",
+      "marks": 0,
+      "answers": [
+        {
+          "statement": "Dit is gelijk aan $\\sqrt{\\var{a*b}}$ want je mag de grondtallen vermenigvuldigen omdat het beiden vierkantswortels zijn.",
+          "feedback": "Juist.",
+          "marks": 1
+        },
+        {
+          "statement": "Dit is gelijk aan $\\sqrt{\\var{a+b}}$ want je mag de grondtallen optellen omdat het beiden vierkantswortels zijn.",
+          "feedback": "Fout, het is een vermenigvuldiging, dus mag je de grondtallen niet optellen.",
+          "marks": 0
+        },
+        {
+          "statement": "Je mag dit niet vereenvoudigen omdat de grondtallen niet gelijk zijn.",
+          "feedback": "Fout, je mag de grondtallen wel vermenigvuldigen omdat beide wortels vierkantswortels zijn, dus eigenlijk van gelijke macht, nl. macht 1/2.",
+          "marks": 0
+        }
+      ],
+      "shuffle_answers": false,
+      "columns": 1,
+      "display": "radio"
+    }
+  ],
+  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 5:&nbsp;Rekenen met&nbsp;wortels. Succes!</em></p>"
+}

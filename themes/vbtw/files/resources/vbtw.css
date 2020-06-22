@@ -1,0 +1,15 @@
+.navmenu {
+  background-color: #00557150;
+}
+
+.navbar-default {
+  background-color: #00557150;
+}
+
+.navmenu-default .navmenu-nav > .active > a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navmenu-default .navmenu-nav > .active > a {
+  background-color: rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,25 @@
+{
+  "statement": "Geef de oplossing van de volgende wortel:",
+  "variables": {
+    "m": "random(1..5)",
+    "n": "random(1..5)",
+    "k": "1",
+    "a": "k*(m^2-n^2)",
+    "a2": "a^2",
+    "b": "k*(2*m*n)",
+    "b2": "b^2",
+    "c": "k*(m^2+n^2)"
+  },
+  "variables_test": {
+    "condition": "m>n and c < 21"
+  },
+  "parts": [
+    {
+      "type": "jme",
+      "prompt": "$\\sqrt{µ{a2}+µ{b2}}$ ",
+      "answer": "{c}",
+      "marks": 1
+    }
+  ],
+  "advice": "file:M0/algebra/begintest-H6a-advice.html"
+}

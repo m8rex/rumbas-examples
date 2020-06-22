@@ -1,0 +1,16 @@
+{
+  "variables": {
+    "a": "random(15,20,25,30,35)",
+    "b": "random(20,30,40,50,60)"
+  },
+  "statement": "<p>Je wilt een paar schoenen kopen, je wacht speciaal tot het solden zijn. Je moet nu maar $\\var{b*(1-a/100)}$ euro betalen, want er stond een korting van $\\var{a}$ % op.</p>",
+  "parts": [
+    {
+      "type": "jme",
+      "marks": 1,
+      "prompt": " <p>Hoeveel kostte je paar schoenen oorspronkelijk?</p>",
+      "answer": "{b}"
+    }
+  ],
+  "advice": "<p>Je betaalt nu $\\var{b*(1-a/100)}$ euro met een korting van $\\var{a}$%: <br/>\\[ x-x \\cdot \\var{a/100} = x \\cdot (1-\\var{a/100})=\\var{b*(1-a/100)} \\Leftrightarrow x=\\frac{\\var{b*(1-a/100)}}{\\var{1-a/100}} \\Leftrightarrow x=\\var{b}\\]<br/>Oorspronkelijk had je dus $\\var{b}$ euro betaald voor je paar schoenen.</p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 10:&nbsp;Rekenen met percentages.&nbsp;Succes!</em></p>"
+}

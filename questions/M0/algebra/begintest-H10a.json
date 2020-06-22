@@ -1,0 +1,16 @@
+{
+  "statement": "file:M0/algebra/begintest-H10-statement.html",
+  "variables": {
+    "a": "random(2,4,6)",
+    "b": "random(3,5)"
+  },
+  "parts": [
+    {
+      "type": "jme",
+      "marks": 1,
+      "prompt": "\\[\\var{a*a}x^2 - \\var{2*a*b}x + \\var{b*b}\\]",
+      "answer": "({a}*x-{b})^2"
+    }
+  ],
+  "advice": "<p>Een kwadraat van een tweeterm kan je als volgt ontbinden in factoren: <br/>\\[ a^2+2ab+b^2=(a+b)^2 \\]<br/>Dit is een gevolg van de distributiviteit want $(a+b)^2=(a+b)(a+b)$.<br/>Toegepast op deze opgave, is de oplossing als volgt:<br/>\\[&nbsp;\\var{a*a}x^2-\\var{2*a*b}x+ \\var{b*b} = (\\var{a}x)^2+2 \\cdot \\var{a}x \\cdot (-\\var{b}) + (-\\var{b})^2 = (\\var{a}x-\\var{b})^2 \\]</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 7:&nbsp;Merkwaardige producten en ontbinden in factoren.&nbsp;Succes!</em></p>"
+}

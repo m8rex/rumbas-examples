@@ -1,0 +1,82 @@
+<h1 data-bind="html: exam.settings.name"></h1>
+
+<p class="col-sm-6 col-sm-offset-3" data-localise="result.click a question to review"></p>
+<div class="row">
+    <table id="question-breakdown" class="col-sm-6 col-sm-offset-3">
+        <thead>
+            <th data-localise="result.question number"></th>
+            <!-- ko if: showActualMark -->
+            <th colspan="3" data-localise="result.question score"></th>
+            <!-- /ko -->
+            <th></th>
+        </thead>
+        <tbody>
+            <!-- ko foreach: question_groups -->
+                <!-- ko if: $root.showQuestionGroupNames -->
+                <tr class="question-group-header" data-bind="visible: show_name">
+                    <th data-bind="text: name, typeset: name"></th>
+                    <th colspan="4"></th>
+                </tr>
+                <!-- /ko -->
+                <!-- ko foreach: questions -->
+                <tr class="question" data-bind="click: review, attr: {title: R('result.question review title')}">
+                    <td data-bind="text: question.number+1"></td>
+                    <!-- ko if: scoreFeedback.revealed -->
+                    <td data-bind="niceNumber: score"></td>
+                    <td>/</td>
+                    <td data-bind="niceNumber: marks"></td>
+                    <!-- /ko -->
+                    <td><button type="button" class="btn btn-link review" data-localise="result.question review"></button></td>
+                </tr>
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: showActualMark -->
+            <tr>
+                <th data-localise="Total"></th>
+                <th data-bind="niceNumber: score"></th>
+                <th>/</th>
+                <th colspan="2">
+                    <span data-bind="niceNumber: marks"></span>
+                    (<span data-bind="text: percentScore"></span>%)
+                </th>
+            </tr>
+            <!-- /ko -->
+        </tbody>
+    </table>
+    <div id="feedback" class="alert results-feedback col-sm-6 col-sm-offset-3" data-bind="visible: feedbackMessage()!==null, latex: feedbackMessage" localise-data-jme-context-description="exam.feedback"></div>
+</div>
+
+<h3 data-localise="result.performance summary"></h3>
+<div class="row">
+    <table id="performance-summary" class="summary col-sm-6 col-sm-offset-3">
+        <tr>
+            <th data-localise="exam.exam name"></th>
+            <td data-bind="html: exam.settings.name"></td>
+        </tr>
+        <tr>
+            <th data-localise="exam.random seed"></th>
+            <td data-bind="html: exam.seed"></td>
+        </tr>
+        <tr data-bind="visible: exam.settings.showStudentName && exam.student_name">
+            <th data-localise="exam.student name"></th>
+            <td><span data-bind="text: exam.student_name"></span><span data-bind="visible: exam.student_id"> (<span data-bind="text: exam.student_id"></span>)</span></td>
+        </tr>
+        <tr>
+            <th data-localise="result.exam start"></th>
+            <td data-bind="text: startTime"></td>
+        </tr>
+        <tr>
+            <th data-localise="result.exam stop"></th>
+            <td data-bind="text: endTime"></td>
+        </tr>
+        <tr>
+            <th data-localise="result.time spent"></th>
+            <td data-bind="text: timeSpent"></td>
+        </tr>
+    </table>
+</div>
+
+<div class="info-buttons">
+    <div><button class="btn btn-primary" data-bind="click: function(){ window.print(); }" data-localise="result.print"></button></div>
+    <div><button class="btn btn-primary" id="exitBtn" data-bind="click: Numbas.controls.exitExam" data-localise="result.exit"></button></div>
+</div>

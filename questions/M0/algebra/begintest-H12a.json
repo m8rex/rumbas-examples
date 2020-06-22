@@ -1,0 +1,38 @@
+{
+  "variablesTest": {
+    "condition": "",
+    "maxRuns": 100
+  },
+  "statement": "<p>Stel je hebt de volgende vergelijking met $x \\in \\mathbb{R}$:</p>\\[x^2-µ{a*a}=0\\]",
+  "variables": {
+    "a": "random(1..7)"
+  },
+  "parts": [
+    {
+      "type": "choose_one",
+      "prompt": "Welke uitspraak is waar?",
+      "answers": [
+        {
+          "statement": "Deze vergelijking heeft geen oplossingen.",
+          "feedback": "Fout, deze vergelijking heeft wel oplossingen, zie bij de juiste oplossing voor de uitwerking",
+          "marks": 0
+        },
+        {
+          "statement": "Deze vergelijking heeft één oplossing, namelijk $x=µ{a}$.",
+          "feedback": "Fout, $x=µ{a}$ is inderdaad een oplossing van de vergelijking, maar er is er nog één.",
+          "marks": 0
+        },
+        {
+          "statement": "Deze vergelijking heeft twee oplossingen, namelijk $x=-µ{a}$ en $x=µ{a}$.",
+          "feedback": "Juist, deze vergelijking heeft twee oplossingen, namelijk $x=-µ{a}$ en $x=µ{a}$: \\[ x^2-µ{a*a}= 0 \\Leftrightarrow  x^2=µ{a*a} \\Leftrightarrow  x=\\pm \\sqrt{µ{a*a}} \\Leftrightarrow  x=µ{a} \\quad \\text{en} \\quad x=-µ{a}\\]",
+          "marks": 1
+        }
+      ],
+      "marks": 0,
+      "shuffle_answers": false,
+      "display": "radio",
+      "columns": 1
+    }
+  ],
+  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 8:&nbsp;Veeltermvergelijkingen.&nbsp;Succes!</em></p>"
+}

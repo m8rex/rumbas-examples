@@ -1,0 +1,22 @@
+{
+  "variables": {
+    "d": "random(5,7)",
+    "a": "random(2,4)"
+  },
+  "statement": "<p>Vereenvoudig de volgende breuk:</p>",
+  "parts": [
+    {
+      "marks": 1,
+      "type": "jme",
+      "answer": "{2*a*a}/{d}",
+			"prompt": "$\\frac{\\var{2*a}}{\\frac{\\var{d}}{\\var{a}}}=$"
+    }
+  ],
+  "metadata": {
+    "licence": "None specified",
+    "description": ""
+  },
+  "tags": [],
+  "functions": {},
+  "advice": "<p>De oplossing is $\\frac{\\var{2*a*a}}{\\var{d}}$ aangezien je eigenlijk volgend product uitwerkt (maal het omgekeerde): <br/>\\[\\frac{\\var{2*a}}{\\frac{\\var{d}}{\\var{a}}}=\\var{2*a}\\cdot \\frac{\\var{a}}{\\var{d}}\\]</p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk&nbsp;3: Rekenen met breuken. Succes!</em></p>"
+}

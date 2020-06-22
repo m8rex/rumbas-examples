@@ -1,0 +1,20 @@
+{
+  "variables": {
+    "a": "random(1..100)",
+    "b": "random(1..100)"
+  },
+  "variables_test": {
+    "condition": "ceil(sqrt(a)) <> sqrt(a)",
+    "maxRuns": 100
+  },
+  "statement": "<p>Geef de oplossing van volgende som:</p><p>Let op: maalteken noteer je met * en een vierkantswortel noteer je met sqrt(...)</p>",
+  "parts": [
+    {
+      "marks": 1,
+      "type": "jme",
+      "answer": "(1+{b})*sqrt({a})",
+      "prompt": "$\\sqrt{µ{a}}+µ{b}\\sqrt{µ{a}}$"
+    }
+  ],
+  "advice": "<p>Let op, $\\sqrt{µ{a}}$ kan je niet vereenvoudigen tot een geheel getal. Je mag enkel wortels optellen als het gelijksoortige vierkantswortels zijn:<br/>\\[ \\sqrt{µ{a}}+µ{b}\\sqrt{µ{a}}= µ{1+b} \\cdot \\sqrt{µ{a}} \\]<br/>Mogelijks kan je deze oplossing nog verder vereenvoudigen door een factor (waarvan de wortel een geheel getal is) naar buiten te brengen.</p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 5:&nbsp;Rekenen met&nbsp;wortels. Succes!</em></p>"
+}

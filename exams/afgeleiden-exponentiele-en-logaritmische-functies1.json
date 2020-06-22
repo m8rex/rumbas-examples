@@ -1,0 +1,14 @@
+{
+  "name": "Afgeleiden (met exponentiële en logaritmische functies)",
+  "question_groups": [
+    {
+      "name": "exponentiële",
+      "picking_strategy": "random_subset",
+      "pick_questions": 2,
+      "questions": [
+        "afgeleide-exponentiele-functie", 
+        "afgeleide-exponentiele-functie"
+      ]
+    }
+  ]
+}

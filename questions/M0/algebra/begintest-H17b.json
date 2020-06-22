@@ -1,0 +1,32 @@
+ {
+  "variables": {
+    "a": "random(2,3,4,5,6)",
+    "b": "random(-2,-3,-4,-5,-6)",
+    "c": "random(15,25,35,45,65,75)"
+  },
+  "statement": "<p>Los volgend stelsel op:</p><p>Let op!</p>\n<ul>\n<li>Als het stelsel&nbsp;geen oplossingen heeft, dan noteer je \"geen\" bij zowel x als y.&nbsp;</li>\n<li>Als het stelsel oneindig oplossingen heeft, dan noteer je \"oneindig\" bij zowel x&nbsp;als&nbsp;y.&nbsp;</li>\n</ul>",
+  "parts": [
+    {
+      "type": "gapfill",
+      "prompt": "\\[\\begin{cases}<br/>\\var{a}x \\var{b}y &amp;=\\var{c}\\\\<br/>\\var{2*a}x \\var{2*b}y &amp;=\\var{2*c}<br/>\\end{cases}\\]<p>$x=$[[0]] en&nbsp;$y=$[[1]]</p>",
+      "marks": 0,
+      "gaps": [
+        {
+          "marks": 1,
+          "type": "pattern_match",
+          "pattern": "oneindig",
+          "display_answer": "oneindig",
+          "matchMode": "exact"
+        },
+        {
+          "marks": 1,
+          "type": "pattern_match",
+          "pattern": "oneindig",
+          "display_answer": "oneindig",
+          "matchMode": "exact"
+        }
+      ]
+    }
+  ],
+  "advice": "<p>Aangezien de tweede vergelijking exact het dubbel is van de eerste vergelijking, kan je &eacute;&eacute;n van de twee vergelijkingen schrappen (want ze heffen elkaar op), waardoor je oneindig veel oplossingen krijgt, namelijk:<br/>\\[\\var{a}x \\var{b}y =\\var{c} \\Leftrightarrow x = \\frac{\\var{c} + \\var{-b}y}{\\var{a}} \\text{ en } y \\in \\mathbb{R} \\]</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 11: Lineaire stelsels.&nbsp;Succes!</em></p>"
+}

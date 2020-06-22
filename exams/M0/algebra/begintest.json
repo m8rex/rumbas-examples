@@ -1,0 +1,227 @@
+{
+  "locales": [
+    { 
+      "name": "nl",
+      "numbas_locale": "nl-NL"
+    },
+    { 
+      "name": "en",
+      "numbas_locale": "en-GB"
+    }
+  ],
+  "name": {
+    "nl": "Test algebra",
+    "en": "Test algebra"
+  },
+  "question_groups": [
+    {
+      "name": {
+        "nl": "Q1",
+        "en": "Q1"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+          "M0/algebra/begintest-H1"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q2",
+        "en": "Q2"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+          "M0/algebra/begintest-H2a",
+          "M0/algebra/begintest-H2b"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q3",
+        "en": "Q3"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+          "M0/algebra/begintest-H3a",
+          "M0/algebra/begintest-H3b"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q4",
+        "en": "Q4"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H4a",
+         "M0/algebra/begintest-H4b",
+         "M0/algebra/begintest-H4c"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q5",
+        "en": "Q5"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H5a",
+         "M0/algebra/begintest-H5b"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q6",
+        "en": "Q6"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H6a",
+         "M0/algebra/begintest-H6b"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q7",
+        "en": "Q7"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H7a",
+         "M0/algebra/begintest-H7b",
+         "M0/algebra/begintest-H7c"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q8",
+        "en": "Q8"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H8a",
+         "M0/algebra/begintest-H8b"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q9",
+        "en": "Q9"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H9a",
+         "M0/algebra/begintest-H9b",
+         "M0/algebra/begintest-H9c",
+         "M0/algebra/begintest-H9d"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q10",
+        "en": "Q10"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H10a",
+         "M0/algebra/begintest-H10b",
+         "M0/algebra/begintest-H10c"
+      ]
+    },
+    {
+      "name": {
+        "nl": "H11",
+        "en": "Q11"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H11"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q12",
+        "en": "Q1"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H12a",
+         "M0/algebra/begintest-H12b"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q13",
+        "en": "Q13"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H13"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q14",
+        "en": "Q14"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H14a",
+         "M0/algebra/begintest-H14b",
+         "M0/algebra/begintest-H14c",
+         "M0/algebra/begintest-H14d"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q15",
+        "en": "Q15"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H15a",
+         "M0/algebra/begintest-H15b",
+         "M0/algebra/begintest-H15c"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q16",
+        "en": "Q16"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H16"
+      ]
+    },
+    {
+      "name": {
+        "nl": "Q17",
+        "en": "Q17"
+      },
+      "picking_strategy": "random_subset",
+      "pick_questions": 1,
+      "questions": [
+         "M0/algebra/begintest-H17a",
+         "M0/algebra/begintest-H17b",
+         "M0/algebra/begintest-H17c"
+      ]
+    }
+  ]
+}

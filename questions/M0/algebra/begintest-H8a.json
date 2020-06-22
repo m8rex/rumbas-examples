@@ -1,0 +1,19 @@
+{  
+	"statement": "<p>Werk volgende uitdrukking uit:</p>",
+  "variables": {
+    "a": "random(2..4)"
+  },
+	"variablesTest": {
+		"condition": "",
+		"maxRuns": 100
+	},
+	"parts": [
+		{
+			"marks": 1,
+			"type": "jme",
+			"prompt": "\\[\\frac{\\var{3*a+3}+\\var{a+1}^2-\\sqrt{\\var{a^2}}}{\\var{6*a}-(\\var{5*a}-2)}\\]",
+			"answer": "{a+2}"
+		}
+	],
+	"advice": "<p>We werken de uitdrukken als volgt uit:</p>\n<ol>\n<li>Haakjes uitwerken: $-(\\var{5*a}-2) = -\\var{5*a-2}$</li>\n<li>Machten en (vierkants)wortels uitwerken: $\\var{a+1}^2=\\var{(a+1)^2}$ en $\\sqrt{\\var{a^2}}=\\var{a}$</li>\n<li>Optellen en aftrekken (van links naar rechts)</li>\n<li>Vereenvoudigen</li>\n</ol>\n<p>De uitwerking is dan:</p>\n<p>\\begin{align}<br/>\\frac{\\var{3*a+3}+\\var{a+1}^2-\\sqrt{\\var{a^2}}}{\\var{6*a}-(\\var{5*a}-2)} &amp; =\\frac{\\var{3*a+3}+\\var{(a+1)^2}-\\var{a}}{\\var{6*a}-(\\var{5*a-2})}\\\\<br/> &amp; =\\frac{\\var{3*a+3+(a+1)^2-a}}{\\var{6*a-5*a+2}}\\\\<br/> &amp; =\\var{a+2}\\\\<br/>\\end{align}</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 6: Volgorde van bewerkingen. Succes!</em></p>"
+}

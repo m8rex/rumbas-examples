@@ -1,0 +1,43 @@
+       {
+          "statement": "<p>Gegeven is de functie $y=e^\\simplify{x^{ex}}$.&nbsp; De afgeleide functie is gegeven door</p>",
+          "advice": "<p>Gebruik de kettingregel: $f(x)=e^\\simplify{x^{ex}}$ is de samenstelling $f=g\\circ h$ waarbij $h(x)=\\simplify{x^{ex}}$ en $g(x)=e^x$.</p>",
+          "rulesets": {},
+          "variables": {
+            "ex": {
+              "group": "Ungrouped variables",
+              "definition": "random(2 .. 10#1)",
+              "description": "",
+              "template_type": "random_range"
+            }
+          },
+          "variables_test": {
+            "condition": "",
+            "max_runs": 100
+          },
+          "ungrouped_variables": [
+            "ex"
+          ],
+          "variable_groups": [],
+          "functions": {},
+          "parts": [
+            {
+              "type": "gapfill",
+              "marks": 0,
+              "prompt": "<p>$y'=$ [[0]]</p>",
+              "gaps": [
+                {
+                  "type": "jme",
+                  "prompt": "TEMP TEST",
+                  "marks": 1,
+                  "answer": "{ex}*x^{ex-1}*e^(x^{ex})",
+                  "value_generators": [
+                    {
+                      "name": "x",
+                      "value": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }

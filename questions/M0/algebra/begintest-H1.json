@@ -1,0 +1,38 @@
+{
+  "statement": {
+    "nl": "<p>Welke uitspraak is correct?</p>",
+    "en": "<p>Which statement is valid?</p>"
+  },
+  "variables": {
+    "a": "random(1..15)"
+  },
+  "rulesets": {},
+  "parts": [
+    {
+      "type": "choose_one",
+      "answers": [
+        {
+        "statement": "Het getal 0 behoort tot $\\mathbb{N}$ maar niet tot $\\mathbb{Z}$.",
+        "feedback": "Vals, het getal 0 behoort dus tot beide verzamelingen. ",
+        "marks": 0
+        },
+        {
+        "statement": "Zowel -{a} als {a} zijn elementen van $\\mathbb{Z}$.",
+        "feedback":"Correct, -{a} en {a} zijn elementen van $\\mathbb{Z}$.",
+        "marks": 1
+        },
+        {
+        "statement": "$\\mathbb{N}_0$ geeft de verzameling van alle natuurlijke getallen met 0 inbegrepen.",
+        "feedback": "Vals, met $\\mathbb{N}_0$ bedoelt men alle natuurlijke getallen <strong>zonder</strong> 0. ",
+        "marks": 0
+        }
+      ],
+      "display": "radio",
+      "columns": 1,
+      "marks": 0,
+      "scripts": {}
+    }
+  ],
+  "functions": {},
+  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 1: Wiskundig taalgebruik en notaties. Succes!</em></p>"
+}

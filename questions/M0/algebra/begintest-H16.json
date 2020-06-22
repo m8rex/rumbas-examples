@@ -1,0 +1,36 @@
+{
+  "statement": "<p>In het jaar 2018 heeft Belgi&euml; 9240 elektrische auto's die rondrijden. Dit is een stijging van 40 % t.o.v. 2017. In 2014 telde men er slechts 1848.</p>",
+  "parts": [
+    {
+      "type": "choose_one",
+      "prompt": "<p>Welke uitspraak is FOUT?</p>",
+      "answers": [
+        {
+          "statement": "In het jaar 2017 waren er 6600 elektrische auto's.",
+          "feedback": "Deze uitspraak is juist, als er in 2018 9240 elektrische auto's waren en dit was een stijging van 40% dan moet je de volgende formule hervormen:  \\[x+x \\cdot 0,4 = x \\cdot 1,40 = 9240 \\Leftrightarrow x=\\frac{9240}{1,40}=6600\\]",
+          "marks": 0
+        },
+        {
+          "statement": "Het aantal elektrische auto's is in de periode 2014 - 2018 met 400% gestegen.",
+          "feedback": "Deze uitspraak is juist, want in 2014 waren er 1848, in 2019 9240 dus: \\[1848 \\cdot x = 9240 \\Leftrightarrow x=\\frac{9240}{1848}=5\\] Er waren dus 500% elektrische auto's, wat overeenkomt met een stijging van 400%.",
+          "marks": 0
+        },
+        {
+          "statement": "In het jaar 2018 zijn er 3696 elektrische auto's bijgekomen.",
+          "feedback": "Deze uitspraak is inderdaad fout, want het aantal auto's dat er in 2017 waren kan je berekenen via volgende formule:  \\[x+x \\cdot 0,4 = x \\cdot 1,40 = 9240 \\Leftrightarrow x=\\frac{9240}{1,40}=6600\\] Dit komt overeen met een verschil van $9240-6600=2640$ (of $6600 \\cdot 0,40=2640$). Dit is dus niet gelijk aan 3696.",
+          "marks": 1
+        },
+        {
+          "statement": "Als het aantal elektrische auto's met hetzelfde percentage verder stijgt, dan zijn er 12936 elektrische auto's in 2019.&nbsp;",
+          "feedback": "Deze uitspraak is juist, als het aantal elektrische auto's opnieuw met 40% stijgt in 2019, dan krijg je:  \\[9240+9240 \\cdot 0,4 = 9240 \\cdot 1,40 = 12936\\]",
+          "marks": 0
+        }
+      ],
+      "display": "radio",
+      "columns": 1,
+      "marks": 0,
+      "shuffle_answers": false
+    }
+  ],
+  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 10:&nbsp;Rekenen met percentages.&nbsp;Succes!</em></p>"
+}

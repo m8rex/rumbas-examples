@@ -1,0 +1,43 @@
+{
+  "variables": {
+    "data": "matrix([-1,4],[-1,5],[-1,6],[-2,4],[-2,5],[-2,6],[-3,5],[-3,6],[-4,6],[-5,6])",
+    "nummer": "random(0..9)",
+    "koppel": "data[nummer]",
+    "a": "koppel[0]",
+    "b": "koppel[1]"
+  },
+  "statement": "<p>Wat is de oplossing van volgende tweedegraadsongelijkheid?</p>",
+  "parts": [
+    {
+      "prompt": "\\[x^2 -\\var{a+b}x \\var{a*b} &lt; 0\\]",
+      "type": "choose_one",
+      "answers": [
+        {
+          "statement": "$ x \\in ]-\\infty,\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[&nbsp; \\cup&nbsp; ]\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\\infty[ $",
+          "feedback": "",
+          "marks": 0
+        },
+        {
+          "statement": "$x \\in ]-\\infty,\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}] \\cup [\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\\infty[ $",
+          "feedback": "",
+          "marks": 0
+        },
+        {
+          "statement": "$x \\in ]\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}[ $",
+          "feedback": "",
+          "marks": 1
+        },
+        {
+          "statement": "$x \\in [\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}] $",
+          "feedback": "",
+          "marks": 0
+        }
+      ],
+      "shuffle_answers": false,
+      "marks": 0,
+      "columns": 1,
+      "display": "radio"
+    }
+  ],
+  "advice": "<p>We lossen eerst de volgende bijhorende tweedegraadsvergelijking op via de discriminant:<br/>\\[x^2 -\\var{a+b}x \\var{a*b}=0\\]<br/>De discriminant is gelijk aan $(-\\var{a+b})^2-4 \\cdot 1 \\cdot (\\var{a*b}) = \\var{(a+b)^2-4*a*b} $.&nbsp;</p>\n<p>De oplossingen kan je dan als volgt bekomen: <br/>\\[x_1=\\frac{-(-\\var{a+b})+\\sqrt{\\var{(a+b)^2-4*a*b}}}{2 \\cdot 1}=\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}<br/>\\text{ en } x_2=\\frac{-(-\\var{a+b})-\\sqrt{\\var{(a+b)^2-4*a*b}}}{2 \\cdot 1}= \\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}\\]<br/>Voor deze $x$-waardes is de tweedegraadsvergelijking gelijk aan 0, nu willen we weten wanneer deze uitdrukking kleiner is dan 0, dus maken we een tekenschema:</p>\n<p>\\[\\begin{array}{c|ccccc}<br/> x &amp; &amp; \\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2} &amp; &amp; \\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2} &amp; \\\\ \\hline<br/> x^2 -\\var{a+b}x \\var{a*b} &amp; + &amp; 0 &amp; - &amp; 0 &amp; +<br/> \\end{array}\\]<br/>Dus de oplossing van de tweedegraadsongelijkheid is: $x \\in ]\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}[$.</p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 9:&nbsp;Veeltermongelijkheden.&nbsp;Succes!</em></p>"
+}

@@ -1,0 +1,25 @@
+{
+  "advice": {
+    "nl": "file:M0/algebra/begintest-H2-advice-nl.html",
+    "en": "file:M0/algebra/begintest-H2-advice-en.html",
+    "{sol}": "\\begin{eqnarray}<br/>\\frac{\\var{m} \\cdot (\\var{a}+\\var{b}\\cdot 0)}{\\var{m}}-(\\var{a/2}-1) \\cdot 1 \\cdot \\var{m}&nbsp;&amp; = (\\var{a}+\\var{b}\\cdot 0)-(\\var{a/2}-1)\\cdot \\var{m} \\\\<br/>&amp; = (\\var{a}+ 0)-\\var{a/2-1}\\cdot \\var{m} \\\\<br/> &amp; = \\var{a}-\\var{(a/2-1)*m} \\\\<br/> &amp; = \\var{a-(a/2-1)*m}\\\\<br/>\\end{eqnarray}"
+  },
+  "statement": {
+    "nl": "file:M0/algebra/begintest-H2-statement-nl.html",
+    "en": "file:M0/algebra/begintest-H2-statement-en.html",
+    "{expr}":"\\[\\frac{\\var{m} \\cdot (\\var{a}+\\var{b}\\cdot 0)}{\\var{m}}-(\\var{a/2}-1) \\cdot 1 \\cdot \\var{m}\\]"
+  },
+  "variables": {
+    "m": "random(5,7)",
+    "b": "random(1..10)",
+    "a": "random(10,20)"
+  },
+  "parts": [
+    {
+      "type": "number_entry",
+      "answer": "a-(a/2-1)*m",
+      "marks": 1,
+      "allow_fractions": false
+    }
+  ]
+}

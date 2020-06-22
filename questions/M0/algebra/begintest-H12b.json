@@ -1,0 +1,34 @@
+{
+  "variables": {
+    "a": "random(1..7)"
+  },
+  "statement": "<p>Stel je hebt de volgende vergelijking met $x \\in \\mathbb{R}$:</p>\\[x^2+\\var{a*a}=0\\]",
+  "parts": [
+    {
+      "type": "choose_one",
+      "prompt": "Welke uitspraak is waar?",
+      "answers": [
+        {
+          "statement": "Deze vergelijking heeft geen oplossingen.",
+          "feedback": "Juist, deze vergelijking heeft inderdaad geen oplossingen in $\\mathbb{R}$ omdat je geen vierkantswortel van een negatief getal mag nemen. \\[ x^2+µ{a*a}= 0 \\Leftrightarrow  x^2=-µ{a*a}\\] $\\Leftrightarrow $ deze vergelijking heeft geen oplossingen in $\\mathbb{R}$.",
+          "marks": 1
+        },
+        {
+          "statement": "Deze vergelijking heeft één oplossing, namelijk $x=µ{a}$.",
+          "feedback": "Fout, $x=µ{a}$ is geen oplossing van de vergelijking, omdat je geen vierkantswortel van een negatief getal mag nemen.",
+          "marks": 0
+        },
+        {
+          "statement": "Deze vergelijking heeft twee oplossingen, namelijk $x=-µ{a}$ en $x=µ{a}$.",
+          "feedback": "Fout, deze vergelijking heeft geen oplossingen, omdat je geen vierkantswortel van een negatief getal mag nemen.",
+          "marks": 0
+        }
+      ],
+      "marks": 0,
+      "shuffle_answers": false,
+      "display": "radio",
+      "columns": 1
+    }
+  ],
+  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 8:&nbsp;Veeltermvergelijkingen.&nbsp;Succes!</em></p>"
+}

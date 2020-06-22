@@ -1,0 +1,17 @@
+{
+  "variables": {
+    "b": "random(3,5)",
+    "a": "random(2,4)"
+  },
+  "statement": "<p>Vereenvoudig de volgende breuk:</p>",
+  "parts": [
+    {
+      "marks": 1,
+      "type": "jme",
+      "answer": "1/{2*b}",
+      "prompt": "$ \\frac{\\frac{\\var{a}}{\\var{b}}}{\\var{2*a}}=$",
+      "checking_accuracy": 0
+    }
+  ],
+  "advice": "<p>Je werkt eigenlijk volgend product uit (maal het omgekeerde): <br/>\\[ \\frac{\\frac{\\var{a}}{\\var{b}}}{\\frac{\\var{2*a}}{1}}=\\frac{\\var{a}}{\\var{b}} \\cdot \\frac{1}{\\var{2*a}}\\]<br/>Als je dit vereenvoudigt, kom je tot de oplossing: <br/>\\[\\frac{\\var{1}}{\\var{b}} \\cdot \\frac{1}{2}=\\frac{1}{\\var{2*b}}\\]</p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 3: Rekenen met breuken. Succes!</em></p>"
+}

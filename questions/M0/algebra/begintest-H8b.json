@@ -1,0 +1,25 @@
+{ 
+  "statement": "<p>Werk volgende uitdrukking uit:</p>",
+  "variables": {
+    "b": "random(1..10)",
+    "a": "random(1..10)",
+    "ans": "2*a-(a+1)^2+1"
+  },
+  "variablesTest": {
+    "condition": "ceil(ans) = ans",
+    "maxRuns": 100
+  },
+  "parts": [
+    {
+      "type": "jme",
+      "vsetRange": [
+        0,
+        1
+      ],
+      "marks": 1,
+      "prompt": "\\[ \\frac{µ{a*b}}{µ{a}}+2(µ{a}-µ{b})-µ{a+1}^2+µ{b+1}\\]",
+      "answer": "{ans}"
+    }
+  ],
+  "advice": "file:M0/algebra/begintest-H8b-advice.html"
+}

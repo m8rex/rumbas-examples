@@ -1,0 +1,29 @@
+{
+  "variables": {
+    "data":"matrix([1,4],[1,5],[1,6],[2,4],[2,5],[2,6],[3,5],[3,6],[4,6],[5,6])",
+    "nummer": "random(0..9)",
+    "b": "random(3..10)",
+    "koppel": "data[nummer]",
+    "c": "koppel[0]",
+    "a": "koppel[1]",
+    "grens": "precround(-b/(c-a),2)"
+  },
+  "statement": "<p>Bekijk aandachtig volgende uitwerking van de ongelijkheid.</p><ol><li>als je een fout opmerkt, gelieve dan de letter van de verkeerde stap als antwoord te geven</li><li>als je geen fout opmerkt, dan antwoord je met \"juist\"</li></ol>",
+  "parts": [
+    {
+      "marks": 1,
+      "prompt": "file:M0/algebra/begintest-H13-prompt.tex",
+      "type": "pattern_match",
+      "match_mode": "exact",
+      "pattern": "C",
+      "display_answer": "C"
+    }
+  ],
+  "metadata": {
+    "licence": "None specified",
+    "description": ""
+  },
+  "tags": [],
+  "functions": {},
+  "advice": "file:M0/algebra/begintest-H13-advice.html"
+}

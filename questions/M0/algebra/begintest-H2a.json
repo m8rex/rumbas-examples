@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "m": "random(2,3)",
+    "b": "random(1..5)",
+    "a": "random(5,6,8)"
+  },
+  "statement": {
+    "nl": "file:M0/algebra/begintest-H2-statement-nl.html",
+    "en": "file:M0/algebra/begintest-H2-statement-en.html",
+    "{expr}": "\\( (\\var{a} \\cdot \\var{m} + 1) \\cdot (-\\var{b}) + \\left(\\frac{\\var{m} \\cdot \\var{a}}{\\var{m} }+(-\\var{2*b})\\right) \\cdot \\var{m} \\)"
+  },
+  "variable_groups": [],
+  "parts": [
+    {
+      "type": "number_entry",
+      "answer": "{(a*m+1)*(-b) + (a - 2*b)*m}",
+      "marks": 1,
+      "allow_fractions": false
+    }
+  ],
+  "rulesets": {},
+  "functions": {},
+  "advice": {
+    "nl": "file:M0/algebra/begintest-H2-advice-nl.html",
+    "en": "file:M0/algebra/begintest-H2-advice-en.html",
+    "{sol}": "\\begin{array}<br/>&amp; (\\var{a} \\cdot \\var{m} + 1) \\cdot (-\\var{b}) + \\left(\\frac{\\var{m} \\cdot \\var{a}}{\\var{m} }+(-\\var{2*b})\\right) \\cdot \\var{m} \\\\<br/> &amp; = (\\var{a*m} + 1) \\cdot (-\\var{b}) + (\\var{a} - \\var{2*b}) \\cdot \\var{m} \\\\<br/> &amp; = (\\var{a*m+1}) \\cdot (-\\var{b}) + (\\var{a - 2*b}) \\cdot \\var{m} \\\\<br/> &amp; = \\var{(a*m+1)*(-b)} + \\var{(a - 2*b)*m} \\\\<br/> &amp; = \\var{(a*m+1)*(-b) + (a - 2*b)*m}\\\\<br/>\\end{array}"
+  }
+}

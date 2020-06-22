@@ -1,0 +1,37 @@
+{
+  "variables": {
+    "data": "matrix([-1,4],[-1,5],[-1,6],[-2,4],[-2,5],[-2,6],[-3,5],[-3,6],[-4,6],[-5,6])",
+    "nummer": "random(0..9)",
+    "koppel": "data[nummer]",
+    "a": "koppel[0]",
+    "b": "koppel[1]"
+  },
+  "statement": "",
+  "parts": [
+    {
+      "type": "information",
+      "prompt": "<p>Los volgende tweedegraadsvergelijking op:</p>\n<p>\\[x^2 -\\var{a+b}x \\var{a*b}=0\\]</p>",
+      "marks": 0
+    },
+    {
+      "type": "gapfill",
+      "prompt": "<p>Geef de kleinste oplossing: $x_1=$[[0]]</p><p>en de grootste oplossing: $x_2=$[[1]]</p>",
+      "marks": 0,
+      "gaps": [
+        {
+          "type": "number_entry",
+          "answer": "a",
+          "marks": 1,
+          "allow_fractions": false
+        },
+        {
+          "type": "number_entry",
+          "answer": "b",
+          "marks": 1,
+          "allow_fractions": false
+        }
+      ]
+    }
+  ],
+  "advice": "<p>Een tweedegraadsvergelijking kan je oplossen via de discriminant:<br/>\\[ x^2 -\\var{a+b}x \\var{a*b}=0 \\]<br/>De discriminant is gelijk aan $(-\\var{a+b})^2-4 \\cdot 1 \\cdot \\var{a*b} = \\var{(a+b)^2-4*a*b} $.&nbsp;<br/>De oplossingen kan je dan als volgt bekomen: <br/>\\[ x_1=\\frac{-(-\\var{a+b})-\\sqrt{\\var{(a+b)^2-4*a*b}}}{2 \\cdot 1} \\text{ en } x_2=\\frac{-(-\\var{a+b})+\\sqrt{\\var{(a+b)^2-4*a*b}}}{2 \\cdot 1}\\]<br/>Dus $x_1=\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2} \\text{ en } x_2= \\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}$.</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 8: Veeltermvergelijkingen.&nbsp;Succes!</em></p>"
+}
