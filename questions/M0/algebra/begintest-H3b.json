@@ -3,38 +3,71 @@
     "b": "random(5,10)",
     "c": "random(7,9)"
   },
-  "advice": "<p>Het is fout om</p>\n<ul>\n<li>twee breuken die je met elkaar optelt kruiselings te vereenvoudigen.</li>\n<li>bij de optelling van breuken de tellers en de noemers met elkaar op te tellen, dit geldt alleen bij de vermenigvuldiging van breuken, waarbij je de tellers met elkaar vermenigvuldigt en de noemers.</li>\n</ul>\n<p>De enige manier om breuken correct bij elkaar op te tellen is door ze op een gelijke noemer te zetten en dan de tellers op te tellen.</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 3: Rekenen met breuken. Succes!</em></p>",
-  "statement": "<p>Stel je hebt de volgende som:<br/>\\[\\frac{\\var{b}}{2} + \\frac{\\var{c}}{\\var{2*b}}\\]<br/>Welke uitspraak is JUIST?</p>",
-  "variable_groups": [],
+  "statement": {
+    "nl": "<p>Stel je hebt de volgende som:</p>{expr}",
+    "en": "<p>Assume you have the following sum:</p>{expr}",
+    "{expr}":"\\[\\frac{\\var{b}}{2} + \\frac{\\var{c}}{\\var{2*b}}\\]"
+  },
   "parts": [
     {
-      "marks": 0,
+      "prompt": "file:statement-right.html",
       "type": "choose_one",
       "answers": [
         {
-          "statement": "Je kan deze breuken vereenvoudigen dankzij de teller $\\var{b}$ en de noemer $\\var{2*b}$, je verkrijgt: $\\frac{1}{2} + \\frac{\\var{c}}{2}$.",
-          "feedback": "Fout, twee breuken die je met elkaar optelt mag je niet kruiselings vereenvoudigen.",
+          "statement": {
+            "nl": "Je kan deze breuken vereenvoudigen dankzij de teller $µ{b}$ en de noemer $µ{2*b}$, je verkrijgt: $\\frac{1}{2} + \\frac{µ{c}}{2}$.",
+            "en": "You can simplify these fractions thanks to the numerator $µ{b}$ and the denominator $µ{2*b}$. This results in $\\frac{1}{2} + \\frac{µ{c}}{2}$."
+          },
+          "feedback": {
+            "nl": "Fout, twee breuken die je met elkaar optelt mag je niet kruiselings vereenvoudigen.",
+            "en": "Wrong when adding two fractions, you are not allowed the simplify crosswise."
+          },
           "marks": 0
         },
         {
-          "statement": "Je kan deze som niet verder uitwerken omdat het geen gelijknamige breuken zijn (verschillende noemers).",
-          "feedback": "Fout, je kan deze breuken wel gelijknamig maken zodat je ze kan optellen.",
+          "statement": {
+            "nl": "Je kan deze som niet verder uitwerken omdat het geen gelijknamige breuken zijn (verschillende noemers).",
+            "en": "It is impossible to simplify this further because the fractions don't have the same denominator."
+          },
+          "feedback": {
+            "nl": "Fout, je kan deze breuken wel gelijknamig maken zodat je ze kan optellen.",
+            "en": "Wrong, it is possible to find a common denominator and add the fractions."
+          },
           "marks": 0
         },
         {
-        "statement": "Een gelijke noemer is $\\var{2*b}$, dan bekom je $\\frac{\\var{b*b}}{\\var{2*b}} + \\frac{\\var{c}}{\\var{2*b}}$.",
-          "feedback": "Juist, dit is inderdaad hoe je de breuken kan optellen.",
+          "statement": {
+            "nl": "Een gelijke noemer is $µ{2*b}$, dan bekom je {sum}.",
+            "en": "A common denominator is $µ{2*b}$ which results in {sum}.",
+            "{sum}": "$\\frac{\\var{b*b}}{\\var{2*b}} + \\frac{\\var{c}}{\\var{2*b}}$"
+          },
+          "feedback": {
+            "nl": "Juist, dit is inderdaad hoe je de breuken kan optellen.",
+            "en": "Right, this is the right way to add fractions."
+          },
           "marks": 1
         },
         {
-          "statement": "Je moet de tellers bij elkaar optellen en de noemers bij elkaar, de som is dan gelijk aan $\\frac{\\var{b+c}}{\\var{2+2*b}}$.",
-          "feedback": "Fout, bij de vermenigvuldiging van breuken, mag je tellers met elkaar vermenigvuldigen en de noemers, dit geldt niet bij de optelling.",
+          "statement": {
+            "nl": "Je moet de tellers bij elkaar optellen en de noemers bij elkaar, de som is dan gelijk aan {sum}.",
+            "en": "You need to add the numerators and to add the denominators so the sum equals {sum}.",
+            "{sum}": "$\\frac{\\var{b+c}}{\\var{2+2*b}}$"
+          },
+          "feedback": {
+            "nl": "Fout, bij de vermenigvuldiging van breuken, mag je tellers met elkaar vermenigvuldigen en de noemers, dit geldt niet bij de optelling.",
+            "en": "Wrong, when multiplying fractions, you are allowed to multiply the two numerators and the two denominators, this is not the case for the addition."
+          },
           "marks": 0
         }
       ],
       "columns": 1,
-      "display": "radio"
+      "display": "radio",
+      "marks": 0
     }
   ],
-  "functions": {}
+  "advice": {
+    "content": "file:M0/algebra/begintest-H3b-advice.html",
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H3.html"
+  }
 }
