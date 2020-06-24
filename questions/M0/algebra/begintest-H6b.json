@@ -1,5 +1,5 @@
 {
-  "statement": "Geef de oplossing van de volgende wortel:",
+  "statement": "file:M0/algebra/begintest-H6-statement.html",
   "variables": {
     "a": "random(1..10)",
     "a2": "a^2",
@@ -23,5 +23,11 @@
       "marks": 1
     }
   ],
-  "advice": "file:M0/algebra/begintest-H6b-advice.html"
+  "advice": {
+    "content": "file:M0/algebra/begintest-H6-advice.html",
+    "{right}": "file:M0/algebra/begintest-H6b-advice-right.tex",
+    "{wrong}": "file:M0/algebra/begintest-H6b-advice-wrong.tex",
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H5.html"
+  }
 }
