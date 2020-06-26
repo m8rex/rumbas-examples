@@ -1,8 +1,4 @@
 {
-  "variablesTest": {
-    "condition": "",
-    "maxRuns": 100
-  },
   "statement": "<p>Stel je hebt de volgende vergelijking met $x \\in \\mathbb{R}$:</p>\\[x^2-µ{a*a}=0\\]",
   "variables": {
     "a": "random(1..7)"
