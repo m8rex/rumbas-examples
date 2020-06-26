@@ -3,10 +3,9 @@
     "b": "random(2..10)",
     "a": "random(2..10)"
   },
-  "statement": "<p>Welke uitspraak is JUIST voor de volgende vermenigvuldiging:</p>",
-  "variablesTest": {
-    "condition": "a<>b and a*b <> a+b",
-    "maxRuns": 100
+  "statement": "file:statement-right.html",
+  "variables_test": {
+    "condition": "a<>b and a*b <> a+b"
   },
   "parts": [
     {
@@ -15,18 +14,38 @@
       "marks": 0,
       "answers": [
         {
-          "statement": "Dit is gelijk aan $\\sqrt{\\var{a*b}}$ want je mag de grondtallen vermenigvuldigen omdat het beiden vierkantswortels zijn.",
-          "feedback": "Juist.",
+          "statement": {
+            "nl": "Dit is gelijk aan {expr} want je mag de grondtallen vermenigvuldigen omdat het beiden vierkantswortels zijn.",
+            "en": "This equals {expr}. We are allowed to multiply the bases because they are both square roots.",
+            "{expr}": "$\\sqrt{\\var{a*b}}$"
+          },
+          "feedback": {
+            "nl": "Juist.",
+            "en": "Right."
+          },
           "marks": 1
         },
         {
-          "statement": "Dit is gelijk aan $\\sqrt{\\var{a+b}}$ want je mag de grondtallen optellen omdat het beiden vierkantswortels zijn.",
-          "feedback": "Fout, het is een vermenigvuldiging, dus mag je de grondtallen niet optellen.",
+          "statement": {
+            "nl": "Dit is gelijk aan {expr} want je mag de grondtallen optellen omdat het beiden vierkantswortels zijn.",
+            "en": "This equals {expr}. We are allowed to add the bases because they are both square roots.",
+            "{expr}": "$\\sqrt{\\var{a+b}}$"
+          },
+          "feedback": {
+            "nl": "Fout, het is een vermenigvuldiging, dus mag je de grondtallen niet optellen.",
+            "en": "Wrong, it is a multiplication, so you are not allowed to add the bases."
+          },
           "marks": 0
         },
         {
-          "statement": "Je mag dit niet vereenvoudigen omdat de grondtallen niet gelijk zijn.",
-          "feedback": "Fout, je mag de grondtallen wel vermenigvuldigen omdat beide wortels vierkantswortels zijn, dus eigenlijk van gelijke macht, nl. macht 1/2.",
+          "statement": {
+            "nl": "Je mag dit niet vereenvoudigen omdat de grondtallen niet gelijk zijn.",
+            "en": "This can't be simplified because the bases are different."
+          },
+          "feedback": {
+            "nl": "Fout, je mag de grondtallen wel vermenigvuldigen omdat beide wortels vierkantswortels zijn, dus eigenlijk van gelijke macht, nl. macht 1/2.",
+            "en": "Wrong, we are allowed to multiply the bases because both roots have the same power, square roots have power 1/2."
+          },
           "marks": 0
         }
       ],
@@ -35,5 +54,8 @@
       "display": "radio"
     }
   ],
-  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 5:&nbsp;Rekenen met&nbsp;wortels. Succes!</em></p>"
+  "advice": {
+    "content": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H5.html"
+  }
 }

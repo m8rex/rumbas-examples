@@ -1,6 +1,9 @@
 {
   "variables": { "a": "random(3..5)" },
-  "statement": "<p>Maak de noemer van volgende breuk wortelvrij en vereenvoudig:</p><p>Let op: maalteken noteer je met * en een vierkantswortel noteer je met sqrt(...)</p>",
+  "statement": {
+    "nl": "<p>Maak de noemer van volgende breuk wortelvrij en vereenvoudig:</p><p>Let op: maalteken noteer je met * en een vierkantswortel noteer je met sqrt(...).</p>",
+    "en": "<p>Simplify the following fraction. Make sure that the denominator is free of roots.</p><p>Attention: a multiplication is representated by a * and a square root by sqrt(...).</p>"
+  },
   "parts": [
     {
       "prompt": "$\\frac{2*µ{a}*y}{\\sqrt{µ{a*a}*y}}$",
@@ -10,5 +13,9 @@
       "marks": 1
     }
   ],
-  "advice": "<p>\\begin{align}<br/>\\frac{\\var{2*a}y}{\\sqrt{\\var{a*a}y}} &amp; = \\frac{\\var{2*a}y}{\\var{a}\\sqrt{y}} = \\frac{2y}{\\sqrt{y}} \\\\<br/> &amp; = \\frac{2y}{\\sqrt{y}} \\cdot \\frac{\\sqrt{y}}{\\sqrt{y}} = \\frac{2y\\sqrt{y}}{\\sqrt{y}\\sqrt{y}} \\\\<br/> &amp; = \\frac{2y\\sqrt{y}}{y} = 2\\sqrt{y} \\\\<br/>\\end{align}</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 5:&nbsp;Rekenen met wortels. Succes!</em></p>"
+  "advice": {
+    "content": "<p>\\begin{align}<br/>\\frac{\\var{2*a}y}{\\sqrt{\\var{a*a}y}} &amp; = \\frac{\\var{2*a}y}{\\var{a}\\sqrt{y}} = \\frac{2y}{\\sqrt{y}} \\\\<br/> &amp; = \\frac{2y}{\\sqrt{y}} \\cdot \\frac{\\sqrt{y}}{\\sqrt{y}} = \\frac{2y\\sqrt{y}}{\\sqrt{y}\\sqrt{y}} \\\\<br/> &amp; = \\frac{2y\\sqrt{y}}{y} = 2\\sqrt{y} \\\\<br/>\\end{align}</p>{postamble}",
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H5.html"
+  }
 }
