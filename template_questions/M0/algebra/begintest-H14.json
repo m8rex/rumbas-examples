@@ -1,0 +1,59 @@
+{
+  "variables": {
+    "data": "matrix([-1,4],[-1,5],[-1,6],[-2,4],[-2,5],[-2,6],[-3,5],[-3,6],[-4,6],[-5,6])",
+    "nummer": "random(0..9)",
+    "koppel": "data[nummer]",
+    "a": "koppel[0]",
+    "b": "koppel[1]"
+  },
+  "statement": {
+    "nl": "<p>Wat is de oplossing van volgende tweedegraadsongelijkheid?</p>",
+    "en": "<p>Wat is the solution for the following quadratic inequality?</p>"
+  },
+  "parts": [
+    {
+      "prompt": "template:prompt",
+      "type": "choose_one",
+      "answers": [
+        {
+          "statement": "$ x \\in ]-\\infty,\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[&nbsp; \\cup&nbsp; ]\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\\infty[ $",
+          "feedback": "",
+          "marks": "template:marks0"
+        },
+        {
+          "statement": "$x \\in ]-\\infty,\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}] \\cup [\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\\infty[ $",
+          "feedback": "",
+          "marks": "template:marks1"
+        },
+        {
+          "statement": "$x \\in ]\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}[ $",
+          "feedback": "",
+          "marks": "template:marks2"
+        },
+        {
+          "statement": "$x \\in [\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}] $",
+          "feedback": "",
+          "marks": "template:marks3"
+        }
+      ],
+      "shuffle_answers": false,
+      "marks": 0,
+      "columns": 1,
+      "display": "radio"
+    }
+  ],
+  "advice": {
+    "content": "file:M0/algebra/begintest-H14-advice.html",
+    "{discr}": "\\[x^2 -\\var{a+b}x \\var{a*b}=0\\]",
+    "{discr-val}": "$(-\\var{a+b})^2-4 \\cdot 1 \\cdot (\\var{a*b}) = \\var{(a+b)^2-4*a*b} $",
+    "{eq-sols}": "\\[x_1=\\frac{-(-µ{a+b})+\\sqrt{µ{(a+b)^2-4*a*b}}}{2 \\cdot 1}=µ{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}<br/>\\text{ {and} } x_2=\\frac{-(-µ{a+b})-\\sqrt{µ{(a+b)^2-4*a*b}}}{2 \\cdot 1}= µ{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}\\]",
+    "{signtable}": "template:signtable",
+    "{ineq-sols}": "template:ineq-sols",
+    "{and}": {
+      "nl": "en",
+      "en": "and"
+    },
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H9.html"
+  }
+}
