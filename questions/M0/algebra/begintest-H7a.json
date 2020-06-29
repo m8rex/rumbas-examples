@@ -1,8 +1,9 @@
 {
   "variables": { "a": "random(3..5)" },
   "statement": {
-    "nl": "<p>Maak de noemer van volgende breuk wortelvrij en vereenvoudig:</p><p>Let op: maalteken noteer je met * en een vierkantswortel noteer je met sqrt(...).</p>",
-    "en": "<p>Simplify the following fraction. Make sure that the denominator is free of roots.</p><p>Attention: a multiplication is representated by a * and a square root by sqrt(...).</p>"
+    "nl": "<p>Maak de noemer van volgende breuk wortelvrij en vereenvoudig:</p>{notation}",
+    "en": "<p>Simplify the following fraction. Make sure that the denominator is free of roots.</p>{notation}",
+    "{notation}": "file:notation-help.html"
   },
   "parts": [
     {

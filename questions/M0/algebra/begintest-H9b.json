@@ -1,5 +1,9 @@
 {
-  "statement": "file:M0/algebra/begintest-H9-statement.html",
+  "statement": {
+    "content": "file:M0/algebra/begintest-H9-statement.html",
+    "{elaborate}": "file:elaborate-expression.html",
+    "{notation}": "file:notation-help.html"
+  },
   "variables": {
     "a": "random(2..5)",
     "b": "random(2..4)"
@@ -12,5 +16,12 @@
       "answer": "{a*a}*x^2+{2*a*b}*x+{b*b}"
     }
   ],
-  "advice": "<p>Een kwadraat van een tweeterm werk je als volgt uit: <br/>\\[ (a+b)^2=a^2+2ab+b^2 \\]<br/>Dit is een gevolg van de distributiviteit want $(a+b)^2=(a+b)(a+b)$.<br/>Toegepast op deze opgave, is de oplossing als volgt:<br/>\\[ (\\var{a}x+\\var{b})^2=(\\var{a}x)^2+2 \\cdot \\var{a}x \\cdot \\var{b} + \\var{b}^2 = \\var{a*a}x^2+\\var{2*a*b}x+ \\var{b*b} \\]</p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 7:&nbsp;Merkwaardige producten en ontbinden in factoren.&nbsp;Succes!</em></p>"
+  "advice": {
+    "content": "file:M0/algebra/begintest-H9a-advice.html",
+    "{ab2}": "\\[(a+b)^2=a^2+2ab+b^2\\]",
+    "{dist}": "$(a+b)^2=(a+b)(a+b)$",
+    "{sol}": "\\[ (\\var{a}x+\\var{b})^2=(\\var{a}x)^2+2 \\cdot \\var{a}x \\cdot \\var{b} + \\var{b}^2 = \\var{a*a}x^2+\\var{2*a*b}x+ \\var{b*b} \\]",
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H7.html"    
+  }
 }

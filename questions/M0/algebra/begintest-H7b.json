@@ -7,8 +7,9 @@
     "condition": "ceil(sqrt(a)) <> sqrt(a)"
   },
   "statement": {
-    "nl": "<p>Geef de oplossing van volgende som:</p><p>Let op: maalteken noteer je met * en een vierkantswortel noteer je met sqrt(...).</p>",
-    "en": "<p>Find the solution of the following sum:</p><p>Attention: a multiplication is representated by a * and a square root by sqrt(...).</p>"
+    "nl": "<p>Geef de oplossing van volgende som:</p>{notation}",
+    "en": "<p>Find the solution of the following sum:</p>{notation}",
+    "{notation}": "file:notation-help.html"
   },
   "parts": [
     {
