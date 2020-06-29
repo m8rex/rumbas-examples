@@ -1,5 +1,8 @@
 {
-  "statement": "file:M0/algebra/begintest-H10-statement.html",
+  "statement": {
+    "content": "file:M0/algebra/begintest-H10-statement.html",
+    "{notation}": "file:notation-help.html"
+  },
   "variables": {
     "a": "random(2,4,6)",
     "b": "random(3,5)"
@@ -12,5 +15,12 @@
       "answer": "({a}+{b}x)({a}-{b}x)"
     }
   ],
-  "advice": "<p>Het product van toegevoegde tweetermen kan je als volgt ontbinden in factoren: <br/>\\[ a^2-b^2=(a+b)(a-b)\\]<br/>Dit is een gevolg van de distributiviteit want $(a+b)(a-b)=a^2-ab+ab-b^2=a^2-b^2$.<br/>Toegepast op deze opgave, is de oplossing als volgt:<br/>\\[\\var{a*a}-\\var{b*b}x^2 = \\var{a}^2 - (\\var{b}x)^2 = (\\var{a}+\\var{b}x)(\\var{a}-\\var{b}x)\\]</p>\n<p></p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 7:&nbsp;Merkwaardige producten en ontbinden in factoren.&nbsp;Succes!</em></p>"
+  "advice": {
+    "content": "file:M0/algebra/begintest-H10c-advice.html",
+    "{abmin}": "\\[a^2-b^2=(a+b)(a-b) \\]",
+    "{dist}": "$(a+b)(a-b)=a^2-ab+ab-b^2$",
+    "{sol}": "\\[\\var{a*a}-\\var{b*b}x^2 = \\var{a}^2 - (\\var{b}x)^2 = (\\var{a}+\\var{b}x)(\\var{a}-\\var{b}x)\\]",
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H7.html"    
+  }
 }
