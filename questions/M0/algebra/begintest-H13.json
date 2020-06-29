@@ -8,22 +8,36 @@
     "a": "koppel[1]",
     "grens": "precround(-b/(c-a),2)"
   },
-  "statement": "<p>Bekijk aandachtig volgende uitwerking van de ongelijkheid.</p><ol><li>als je een fout opmerkt, gelieve dan de letter van de verkeerde stap als antwoord te geven</li><li>als je geen fout opmerkt, dan antwoord je met \"juist\"</li></ol>",
+  "statement": {
+    "nl": "<p>Bekijk aandachtig volgende uitwerking van de ongelijkheid.</p><ol><li>als je een fout opmerkt, gelieve dan de letter van de verkeerde stap als antwoord te geven</li><li>als je geen fout opmerkt, dan antwoord je met \"juist\"</li></ol>",
+    "en": "<p>Look carefully at the following elaboration of the inequality.</p><ol><li>If you notice an error, please answer with the letter of the wrong step</li><li>if you don't notice an error you answer with \"right\"</li></ol>."
+  },
   "parts": [
     {
       "marks": 1,
-      "prompt": "file:M0/algebra/begintest-H13-prompt.tex",
+      "prompt": {
+        "content":"file:M0/algebra/begintest-H13-prompt.tex",
+        "{text}": {
+          "nl": "de oplossing is",
+          "en": "the solution is"
+        }
+      },
       "type": "pattern_match",
       "match_mode": "exact",
       "pattern": "C",
       "display_answer": "C"
     }
   ],
-  "metadata": {
-    "licence": "None specified",
-    "description": ""
-  },
-  "tags": [],
-  "functions": {},
-  "advice": "file:M0/algebra/begintest-H13-advice.html"
+  "advice": {
+    "content": "file:M0/algebra/begintest-H13-advice.html",
+    "{neg}": "$µ{c-a}$",
+    "{step}": "$C$",
+    "{elab}": "file:M0/algebra/begintest-H13-advice.tex",
+    "{text}": {
+      "nl": "de oplossing is",
+      "en": "the solution is"
+    },
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H9.html"
+  }
 }
