@@ -1,34 +1,24 @@
 {
-  "statement": "<p>Stel je hebt de volgende vergelijking met $x \\in \\mathbb{R}$:</p>\\[x^2-µ{a*a}=0\\]",
-  "variables": {
-    "a": "random(1..7)"
+  "template": "M0/algebra/begintest-H12",
+  "eq": "\\[x^2-µ{a*a}=0\\]",
+  "feedback0": {
+    "nl": "Fout, deze vergelijking heeft wel oplossingen, zie bij de juiste oplossing voor de uitwerking",
+    "en": "Wrong, this equation does have solutions. See the elaboration of the right solution."
   },
-  "parts": [
-    {
-      "type": "choose_one",
-      "prompt": "Welke uitspraak is waar?",
-      "answers": [
-        {
-          "statement": "Deze vergelijking heeft geen oplossingen.",
-          "feedback": "Fout, deze vergelijking heeft wel oplossingen, zie bij de juiste oplossing voor de uitwerking",
-          "marks": 0
-        },
-        {
-          "statement": "Deze vergelijking heeft één oplossing, namelijk $x=µ{a}$.",
-          "feedback": "Fout, $x=µ{a}$ is inderdaad een oplossing van de vergelijking, maar er is er nog één.",
-          "marks": 0
-        },
-        {
-          "statement": "Deze vergelijking heeft twee oplossingen, namelijk $x=-µ{a}$ en $x=µ{a}$.",
-          "feedback": "Juist, deze vergelijking heeft twee oplossingen, namelijk $x=-µ{a}$ en $x=µ{a}$: \\[ x^2-µ{a*a}= 0 \\Leftrightarrow  x^2=µ{a*a} \\Leftrightarrow  x=\\pm \\sqrt{µ{a*a}} \\Leftrightarrow  x=µ{a} \\quad \\text{en} \\quad x=-µ{a}\\]",
-          "marks": 1
-        }
-      ],
-      "marks": 0,
-      "shuffle_answers": false,
-      "display": "radio",
-      "columns": 1
-    }
-  ],
-  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 8:&nbsp;Veeltermvergelijkingen.&nbsp;Succes!</em></p>"
+  "marks0": 0,
+  "feedback1": {
+    "nl": "Fout, {sol} is inderdaad een oplossing van de vergelijking, maar er is er nog één.",
+    "en": "Wrong, {sol} is indeed a solution of the equation, but there also is a second solution.",
+    "{sol}": "$x=µ{a}$"
+  },
+  "marks1": 0,
+  "feedback2": {
+    "nl": "Juist, deze vergelijking heeft twee oplossingen: {sol1} en {sol2}: {elab-start}en{elab-end}",
+    "en": "Right, this equation has two solutions: {sol1} and {sol2}: {elab-start}and{elab-end}",
+    "{sol1}": "$x=µ{a}$",
+    "{sol2}": "$x=-µ{a}$",
+    "{elab-start}": "\\[ x^2-µ{a*a}= 0 \\Leftrightarrow  x^2=µ{a*a} \\Leftrightarrow  x=\\pm \\sqrt{µ{a*a}} \\Leftrightarrow  x=µ{a} \\quad \\text{",
+    "{elab-end}": "} \\quad x=-µ{a}\\]"
+  },
+  "marks2": 1
 }

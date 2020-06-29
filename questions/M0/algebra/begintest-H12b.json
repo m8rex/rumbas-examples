@@ -1,34 +1,22 @@
 {
-  "variables": {
-    "a": "random(1..7)"
+  "template": "M0/algebra/begintest-H12",
+  "eq":"\\[x^2+\\var{a*a}=0\\]",
+  "feedback0": {
+    "nl": "Juist, deze vergelijking heeft inderdaad geen oplossingen in {cond} omdat je geen vierkantswortel van een negatief getal mag nemen. {elab} deze vergelijking heeft geen oplossingen in {cond}.",
+    "en": "Right, this equation does indeed have no solutions in {cond} because you can't calculate the square root of a negative number. {elab} this equation has no solutions in {cond}.",
+    "{cond}": "$\\mathbb{R}$",
+    "{elab}": "\\[ x^2+µ{a*a}= 0 \\Leftrightarrow  x^2=-µ{a*a}\\] $\\Leftrightarrow $"
   },
-  "statement": "<p>Stel je hebt de volgende vergelijking met $x \\in \\mathbb{R}$:</p>\\[x^2+\\var{a*a}=0\\]",
-  "parts": [
-    {
-      "type": "choose_one",
-      "prompt": "Welke uitspraak is waar?",
-      "answers": [
-        {
-          "statement": "Deze vergelijking heeft geen oplossingen.",
-          "feedback": "Juist, deze vergelijking heeft inderdaad geen oplossingen in $\\mathbb{R}$ omdat je geen vierkantswortel van een negatief getal mag nemen. \\[ x^2+µ{a*a}= 0 \\Leftrightarrow  x^2=-µ{a*a}\\] $\\Leftrightarrow $ deze vergelijking heeft geen oplossingen in $\\mathbb{R}$.",
-          "marks": 1
-        },
-        {
-          "statement": "Deze vergelijking heeft één oplossing, namelijk $x=µ{a}$.",
-          "feedback": "Fout, $x=µ{a}$ is geen oplossing van de vergelijking, omdat je geen vierkantswortel van een negatief getal mag nemen.",
-          "marks": 0
-        },
-        {
-          "statement": "Deze vergelijking heeft twee oplossingen, namelijk $x=-µ{a}$ en $x=µ{a}$.",
-          "feedback": "Fout, deze vergelijking heeft geen oplossingen, omdat je geen vierkantswortel van een negatief getal mag nemen.",
-          "marks": 0
-        }
-      ],
-      "marks": 0,
-      "shuffle_answers": false,
-      "display": "radio",
-      "columns": 1
-    }
-  ],
-  "advice": "<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 8:&nbsp;Veeltermvergelijkingen.&nbsp;Succes!</em></p>"
+  "marks0": 1,
+  "feedback1": {
+    "nl": "Fout, {sol} is geen oplossing van de vergelijking, omdat je geen vierkantswortel van een negatief getal mag nemen.",
+    "en": "Wrong, {sol} is not a solution of the equation, because you can't calculate the square root of a negative number.",
+    "{sol}": "$x=µ{a}$"
+  },
+  "marks1": 0,
+  "feedback2": {
+    "nl": "Fout, deze vergelijking heeft geen oplossingen, omdat je geen vierkantswortel van een negatief getal mag nemen.",
+    "en": "Wrong, this equation has no solutions, because you can't calculate the square root of a negative number."
+  },
+  "marks2": 0
 }
