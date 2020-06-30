@@ -10,11 +10,11 @@
     "f": "rij[4]",
     "g": "rij[5]"
   },
-  "statement": "<p>Los volgend stelsel op:</p><p>Let op!</p>\n<ul>\n<li>Als het stelsel&nbsp;geen oplossingen heeft, dan noteer je \"geen\" bij zowel x als y.&nbsp;</li>\n<li>Als het stelsel oneindig oplossingen heeft, dan noteer je \"oneindig\" bij zowel x&nbsp;als&nbsp;y.&nbsp;</li>\n</ul>",
+  "statement": "file:M0/algebra/begintest-H17-statement.html",
   "parts": [
     {
       "type": "gapfill",
-      "prompt": "\\[\\begin{cases}<br/>\\var{a}x +\\var{b}y &amp;=\\var{c}\\\\\\var{d}x +\\var{f}y &amp;=\\var{g}\\end{cases}\\]<p>$x=$[[0]] en&nbsp;$y=$[[1]]</p>",
+      "prompt": "\\[\\begin{cases}<br/>\\var{a}x +\\var{b}y &amp;=\\var{c}\\\\\\var{d}x +\\var{f}y &amp;=\\var{g}\\end{cases}\\]<p>$x=$[[0]]</p><p>$y=$[[1]]</p>",
       "marks": 0,
       "gaps": [
         {
@@ -32,5 +32,12 @@
       ]
     }
   ],
-  "advice": "<p>De oplossing van dit stelsel is $x=-3$ en $y=6$. Dit kan je bekomen door de eerste vergelijking te herschrijven naar $y=\\ldots$, om nadien $y$ te substitueren in de 2e vergelijking.<br/>In deze tweede vergelijking heb je nu enkel nog maar een vergelijking van $x$, dat je kan oplossen. Als je dan $x=-3$ hebt bekomen, dan vul je dit opnieuw in bij $y=...$ om $y=6$ te bekomen.</p>\n<p><em>Begrijp je deze vraag of het antwoord niet? Bekijk dan zeker de cursus van Hoofdstuk 11: Lineaire stelsels.&nbsp;Succes!</em></p>"
+  "advice": {
+    "nl": "<p>De oplossing van dit stelsel is {solx} en {soly}. Dit kan je bekomen door de eerste vergelijking te herschrijven naar $y=\\ldots$, om nadien $y$ te substitueren in de 2e vergelijking.</p><p>In deze tweede vergelijking heb je nu enkel nog maar een vergelijking van $x$ en die kan je dus oplossen. Als je dan {solx} hebt bekomen, dan vul je dit opnieuw in bij $y=\\ldots$ om {soly} te bekomen.</p>{postamble}",
+    "en": "<p>The solution of this sytem is {solx} and {soly}. This can be found by first rewriting the first equation in the form $y=\\ldots$ and by then substituting $y$ in the second equation.</p><p>This second equation does only depend on $x$ and can be solved. When you have found that {solx}, you enter this in $y=\\ldots$ to find {soly}.</p>{postamble}",
+    "{solx}": "$x=-3$",
+    "{soly}": "$y=6$",
+    "{postamble}": "file:M0/algebra/begintest-advice-postamble.html",
+    "{chapter}": "file:M0/algebra/begintest-H11.html"
+  }
 }
