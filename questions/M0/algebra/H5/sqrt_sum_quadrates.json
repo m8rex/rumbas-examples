@@ -1,0 +1,31 @@
+{
+  "statement": "file:M0/algebra/H5/sqrt_sum_quadrates-statement.html",
+  "variables": {
+    "m": "random(1..5)",
+    "n": "random(1..5)",
+    "k": "1",
+    "a": "k*(m^2-n^2)",
+    "a2": "a^2",
+    "b": "k*(2*m*n)",
+    "b2": "b^2",
+    "c": "k*(m^2+n^2)"
+  },
+  "variables_test": {
+    "condition": "m>n and c < 21"
+  },
+  "parts": [
+    {
+      "type": "jme",
+      "prompt": "$\\sqrt{µ{a2}+µ{b2}}$ ",
+      "answer": "{c}",
+      "marks": 1
+    }
+  ],
+  "advice": {
+    "content": "file:M0/algebra/H5/sqrt_sum_quadrates-advice.html",
+    "{right}": "file:M0/algebra/H5/sqrt_sum_quadrates-advice-right.tex",
+    "{wrong}": "file:M0/algebra/H5/sqrt_sum_quadrates-advice-wrong.tex",
+    "{postamble}": "file:postamble.html",
+    "{chapter}": "file:M0/algebra/H5.html"
+  }
+}

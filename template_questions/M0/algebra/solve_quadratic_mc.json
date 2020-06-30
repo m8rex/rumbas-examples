@@ -1,0 +1,54 @@
+{
+  "statement": {
+    "nl": "<p>Stel je hebt de volgende vergelijking met {cond}:</p>{eq}",
+    "en": "<p>Assume following equation with {cond}:</p>{eq}",
+    "{cond}": "$x \\in \\mathbb{R}$",
+    "{eq}": "template:eq"
+  },
+  "variables": {
+    "a": "random(1..7)"
+  },
+  "parts": [
+    {
+      "type": "choose_one",
+      "prompt": "file:statement-right.html",
+      "answers": [
+        {
+          "statement": {
+            "nl": "Deze vergelijking heeft geen oplossingen.",
+            "en": "This equation has no solutions."
+          },
+          "feedback": "template:feedback0",
+          "marks": "template:marks0"
+        },
+        {
+          "statement": {
+            "nl": "Deze vergelijking heeft één oplossing: {sol}.",
+            "en": "This equation has one solution: {sol}",
+            "{sol}": "$x=µ{a}$"
+          },
+          "feedback": "template:feedback1",
+          "marks": "template:marks1"
+        },
+        {
+          "statement": {
+            "nl": "Deze vergelijking heeft twee oplossingen: {sol1} en {sol2}.",
+            "en": "This equation has two solutions: {sol1} and {sol2}.",
+            "{sol1}": "$x=µ{a}$",
+            "{sol2}": "$x=-µ{a}$"
+          },
+          "feedback": "template:feedback2",
+          "marks": "template:marks2"
+        }
+      ],
+      "marks": 0,
+      "shuffle_answers": false,
+      "display": "radio",
+      "columns": 1
+    }
+  ],
+  "advice": {
+    "content": "file:postamble.html",
+    "{chapter}": "file:M0/algebra/H8.html"    
+  }
+}

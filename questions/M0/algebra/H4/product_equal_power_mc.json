@@ -1,0 +1,64 @@
+{
+  "statement": {
+    "nl": "<p>Stel je hebt de volgende vermenigvuldiging: {s}</p>",
+    "en": "<p>Assume the product {s}</p>",
+    "{s}": "${µ{a}^µ{ex} \\cdot µ{b}^µ{ex}}$"
+  },
+  "variables": {
+    "a": "random(1..15)",
+    "b": "a+1",
+    "ex": "random(2..15)"
+  },
+  "parts": [
+    {
+      "type": "choose_one",
+      "prompt": "file:statement-right.html",
+      "answers": [
+        {
+        "statement": {
+          "nl": "Dit is gelijk aan {expr} want je mag de grondtallen vermenigvuldigen omdat de machten gelijk zijn.",
+          "en": "This equals {expr} because you may multiply the bases when the powers are equal.",
+          "{expr}": "$µ{a*b}^µ{ex}$"
+        },
+        "feedback": {
+          "nl": "Juist, je kan de macht buiten de haakjes brengen zodat je op {expr} uitkomt.",
+          "en": "Right, you can extract the power outside brackets to reach {expr}.",
+          "{expr}": "$(µ{a} \\cdot µ{b})^µ{ex}=µ{a*b}^µ{ex}$"
+        },
+        "marks": 1
+        },
+        {
+        "statement": {
+          "nl": "Dit is gelijk aan {expr} want je mag de grondtallen vermenigvuldigen en de machten optellen omdat de machten gelijk zijn.",
+          "en": "This equals {expr} because you may multiply the bases and add the powers when the powers are equal.",
+          "{expr}": "$µ{a*b}^µ{2*ex}$"
+        },
+        "feedback": {
+          "nl": "Fout, je mag de grondtallen vermenigvuldigen omdat je de macht buiten haakjes kan brengen. Er is geen reden om de machte op te tellen. ",
+          "en": "Wrong, you may multiply the bases because you can extract the power outside brackets. There is no reason to add the powers. "
+        },
+        "marks": 0
+        },
+        {
+        "statement": {
+          "nl": "Je kan dit niet als één macht schrijven omdat de grondtallen niet gelijk zijn.",
+          "en": "You can't write this as one power because the bases aren't equal."
+        },
+        "feedback": {
+          "nl": "Fout, aangezien de machten gelijk zijn, mag je de macht buiten haakjes brengen, waardoor je de grondtallen mag vermenigvuldigen.",
+          "en": "Wrong, you may extract the power outside brachets because the powers are equal and then you can multiply the bases."
+        },
+        "marks": 0
+        }
+      ],
+      "shuffle_answers": false,
+      "display": "radio",
+      "columns": 1,
+      "marks": 0
+    }
+  ],
+  "advice": {
+    "content": "file:postamble.html",
+    "{chapter}": "file:M0/algebra/H4.html"
+  }
+}

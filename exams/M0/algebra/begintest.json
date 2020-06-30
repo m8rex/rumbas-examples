@@ -22,7 +22,7 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-          "M0/algebra/begintest-H1"
+          "M0/algebra/H1/nul_in_N_and_Z"
       ]
     },
     {
@@ -33,8 +33,8 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-          "M0/algebra/begintest-H2a",
-          "M0/algebra/begintest-H2b"
+          "M0/algebra/H2/calculate_a",
+          "M0/algebra/H2/calculate_b"
       ]
     },
     {
@@ -45,8 +45,8 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-          "M0/algebra/begintest-H3a",
-          "M0/algebra/begintest-H3b"
+          "M0/algebra/H3/fraction_multiply_mc",
+          "M0/algebra/H3/fraction_sum_mc"
       ]
     },
     {
@@ -57,9 +57,9 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H4a",
-         "M0/algebra/begintest-H4b",
-         "M0/algebra/begintest-H4c"
+         "M0/algebra/H3/fraction_on_fraction_a",
+         "M0/algebra/H3/fraction_on_fraction_b",
+         "M0/algebra/H3/fraction_on_fraction_c"
       ]
     },
     {
@@ -70,8 +70,8 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H5a",
-         "M0/algebra/begintest-H5b"
+         "M0/algebra/H4/product_equal_power_mc",
+         "M0/algebra/H4/sum_equal_power_mc"
       ]
     },
     {
@@ -82,8 +82,8 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H6a",
-         "M0/algebra/begintest-H6b"
+         "M0/algebra/H5/sqrt_sum_quadrates",
+         "M0/algebra/H5/sqrt_sum_four_quadrates"
       ]
     },
     {
@@ -94,9 +94,9 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H7a",
-         "M0/algebra/begintest-H7b",
-         "M0/algebra/begintest-H7c"
+         "M0/algebra/H5/denominator_root_free",
+         "M0/algebra/H5/product_sqrt_mc",
+         "M0/algebra/H5/sum_sqrt"
       ]
     },
     {
@@ -107,8 +107,8 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H8a",
-         "M0/algebra/begintest-H8b"
+         "M0/algebra/H6/operation_order_a",
+         "M0/algebra/H6/operation_order_b"
       ]
     },
     {
@@ -119,10 +119,10 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H9a",
-         "M0/algebra/begintest-H9b",
-         "M0/algebra/begintest-H9c",
-         "M0/algebra/begintest-H9d"
+         "M0/algebra/H7/square_sum_a",
+         "M0/algebra/H7/square_sum_b",
+         "M0/algebra/H7/square_sum_c",
+         "M0/algebra/H7/product_sum_difference"
       ]
     },
     {
@@ -133,9 +133,9 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H10a",
-         "M0/algebra/begintest-H10b",
-         "M0/algebra/begintest-H10c"
+         "M0/algebra/H7/factorize_a2_min_2ab_plus_b2",
+         "M0/algebra/H7/factorize_a2_plus_2ab_plus_b2",
+         "M0/algebra/H7/factorize_diff_squares"
       ]
     },
     {
@@ -146,7 +146,7 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H11"
+         "M0/algebra/H8/solve_quadratic_two_solutions"
       ]
     },
     {
@@ -157,8 +157,8 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H12a",
-         "M0/algebra/begintest-H12b"
+         "M0/algebra/H8/solve_quadratic_two_solutions_mc",
+         "M0/algebra/H8/solve_quadratic_no_solutions_mc"
       ]
     },
     {
@@ -169,7 +169,7 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H13"
+         "M0/algebra/H9/find_error_inequality_product_negative"
       ]
     },
     {
@@ -180,10 +180,10 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H14a",
-         "M0/algebra/begintest-H14b",
-         "M0/algebra/begintest-H14c",
-         "M0/algebra/begintest-H14d"
+         "M0/algebra/H9/solve_quadratic_inequality_mc_a",
+         "M0/algebra/H9/solve_quadratic_inequality_mc_b",
+         "M0/algebra/H9/solve_quadratic_inequality_mc_c",
+         "M0/algebra/H9/solve_quadratic_inequality_mc_d"
       ]
     },
     {
@@ -194,9 +194,9 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H15a",
-         "M0/algebra/begintest-H15b",
-         "M0/algebra/begintest-H15c"
+         "M0/algebra/H10/shoes_price_with_discount",
+         "M0/algebra/H10/shoes_amount_of_discount",
+         "M0/algebra/H10/shoes_initial_price"
       ]
     },
     {
@@ -207,7 +207,7 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H16"
+         "M0/algebra/H10/electric_cars_wrong_mc"
       ]
     },
     {
@@ -218,9 +218,9 @@
       "picking_strategy": "random_subset",
       "pick_questions": 1,
       "questions": [
-         "M0/algebra/begintest-H17a",
-         "M0/algebra/begintest-H17b",
-         "M0/algebra/begintest-H17c"
+         "M0/algebra/H11/linear_system_infinite_solutions",
+         "M0/algebra/H11/linear_system_no_solutions",
+         "M0/algebra/H11/linear_system_two_solutions"
       ]
     }
   ]

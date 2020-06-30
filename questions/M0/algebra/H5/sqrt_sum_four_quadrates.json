@@ -1,0 +1,33 @@
+{
+  "statement": "file:M0/algebra/H5/sqrt_sum_quadrates-statement.html",
+  "variables": {
+    "a": "random(1..10)",
+    "a2": "a^2",
+    "b": "random(1..10)",
+    "b2": "b^2",
+    "c": "random(1..10)",
+    "c2": "c^2",
+    "d": "random(1..10)",
+    "d2": "d^2",
+    "f": "sqrt(a2+b2+c2+d2)",
+    "f2": "f^2"
+  },
+  "variables_test": {
+    "condition": "f=ceil(f) and f < 21"
+  },
+  "parts": [
+    {
+      "type": "jme",
+      "prompt": "$\\sqrt{µ{a2}+µ{b2}+µ{c2}+µ{d2}}$ ",
+      "answer": "{f}",
+      "marks": 1
+    }
+  ],
+  "advice": {
+    "content": "file:M0/algebra/H5/sqrt_sum_quadrates-advice.html",
+    "{right}": "file:M0/algebra/H5/sqrt_sum_four_quadrates-advice-right.tex",
+    "{wrong}": "file:M0/algebra/H5/sqrt_sum_four_quadrates-advice-wrong.tex",
+    "{postamble}": "file:postamble.html",
+    "{chapter}": "file:M0/algebra/H5.html"
+  }
+}
