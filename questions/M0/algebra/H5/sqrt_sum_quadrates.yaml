@@ -1,5 +1,7 @@
 ---
-statement: file:M0/algebra/H5/sqrt_sum_quadrates-statement.html
+statement:
+  nl: '<p>Geef de oplossing van de volgende wortel:</p>'
+  en: '<p>Give the solution for the following root:</p>'
 variables:
   m: random(1..5)
   n: random(1..5)
@@ -17,8 +19,28 @@ parts:
   answer: "{c}"
   marks: 1
 advice:
-  content: file:M0/algebra/H5/sqrt_sum_quadrates-advice.html
-  "{right}": file:M0/algebra/H5/sqrt_sum_quadrates-advice-right.tex
-  "{wrong}": file:M0/algebra/H5/sqrt_sum_quadrates-advice-wrong.tex
+  nl: |
+    <p>Deze berekening is FOUT:</p>
+    {wrong}
+    <p>Dit is de correcte rekenregel</p>
+    {right}
+    {postamble}
+  en: |
+    <p>This calculation is WRONG:</p>
+    {wrong}
+    <p>This is the correct calculation rule</p>
+    {right}
+    {postamble}
+  "{right}": |
+    \begin{align}
+    \sqrt{µ{a2}+µ{b2}} & = \sqrt{µ{a2+b2}} \\
+    & = µ{c}
+    \end{align}
+  "{wrong}": | 
+    \begin{align}
+    \sqrt{µ{a2}+µ{b2}} & \neq \sqrt{µ{a2}} + \sqrt{µ{b2}} \\
+    & \neq µ{a} + µ{b} \\
+    & \neq µ{a+b}
+    \end{align}
   "{postamble}": file:postamble.html
   "{chapter}": file:M0/algebra/H5.html

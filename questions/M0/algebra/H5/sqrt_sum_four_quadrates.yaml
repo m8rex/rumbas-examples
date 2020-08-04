@@ -1,5 +1,7 @@
 ---
-statement: file:M0/algebra/H5/sqrt_sum_quadrates-statement.html
+statement:
+  nl: '<p>Geef de oplossing van de volgende wortel:</p>'
+  en: '<p>Give the solution for the following root:</p>'
 variables:
   a: random(1..10)
   a2: a^2
@@ -15,12 +17,32 @@ variables_test:
   condition: f=ceil(f) and f < 21
 parts:
 - type: jme
-  prompt: "$\\sqrt{µ{a2}+µ{b2}+µ{c2}+µ{d2}}$ "
+  prompt: $\sqrt{µ{a2}+µ{b2}+µ{c2}+µ{d2}}$
   answer: "{f}"
   marks: 1
 advice:
-  content: file:M0/algebra/H5/sqrt_sum_quadrates-advice.html
-  "{right}": file:M0/algebra/H5/sqrt_sum_four_quadrates-advice-right.tex
-  "{wrong}": file:M0/algebra/H5/sqrt_sum_four_quadrates-advice-wrong.tex
+  nl: |
+    <p>Deze berekening is FOUT:</p>
+    {wrong}
+    <p>Dit is de correcte rekenregel</p>
+    {right}
+    {postamble}
+  en: |
+    <p>This calculation is WRONG:</p>
+    {wrong}
+    <p>This is the correct calculation rule</p>
+    {right}
+    {postamble}
+  "{right}": |
+    \begin{align}
+    \sqrt{µ{a2}+µ{b2}+µ{c2}+µ{d2}} & = \sqrt{µ{a2+b2+c2+d2}} \\
+    & = µ{f}
+    \end{align}
+  "{wrong}": | 
+    \begin{align}
+    \sqrt{µ{a2}+µ{b2} + µ{c2}+ µ{d2}} & \neq \sqrt{µ{a2}} + \sqrt{µ{b2}} + \sqrt{µ{c2}} + \sqrt{µ{d2}}\\
+    & \neq µ{a} + µ{b} + µ{c} + µ{d} \\
+    & \neq µ{a+b+c+d}
+    \end{align}
   "{postamble}": file:postamble.html
   "{chapter}": file:M0/algebra/H5.html
