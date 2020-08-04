@@ -5,12 +5,41 @@ variables:
 parts:
 - marks: 1
   type: jme
-  prompt: "\\[\\frac{\\var{3*a+3}+\\var{a+1}^2-\\sqrt{\\var{a^2}}}{\\var{6*a}-(\\var{5*a}-2)}\\]"
+  prompt: \[\frac{\var{3*a+3}+\var{a+1}^2-\sqrt{\var{a^2}}}{\var{6*a}-(\var{5*a}-2)}\]
   answer: "{a+2}"
 advice:
-  content: file:M0/algebra/H6/operation_order_a-advice.html
-  "{expr}": "$-(µ{5*a}-2) = -µ{5*a-2}$"
-  "{expr2}": "$µ{a+1}^2=µ{(a+1)^2}$ en $\\sqrt{µ{a^2}}=µ{a}$"
-  "{expr3}": file:M0/algebra/H6/operation_order_a-advice-expr.tex
+  nl: |
+    <p>We werken de uitdrukken als volgt uit:</p>
+    <ol>
+      <li>Haakjes uitwerken: {expr} </li>
+      <li>Machten en (vierkants)wortels uitwerken: {expr2}</li>
+      <li>Optellen en aftrekken (van links naar rechts)</li>
+      <li>Vereenvoudigen</li>
+    </ol>
+    <p>De uitwerking is dan:</p>
+    {expr3}
+    {postamble}
+  en: |
+    <p>We can simplify the solution as follows:</p>
+    <ol>
+      <li>Reduce brackets: {expr}</li>
+      <li>Reduce powers and radicals: {expr2}</li>
+      <li>Add and subtract (left to right)</li>
+      <li>Simplify</li>
+    </ol>
+    <p>The elaboration is:</p>
+    {expr3}
+    {postamble}
+  "{expr}": $-(µ{5*a}-2) = -µ{5*a-2}$
+  "{expr2}": $µ{a+1}^2=µ{(a+1)^2}$ {and} $\sqrt{µ{a^2}}=µ{a}$
+  "{expr3}": |
+    \begin{align}
+    \frac{µ{3*a+3}+µ{a+1}^2-\sqrt{µ{a^2}}}{µ{6*a}-(µ{5*a}-2)} & =\frac{µ{3*a+3}+µ{(a+1)^2}-µ{a}}{µ{6*a}-(µ{5*a-2})}\\
+    & =\frac{µ{3*a+3+(a+1)^2-a}}{µ{6*a-5*a+2}}\\
+    & =µ{a+2}\\
+    \end{align}
+  "{and}": 
+    nl: en
+    en: and
   "{postamble}": file:postamble.html
   "{chapter}": file:M0/algebra/H6.html
