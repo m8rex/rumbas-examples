@@ -7,10 +7,10 @@ parts:
 - marks: 1
   type: jme
   answer: "{2*a*a}/{d}"
-  prompt: "$\\frac{\\var{2*a}}{\\frac{\\var{d}}{\\var{a}}}=$"
+  prompt: $\frac{\var{2*a}}{\frac{\var{d}}{\var{a}}}=$
 advice:
   content: file:M0/algebra/H3/fraction_on_fraction-advice.html
-  "{expr1}": "\\[\\frac{\\var{2*a}}{\\frac{\\var{d}}{\\var{a}}}=\\var{2*a}\\cdot \\frac{\\var{a}}{\\var{d}}\\]"
-  "{expr2}": "\\[ \\frac{\\var{2*a*a}}{\\var{d}} \\]"
+  "{expr1}": \[\frac{\var{2*a}}{\frac{\var{d}}{\var{a}}}=\var{2*a}\cdot \frac{\var{a}}{\var{d}}\]
+  "{expr2}": \[ \frac{\var{2*a*a}}{\var{d}} \]
   "{postamble}": file:postamble.html
   "{chapter}": file:M0/algebra/H3.html
