@@ -92,21 +92,21 @@ question_groups:
   - M0/algebra/H7/factorize_a2_min_2ab_plus_b2
   - M0/algebra/H7/factorize_a2_plus_2ab_plus_b2
   - M0/algebra/H7/factorize_diff_squares
-- name:
-    nl: H11
-    en: Q11
-  picking_strategy: random_subset
-  pick_questions: 1
-  questions:
-  - M0/algebra/H8/solve_quadratic_two_solutions
-- name:
-    nl: Q12
-    en: Q1
-  picking_strategy: random_subset
-  pick_questions: 1
-  questions:
-  - M0/algebra/H8/solve_quadratic_two_solutions_mc
-  - M0/algebra/H8/solve_quadratic_no_solutions_mc
+#- name:
+#    nl: H11
+#    en: Q11
+#  picking_strategy: random_subset
+#  pick_questions: 1
+#  questions:
+#  - M0/algebra/H8/solve_quadratic_two_solutions
+#- name:
+#    nl: Q12
+#    en: Q1
+#  picking_strategy: random_subset
+#  pick_questions: 1
+#  questions:
+#  - M0/algebra/H8/solve_quadratic_two_solutions_mc
+#  - M0/algebra/H8/solve_quadratic_no_solutions_mc
 - name:
     nl: Q13
     en: Q13

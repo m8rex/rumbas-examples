@@ -1,0 +1,87 @@
+---
+variables:
+  nb2018: '9240'
+  raise: '40'
+  nb2014: '1848'
+  nb2017: 9240/(1+raise/100)
+  raise1418: 100*({nb2018}/{nb2014}-1)
+  raise1418plus: raise1418+100
+  nb2018added: "{nb2018}-{nb2017}"
+  nb2018addedwrong: '3696'
+  nb2019: 9240*(1+raise/100)
+statement:
+  nl: "<p>In het jaar 2018 heeft België {nb2018} elektrische auto's die rondrijden.
+    Dit is een stijging van {raise}% t.o.v. 2017. In 2014 telde men er slechts {nb2014}.</p>"
+  en: "<p>In 2018 there are {nb2018} electric cars in Belgium. This is an increase
+    of {raise}% with respect to 2017. In 2014 there where only {nb2014} electric cars.</p>"
+variables_test:
+  condition: nb2018added <> nb2018addedwrong
+parts:
+- type: choose_one
+  prompt: file:statement-wrong.html
+  answers:
+  - statement:
+      nl: In het jaar 2017 waren er {nb2017} elektrische auto's.
+      en: In the year 2017 there were {nb2017} electric cars.
+    feedback:
+      nl: 'Deze uitspraak is juist, als er in 2018 {nb2018} elektrische auto''s waren
+        en dit was een stijging van {raise}% dan moet je de volgende formule hervormen:
+        {calc}'
+      en: 'This statement is right, if there were {nb2018} electric cars in 2018 and
+        if this was a {raise}% increase then we need to rewrite following formule:
+        {calc}'
+      "{calc}": "\\[x+x \\cdot 0,µ{raise} = x \\cdot 1,µ{raise} = µ{nb2018} \\Leftrightarrow
+        x=\\frac{µ{nb2018}}{1,µ{raise}}=µ{nb2017}\\]"
+    marks: 0
+  - statement:
+      nl: Het aantal elektrische auto's is in de periode 2014 - 2018 met {raise1418}%
+        gestegen.
+      en: The amount of electric cars has increase by {raise1418}% in the period 2014
+        - 2018.
+    feedback:
+      nl: 'Deze uitspraak is juist, want in 2014 waren er {nb2014}, in 2018 {nb2018}
+        dus: {calc} Er waren dus {raise1418plus}% elektrische auto''s, wat overeenkomt
+        met een stijging van {raise1418}%.'
+      en: 'This statement is right, because in 2014 there where {nb2014} and in 2018
+        there were {nb2018} so: {calc} This means there where {raise1418plus}% electric
+        cars, which is a {raise1418}% increase.'
+      "{calc}": "\\[µ{nb2014} \\cdot x = µ{nb2018} \\Leftrightarrow x=\\frac{µ{nb2018}}{µ{nb2014}}=µ{raise1418plus/100}\\]"
+    marks: 0
+  - statement:
+      nl: In het jaar 2018 zijn er {nb2018addedwrong} elektrische auto's bijgekomen.
+      en: In the year 2018, {nb2018addedwrong} electric cars were added.
+    feedback:
+      nl: 'Deze uitspraak is inderdaad fout, want het aantal auto''s dat er in 2017
+        waren kan je berekenen via volgende formule: {calc} Dit komt overeen met een
+        verschil van {diff}. Dit is dus niet gelijk aan {nb2018addedwrong}.'
+      en: 'This statement is indeed wrong. You can calculate the amount of cars in
+        2017 with the formula: {calc} This implies a difference of {diff} which is
+        not equal to {nb2018addedwrong}.'
+      "{calc}": "\\[x+x \\cdot 0,µ{raise} = x \\cdot 1,µ{raise} = µ{nb2018} \\Leftrightarrow
+        x=\\frac{µ{nb2018}}{1,µ{raise}}=µ{nb2017}\\]"
+      "{diff}":
+        content: "$µ{nb2018}-µ{nb2017}=µ{nb2018added}$ ({or} $µ{nb2017} \\cdot 0,µ{raise}=µ{nb2018added}$)"
+        "{or}":
+          nl: of
+          en: or
+    marks: 1
+  - statement:
+      nl: Als het aantal elektrische auto's met hetzelfde percentage verder stijgt,
+        dan zijn er {nb2019} elektrische auto's in 2019.
+      en: If the amount of electric cars keeps increasing with the same percentages,
+        then there are {nb2019} electric cars in 2019.
+    feedback:
+      nl: Deze uitspraak is juist, als het aantal elektrische auto's opnieuw met {raise}%
+        stijgt in 2019, dan krijg je:{calc}
+      en: 'This statement is right. If the amount of electric cars keeps increasing
+        with {raise}% in 2019, we get: {calc}'
+      "{calc}": "\\[µ{nb2018}+µ{nb2018} \\cdot 0,µ{raise} = µ{nb2018} \\cdot 1,µ{raise}
+        = µ{nb2019}\\]"
+    marks: 0
+  display: radio
+  columns: 1
+  marks: 0
+  shuffle_answers: false
+advice:
+  content: file:postamble.html
+  "{chapter}": file:M0/algebra/H10.html

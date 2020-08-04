@@ -1,0 +1,9 @@
+---
+template: M0/algebra/solve_quadratic_inequality_mc
+prompt: "\\[-x^2 +µ{a+b}x +µ{-a*b} &lt; 0\\]"
+marks0: 1
+marks1: 0
+marks2: 0
+marks3: 0
+signtable: file:M0/algebra/H9/solve_quadratic_inequality_mc_d-signtable.tex
+ineq-sols: "$x \\in ]-\\infty,\\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[ \\cup ]\\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\\infty[$."
