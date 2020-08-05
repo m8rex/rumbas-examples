@@ -1,24 +1,20 @@
 ---
 template: M0/algebra/solve_quadratic_mc
-eq: "\\[x^2-µ{a*a}=0\\]"
+eq: \[x^2-µ{a*a}=0\]
 feedback0:
-  nl: Fout, deze vergelijking heeft wel oplossingen, zie bij de juiste oplossing voor
-    de uitwerking
+  nl: Fout, deze vergelijking heeft wel oplossingen, zie bij de juiste oplossing voor de uitwerking
   en: Wrong, this equation does have solutions. See the elaboration of the right solution.
 marks0: 0
 feedback1:
-  nl: Fout, {sol} is inderdaad een oplossing van de vergelijking, maar er is er nog
-    één.
-  en: Wrong, {sol} is indeed a solution of the equation, but there also is a second
-    solution.
-  "{sol}": "$x=µ{a}$"
+  nl: Fout, {sol} is inderdaad een oplossing van de vergelijking, maar er is er nog één.
+  en: Wrong, {sol} is indeed a solution of the equation, but there also is a second solution.
+  "{sol}": $x=µ{a}$
 marks1: 0
 feedback2:
   nl: 'Juist, deze vergelijking heeft twee oplossingen: {sol1} en {sol2}: {elab-start}en{elab-end}'
   en: 'Right, this equation has two solutions: {sol1} and {sol2}: {elab-start}and{elab-end}'
-  "{sol1}": "$x=µ{a}$"
-  "{sol2}": "$x=-µ{a}$"
-  "{elab-start}": "\\[ x^2-µ{a*a}= 0 \\Leftrightarrow  x^2=µ{a*a} \\Leftrightarrow
-    \ x=\\pm \\sqrt{µ{a*a}} \\Leftrightarrow  x=µ{a} \\quad \\text{"
-  "{elab-end}": "} \\quad x=-µ{a}\\]"
+  "{sol1}": $x=µ{a}$
+  "{sol2}": $x=-µ{a}$
+  "{elab-start}": \[ x^2-µ{a*a}= 0 \Leftrightarrow  x^2=µ{a*a} \Leftrightarrow\ x=\pm \sqrt{µ{a*a}} \Leftrightarrow  x=µ{a} \quad \text{
+  "{elab-end}": } \quad x=-µ{a}\]
 marks2: 1
