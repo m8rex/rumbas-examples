@@ -1,4 +1,5 @@
 ---
+type: normal
 statement: file:elaborate-expression.html
 variables:
   b: random(1..10)

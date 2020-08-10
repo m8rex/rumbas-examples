@@ -1,4 +1,5 @@
 ---
+type: normal
 statement:
   content: "{elaborate}{notation}"
   "{elaborate}": file:elaborate-expression.html

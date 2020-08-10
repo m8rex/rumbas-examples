@@ -1,4 +1,5 @@
 ---
+type: template
 template: M0/algebra/solve_quadratic_mc
 eq: \[x^2-µ{a*a}=0\]
 feedback0:
@@ -16,5 +17,5 @@ feedback2:
   "{sol1}": $x=µ{a}$
   "{sol2}": $x=-µ{a}$
   "{elab-start}": \[ x^2-µ{a*a}= 0 \Leftrightarrow  x^2=µ{a*a} \Leftrightarrow\ x=\pm \sqrt{µ{a*a}} \Leftrightarrow  x=µ{a} \quad \text{
-  "{elab-end}": } \quad x=-µ{a}\]
+  "{elab-end}": '} \quad x=-µ{a}\]'
 marks2: 1

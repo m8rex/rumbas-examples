@@ -1,4 +1,5 @@
 ---
+type: normal
 variables:
   a: random(15,20,25,30,35)
   b: random(20,30,40,50,60)

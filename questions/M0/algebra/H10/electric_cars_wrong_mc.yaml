@@ -1,4 +1,5 @@
 ---
+type: normal
 variables:
   nb2018: '9240'
   raise: '40'

@@ -1,4 +1,5 @@
 ---
+type: normal
 statement:
   nl: '<p>Geef de oplossing van de volgende wortel:</p>'
   en: '<p>Give the solution for the following root:</p>'

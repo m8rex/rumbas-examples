@@ -1,4 +1,5 @@
 ---
+type: normal
 variables:
   d: random(5,7)
   c: random(3,4)

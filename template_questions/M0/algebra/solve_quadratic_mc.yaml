@@ -2,7 +2,7 @@
 statement:
   nl: "<p>Stel je hebt de volgende vergelijking met {cond}:</p>{eq}"
   en: "<p>Assume following equation with {cond}:</p>{eq}"
-  "{cond}": "$x \\in \\mathbb{R}$"
+  "{cond}": $x \in \athbb{R}$
   "{eq}": template:eq
 variables:
   a: random(1..7)
@@ -18,14 +18,14 @@ parts:
   - statement:
       nl: 'Deze vergelijking heeft één oplossing: {sol}.'
       en: 'This equation has one solution: {sol}'
-      "{sol}": "$x=µ{a}$"
+      "{sol}": $x=µ{a}$
     feedback: template:feedback1
     marks: template:marks1
   - statement:
       nl: 'Deze vergelijking heeft twee oplossingen: {sol1} en {sol2}.'
       en: 'This equation has two solutions: {sol1} and {sol2}.'
-      "{sol1}": "$x=µ{a}$"
-      "{sol2}": "$x=-µ{a}$"
+      "{sol1}": $x=µ{a}$
+      "{sol2}": $x=-µ{a}$
     feedback: template:feedback2
     marks: template:marks2
   marks: 0

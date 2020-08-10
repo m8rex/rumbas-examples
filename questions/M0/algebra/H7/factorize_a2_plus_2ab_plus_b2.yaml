@@ -1,4 +1,5 @@
 ---
+type: normal
 statement:
   content: file:M0/algebra/H7/factorize-statement.html
   "{notation}": file:notation-help.html

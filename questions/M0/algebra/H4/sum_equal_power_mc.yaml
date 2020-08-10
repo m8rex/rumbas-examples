@@ -1,4 +1,5 @@
 ---
+type: normal
 statement:
   nl: '<p>Stel je hebt de volgende som: {s}</p>'
   en: <p>Assume the sum {s}</p>

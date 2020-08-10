@@ -1,4 +1,5 @@
 ---
+type: normal
 variables:
   data: matrix([1,4],[1,5],[1,6],[2,4],[2,5],[2,6],[3,5],[3,6],[4,6],[5,6])
   nummer: random(0..9)
@@ -8,16 +9,33 @@ variables:
   a: koppel[1]
   grens: precround(-b/(c-a),2)
 statement:
-  nl: <p>Bekijk aandachtig volgende uitwerking van de ongelijkheid.</p><ol><li>als
-    je een fout opmerkt, gelieve dan de letter van de verkeerde stap als antwoord
-    te geven</li><li>als je geen fout opmerkt, dan antwoord je met "juist"</li></ol>
-  en: <p>Look carefully at the following elaboration of the inequality.</p><ol><li>If
-    you notice an error, please answer with the letter of the wrong step</li><li>if
-    you don't notice an error you answer with "right"</li></ol>.
+  nl: |
+    <p>
+    Bekijk aandachtig volgende uitwerking van de ongelijkheid.
+    </p>
+    <ol>
+      <li>als je een fout opmerkt, gelieve dan de letter van de verkeerde stap als antwoord te geven</li>
+      <li>als je geen fout opmerkt, dan antwoord je met "juist"</li>
+    </ol>.
+  en: |
+    <p>
+    Look carefully at the following elaboration of the inequality.
+    </p>
+    <ol>
+      <li>If you notice an error, please answer with the letter of the wrong step</li>
+      <li>if you don't notice an error you answer with "right"</li>
+    </ol>.
 parts:
 - marks: 1
   prompt:
-    content: file:M0/algebra/H9/find_error_inequality_product_negative-prompt.tex
+    content: 
+      \begin{align}
+      µ{a}x-µ{b}>µ{c}x & \underset{A}\Leftrightarrow -µ{b}>µ{c}x-µ{a}x\\
+      & \underset{B}\Leftrightarrow -µ{b}>µ{c-a}x \\ 
+      & \underset{C}\Leftrightarrow \frac{-µ{b}}{µ{c-a}}>x \\
+      & \underset{D}\Leftrightarrow µ{grens}>x\\
+        & \underset{E}\Rightarrow \text{ {text} } x \in ]-\infty,µ{grens}[
+      \end{align}
     "{text}":
       nl: de oplossing is
       en: the solution is
@@ -26,10 +44,27 @@ parts:
   pattern: C
   display_answer: C
 advice:
-  content: file:M0/algebra/H9/find_error_inequality_product_negative-advice.html
-  "{neg}": "$µ{c-a}$"
-  "{step}": "$C$"
-  "{elab}": file:M0/algebra/H9/find_error_inequality_product_negative-advice.tex
+  content: 
+    nl: |
+      <p>Er is een fout gebeurd in stap {step} want er wordt in die stap gedeeld door een negatief getal, namelijk {neg}, waardoor het ongelijkheidsteken wisselt van teken.</p>
+      <p>De correcte uitwerking is</p> 
+      {elab}
+      {postamble}
+    en: |
+      <p>The mistake was made in step {step}. In that step we divide by a negative number ({neg}) and the inequality should change signs.</p>
+      <p>The correct elaboration is</p>
+      {elab}
+      {postamble}
+  "{neg}": $µ{c-a}$
+  "{step}": $C$
+  "{elab}": | 
+    \begin{align}
+    µ{a}x-µ{b}>µ{c}x & \underset{A}\Leftrightarrow -µ{b}>µ{c}x-µ{a}x\\
+    & \underset{B}\Leftrightarrow -µ{b}>µ{c-a}x \\
+    & \underset{C}\Leftrightarrow \frac{-µ{b}}{µ{c-a}}>x \\
+    & \underset{D}\Leftrightarrow \var{grens}<x\\
+      & \underset{E}\Rightarrow \text{ {text} } x \in ]µ{grens},+\infty[
+    \end{align}
   "{text}":
     nl: de oplossing is
     en: the solution is

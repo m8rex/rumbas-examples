@@ -1,4 +1,5 @@
 ---
+type: template
 template: M0/algebra/solve_quadratic_mc
 eq: \[x^2+\var{a*a}=0\]
 feedback0:

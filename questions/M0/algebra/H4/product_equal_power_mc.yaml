@@ -1,4 +1,5 @@
 ---
+type: normal
 statement:
   nl: '<p>Stel je hebt de volgende vermenigvuldiging: {s}</p>'
   en: <p>Assume the product {s}</p>

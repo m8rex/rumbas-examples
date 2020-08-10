@@ -1,4 +1,5 @@
 ---
+type: normal
 variables:
   a: random(1..100)
   b: random(1..100)
