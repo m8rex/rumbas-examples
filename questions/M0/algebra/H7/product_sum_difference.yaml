@@ -1,0 +1,21 @@
+---
+type: normal
+statement:
+  content: "{elaborate}{notation}"
+  "{elaborate}": file:elaborate-expression.html
+  "{notation}": file:notation-help.html
+variables:
+  a: random(2..5)
+  b: random(2..4)
+parts:
+- type: jme
+  marks: 1
+  prompt: \[ (µ{a}-µ{b}x)(µ{b}x+µ{a})\]
+  answer: "{a*a}-{b*b}*x^2"
+advice:
+  content: file:M0/algebra/H7/product_sum_difference-advice.html
+  "{abmin}": \[(a+b)(a-b)=a^2-b^2\]
+  "{dist}": $(a+b)(a-b)=a^2-ab+ab-b^2$
+  "{sol}": \[(\var{a}-\var{b}x)(\var{b}x+\var{a})=(\var{a}-\var{b}x)(\var{a}+\var{b}x)=\var{a}^2 - (\var{b}x)^2 = \var{a*a} - \var{b*b}x^2 \]
+  "{postamble}": file:postamble.html
+  "{chapter}": file:M0/algebra/H7.html

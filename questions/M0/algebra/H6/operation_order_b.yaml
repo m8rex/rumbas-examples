@@ -1,0 +1,51 @@
+---
+type: normal
+statement: file:elaborate-expression.html
+variables:
+  b: random(1..10)
+  a: random(1..10)
+  ans: 2*a-(a+1)^2+1
+variables_test:
+  condition: ceil(ans) = ans
+  max_runs: 100
+parts:
+- type: jme
+  marks: 1
+  prompt: \[ \frac{µ{a*b}}{µ{a}}+2(µ{a}-µ{b})-µ{a+1}^2+µ{b+1}\]
+  answer: "{ans}"
+advice:
+  nl: |
+    <p>We werken de uitdrukking als volgt uit:</p>
+    <ol>
+      <li>Haakjes uitwerken: {expr}</li>
+      <li>Machten en (vierkants)wortels uitwerken: {expr2}</li>
+      <li>Vermenigvuldigen en delen (van links naar rechts): {expr3.1} en {expr3.2} </li>
+      <li>Optellen en aftrekken (van links naar rechts)</li>
+    </ol>
+    <p>De uitwerking is dan:</p>
+    {expr4}
+    {postamble}
+  en: |
+    <p>We can simplify the solution as follows:</p>
+    <ol>
+      <li>Reduce brackets: {expr}</li>
+      <li>Reduce powers and radicals: {expr2}</li>
+      <li>Multiply and divide (left to right): {expr3.1} and {expr3.2}</li>
+      <li>Add and subtract (left to right)</li>
+    </ol>
+    <p>The elaboration is:</p>
+    {expr4}
+    {postamble}
+  "{expr}": "$(µ{a}-µ{b}) =µ{a-b}$"
+  "{expr2}": "$-µ{a+1}^2=-µ{(a+1)^2}$"
+  "{expr3.1}": "$\\frac{µ{a*b}}{µ{a}}$"
+  "{expr3.2}": "$µ{b}$ | $2(µ{a-b})=µ{2*(a-b)}$"
+  "{expr4}": |
+    \begin{align}
+    \frac{µ{a*b}}{µ{a}}+2(µ{a}-µ{b})-µ{a+1}^2+µ{b+1} & =\frac{µ{a*b}}{µ{a}}+2(µ{a-b})-µ{a+1}^2+µ{b+1}\\
+    & =\frac{µ{a*b}}{µ{a}}+2(µ{a-b})-µ{(a+1)^2}+µ{b+1}\\
+    & =µ{b}+(µ{2*(a-b)})-µ{(a+1)^2}+µ{b+1}\\
+    & =µ{2*b+2*(a-b)-(a+1)^2+1}
+    \end{align}
+  "{postamble}": file:postamble.html
+  "{chapter}": file:M0/algebra/H6.html

@@ -1,0 +1,26 @@
+---
+type: normal
+variables:
+  a: random(3..5)
+statement:
+  nl: <p>Maak de noemer van volgende breuk wortelvrij en vereenvoudig:</p>{notation}
+  en: <p>Simplify the following fraction. Make sure that the denominator is free of roots.</p>{notation}
+  "{notation}": file:notation-help.html
+parts:
+- prompt: $\frac{2*µ{a}*y}{\sqrt{µ{a*a}*y}}$
+  type: pattern_match
+  pattern: 2*sqrt(y)
+  display_answer: 2*sqrt(y)
+  marks: 1
+advice:
+  content: |
+    <p>
+    \begin{align}
+      \frac{\var{2*a}y}{\sqrt{\var{a*a}y}} &amp; = \frac{\var{2*a}y}{\var{a}\sqrt{y}} = \frac{2y}{\sqrt{y}} \\
+      &amp; = \frac{2y}{\sqrt{y}} \cdot \frac{\sqrt{y}}{\sqrt{y}} = \frac{2y\sqrt{y}}{\sqrt{y}\sqrt{y}}\\
+      &amp; = \frac{2y\sqrt{y}}{y} = 2\sqrt{y} \\
+    \end{align}
+    </p>
+    {postamble}
+  "{postamble}": file:postamble.html
+  "{chapter}": file:M0/algebra/H5.html

@@ -1,0 +1,47 @@
+---
+type: normal
+statement:
+  nl: '<p>Geef de oplossing van de volgende wortel:</p>'
+  en: '<p>Give the solution for the following root:</p>'
+variables:
+  m: random(1..5)
+  n: random(1..5)
+  k: '1'
+  a: k*(m^2-n^2)
+  a2: a^2
+  b: k*(2*m*n)
+  b2: b^2
+  c: k*(m^2+n^2)
+variables_test:
+  condition: m>n and c < 21
+parts:
+- type: jme
+  prompt: "$\\sqrt{µ{a2}+µ{b2}}$ "
+  answer: "{c}"
+  marks: 1
+advice:
+  nl: |
+    <p>Deze berekening is FOUT:</p>
+    {wrong}
+    <p>Dit is de correcte rekenregel</p>
+    {right}
+    {postamble}
+  en: |
+    <p>This calculation is WRONG:</p>
+    {wrong}
+    <p>This is the correct calculation rule</p>
+    {right}
+    {postamble}
+  "{right}": |
+    \begin{align}
+    \sqrt{µ{a2}+µ{b2}} & = \sqrt{µ{a2+b2}} \\
+    & = µ{c}
+    \end{align}
+  "{wrong}": | 
+    \begin{align}
+    \sqrt{µ{a2}+µ{b2}} & \neq \sqrt{µ{a2}} + \sqrt{µ{b2}} \\
+    & \neq µ{a} + µ{b} \\
+    & \neq µ{a+b}
+    \end{align}
+  "{postamble}": file:postamble.html
+  "{chapter}": file:M0/algebra/H5.html

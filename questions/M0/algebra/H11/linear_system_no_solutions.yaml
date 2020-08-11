@@ -1,0 +1,49 @@
+---
+type: normal
+variables:
+  data: matrix([1,1,1,2,2,0],[-1,2,3,-2,4,3],[1,1,-2,3,3,2],[2,2,0,1,1,1],[-2,4,3,-1,2,3],[3,3,2,1,1,-2],[1,2,-1,1,2,1],[1,2,1,1,2,-1])
+  nummer: random(0..7)
+  rij: data[nummer]
+  a: rij[0]
+  b: rij[1]
+  c: rij[2]
+  d: rij[3]
+  f: rij[4]
+  g: rij[5]
+statement: file:M0/algebra/H11/solve_system.html
+parts:
+- prompt: |-
+    \[\begin{cases}<br/>\var{a}x +\var{b}y &amp;=\var{c}\\<br/>\var{d}x +\var{f}y &amp;=\var{g}<br/>\end{cases}\]
+    <p>$x=$[[0]]</p><p>$y=$[[1]]</p>
+  type: gapfill
+  marks: 0
+  gaps:
+  - marks: 1
+    type: pattern_match
+    pattern:
+      nl: geen
+      en: none
+    display_answer:
+      nl: geen
+      en: none
+    matchMode: exact
+  - marks: 1
+    type: pattern_match
+    pattern:
+      nl: geen
+      en: none
+    display_answer:
+      nl: geen
+      en: none
+    matchMode: exact
+advice:
+  nl: "<p>Bij het oplossen van dit stelsel kom je uit op een vergelijking die niet
+    kan kloppen, zoals $0=5$ of dergelijke.</p><p>Je kan ook uitkomen op twee exact
+    gelijke linkerleden van de vergelijkingen, maar verschillende rechterdelen, <br/>wat
+    natuurlijk geen oplossing kan geven. Daarom heeft dit stelsel geen oplossing.</p>{postamble}"
+  en: "<p>When solving this system you arrive at an equation that is unsolvable, like
+    $0=5$.</p><p>You can also arrive at two equations with identical left hand sides
+    and different right hand sides, which can never yield a solution. This system
+    is unsolvable / has no solutions.</p>{postamble}"
+  "{postamble}": file:postamble.html
+  "{chapter}": file:M0/algebra/H11.html

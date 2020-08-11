@@ -1,0 +1,14 @@
+---
+type: template
+template: M0/algebra/solve_quadratic_inequality_mc
+prompt: \[x^2 -µ{a+b}x µ{a*b} > 0\]
+marks0: 1
+marks1: 0
+marks2: 0
+marks3: 0
+signtable: | 
+  \begin{array}{c|ccccc}
+  x & & µ{((a+b)-((a+b)^2-4*a*b)^(1/2))/2} & & µ{((a+b)+((a+b)^2-4*a*b)^(1/2))/2} & \\\hline
+  x^2 -µ{a+b}x µ{a*b} & + & 0 & - & 0 & +
+  \end{array}
+ineq-sols: $x \in ]-\infty,µ{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[ \cup ]µ{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$

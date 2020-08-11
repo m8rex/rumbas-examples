@@ -1,0 +1,28 @@
+---
+type: normal
+variables:
+  b: random(3,5)
+  a: random(2,4)
+statement:
+  nl: <p>Stel je hebt de volgende vermenigvuldiging:</p>{expr}
+  en: <p>Assume you have the following product:</p>{expr}
+  "{expr}": \[ \frac{1}{µ{a}} \cdot \frac{µ{b}}{µ{a}} \]
+parts:
+- type: choose_one
+  prompt: file:statement-right.html
+  answers:
+  - statement: Om deze breuken met elkaar te vermenigvuldigen, vermenigvuldig je teller met teller en noemer met noemer, de oplossing is $\frac{\var{b}}{\var{a*a}}$.
+    feedback: Juist, om twee breuken met elkaar te vermenigvuldigen, vermenigvuldig je teller met teller en noemer met noemer.
+    marks: 1
+  - statement: Dit zijn twee gelijknamige breuken (zelfde noemers), dus mag je de noemers schrappen, de oplossing is $\var{b}$.
+    feedback: Fout, om twee breuken met elkaar te vermenigvuldigen, hoeven de breuken niet gelijknamig te zijn en je mag nooit noemer en noemer schrappen.
+    marks: 0
+  - statement: Dit zijn twee gelijknamige breuken (zelfde noemers), dus vermenigvuldig je teller met teller en behoud je diezelfde noemer, de oplossing is $\frac{\var{b}}{\var{a}}$.
+    feedback: Fout, om twee breuken met elkaar te vermenigvuldigen, vermenigvuldig je teller met teller en noemer met noemer.
+    marks: 0
+  marks: 0
+  display: radio
+  columns: 1
+advice:
+  content: file:postamble.html
+  "{chapter}": file:M0/algebra/H3.html

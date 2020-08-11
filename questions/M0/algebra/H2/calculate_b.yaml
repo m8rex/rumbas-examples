@@ -1,0 +1,26 @@
+---
+type: normal
+variables:
+  m: random(5,7)
+  b: random(1..10)
+  a: random(10,20)
+statement:
+  content: file:expression_no_calculator.html
+  "{expr}": \[\frac{\var{m} \cdot (\var{a}+\var{b}\cdot 0)}{\var{m}}-(\var{a/2}-1) \cdot 1 \cdot \var{m}\]
+parts:
+- type: number_entry
+  answer: a-(a/2-1)*m
+  marks: 1
+  allow_fractions: false
+advice:
+  content: "{sol}{postamble}"
+  "{sol}": | 
+    \begin{array}
+    & \frac{\var{m} \cdot (\var{a}+\var{b}\cdot 0)}{\var{m}}-(\var{a/2}-1) \cdot 1 \cdot \var{m} \\
+    & = (\var{a}+\var{b}\cdot 0)-(\var{a/2}-1)\cdot \var{m} \\
+    & = (\var{a}+ 0)-\var{a/2-1}\cdot\var{m} \\
+    & = \var{a}-\var{(a/2-1)*m} \\
+    & = \var{a-(a/2-1)*m}\\
+    \end{array}
+  "{postamble}": file:postamble.html
+  "{chapter}": file:M0/algebra/H2.html

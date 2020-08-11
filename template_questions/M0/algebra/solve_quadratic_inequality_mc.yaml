@@ -1,0 +1,61 @@
+---
+variables:
+  data: matrix([-1,4],[-1,5],[-1,6],[-2,4],[-2,5],[-2,6],[-3,5],[-3,6],[-4,6],[-5,6])
+  nummer: random(0..9)
+  koppel: data[nummer]
+  a: koppel[0]
+  b: koppel[1]
+statement:
+  nl: <p>Wat is de oplossing van volgende tweedegraadsongelijkheid?</p>
+  en: <p>Wat is the solution for the following quadratic inequality?</p>
+parts:
+- prompt: "template:prompt"
+  type: choose_one
+  answers:
+  - statement: $x \in ]-\infty,\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[\cup]\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$
+    feedback: ''
+    marks: "template:marks0"
+  - statement: $x \in ]-\infty,\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}] \cup [\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$
+    feedback: ''
+    marks: "template:marks1"
+  - statement: $x \in ]\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}[$
+    feedback: ''
+    marks: "template:marks2"
+  - statement: $x \in [\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}]$
+    feedback: ''
+    marks: "template:marks3"
+  shuffle_answers: false
+  marks: 0
+  columns: 1
+  display: radio
+advice:
+  nl: |
+    <p>We lossen eerst de volgende bijhorende tweedegraadsvergelijking op via de discriminant:</p>
+    {discr}
+    <p>De discriminant is gelijk aan {discr-val}.</p>
+    <p>De oplossingen kan je dan als volgt bekomen: </p>
+    {eq-sols}
+    <p>Voor deze $x$-waardes is de tweedegraadsvergelijking gelijk aan 0, nu willen we weten wanneer deze uitdrukking groter is dan 0, dus maken we een tekenschema:</p>
+    {signtable}
+    <p>Dus de oplossing van de tweedegraadsongelijkheid is: {ineq-sols}.</p>
+    {postamble}
+  en: |
+    <p>We start by solving the corresponding quadratic equation by using the discriminant:</p>
+    {discr}
+    <p>The discriminant equals {discr-val}.</p>
+    <p>The roots can be found as follows: </p>
+    {eq-sols}
+    <p>For these $x$-values, the value of the quadractic equation becomes 0. To know when the equation is larger than 0, we draw a sign table:</p>
+    {signtable}
+    <p>The solution for this quadratic inequality is: {ineq-sols}.</p>
+    {postamble}
+  "{discr}": \[x^2 -\var{a+b}x \var{a*b}=0\]
+  "{discr-val}": $(-\var{a+b})^2-4 \cdot 1 \cdot (\var{a*b}) = \var{(a+b)^2-4*a*b}$
+  "{eq-sols}": \[x_1=\frac{-(-µ{a+b})+\sqrt{µ{(a+b)^2-4*a*b}}}{2 \cdot 1}=µ{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}\text{ {and} } x_2=\frac{-(-µ{a+b})-\sqrt{µ{(a+b)^2-4*a*b}}}{2 \cdot 1}= µ{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}\]
+  "{signtable}": "template:signtable"
+  "{ineq-sols}": "template:ineq-sols"
+  "{and}":
+    nl: en
+    en: and
+  "{postamble}": file:postamble.html
+  "{chapter}": file:M0/algebra/H9.html
