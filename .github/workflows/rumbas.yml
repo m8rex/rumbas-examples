@@ -1,0 +1,29 @@
+name: Rumbas
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/m8rex/rumbas:latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Copy themes
+        run: cp -r themes/* $NUMBAS_FOLDER/themes/
+      - name: Build all exams as html
+        run: |
+          find exams -name "*.yaml" | xargs -I{} sh -c "rumbas compile {}" # Hack for now
+      - name: Build all exams as zip
+        run: |
+          find exams -name "*.yaml" | xargs -I{} sh -c "rumbas compile -sz {}"
+      - name: Build all questions as html
+        run: |
+          find questions -name "*.yaml" | xargs -I{} sh -c "rumbas compile {}" # Hack for now
+      - name: Build all questions as zip
+        run: |
+          find questions -name "*.yaml" | xargs -I{} sh -c "rumbas compile -sz {}"
