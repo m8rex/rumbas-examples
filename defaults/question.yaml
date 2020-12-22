@@ -8,6 +8,7 @@ variables_test:
   max_runs: 100
 extensions:
   jsx_graph: false
+  stats: false
 preamble:
   js: ''
   css: ''
