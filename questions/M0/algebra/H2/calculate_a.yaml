@@ -8,10 +8,10 @@ statement:
   content: file:expression_no_calculator.html
   "{expr}": \( (\var{a} \cdot \var{m} + 1) \cdot (-\var{b}) + \left(\frac{\var{m} \cdot \var{a}}{\var{m} }+(-\var{2*b})\right) \cdot \var{m} \)
 parts:
-- type: number_entry
-  answer: "{(a*m+1)*(-b) + (a - 2*b)*m}"
-  marks: 1
-  allow_fractions: false
+  - type: number_entry
+    answer: "{(a*m+1)*(-b) + (a - 2*b)*m}"
+    marks: 1
+    allow_fractions: false
 advice:
   content: "{sol}{postamble}"
   "{sol}": |

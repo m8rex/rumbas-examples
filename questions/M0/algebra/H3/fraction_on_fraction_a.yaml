@@ -5,11 +5,11 @@ variables:
   a: random(2,4)
 statement: file:simplify_fraction.html
 parts:
-- marks: 1
-  type: jme
-  answer: 1/{2*b}
-  prompt: $ \frac{\frac{\var{a}}{\var{b}}}{\var{2*a}}=$
-  checking_accuracy: 0
+  - marks: 1
+    type: jme
+    answer: 1/{2*b}
+    prompt: $ \frac{\frac{\var{a}}{\var{b}}}{\var{2*a}}=$
+    checking_accuracy: 0
 advice:
   content: file:M0/algebra/H3/fraction_on_fraction-advice.html
   "{expr1}": \[ \frac{\frac{\var{a}}{\var{b}}}{\frac{\var{2*a}}{1}}=\frac{\var{a}}{\var{b}}\cdot \frac{1}{\var{2*a}}\]

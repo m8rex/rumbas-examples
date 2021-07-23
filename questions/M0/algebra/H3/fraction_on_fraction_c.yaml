@@ -5,10 +5,10 @@ variables:
   a: random(2,4)
 statement: file:simplify_fraction.html
 parts:
-- marks: 1
-  type: jme
-  answer: "{2*a*a}/{d}"
-  prompt: $\frac{\var{2*a}}{\frac{\var{d}}{\var{a}}}=$
+  - marks: 1
+    type: jme
+    answer: "{2*a*a}/{d}"
+    prompt: $\frac{\var{2*a}}{\frac{\var{d}}{\var{a}}}=$
 advice:
   content: file:M0/algebra/H3/fraction_on_fraction-advice.html
   "{expr1}": \[\frac{\var{2*a}}{\frac{\var{d}}{\var{a}}}=\var{2*a}\cdot \frac{\var{a}}{\var{d}}\]

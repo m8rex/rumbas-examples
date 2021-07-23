@@ -9,10 +9,10 @@ variables_test:
   condition: ceil(ans) = ans
   max_runs: 100
 parts:
-- type: jme
-  marks: 1
-  prompt: \[ \frac{µ{a*b}}{µ{a}}+2(µ{a}-µ{b})-µ{a+1}^2+µ{b+1}\]
-  answer: "{ans}"
+  - type: jme
+    marks: 1
+    prompt: \[ \frac{µ{a*b}}{µ{a}}+2(µ{a}-µ{b})-µ{a+1}^2+µ{b+1}\]
+    answer: "{ans}"
 advice:
   nl: |
     <p>We werken de uitdrukking als volgt uit:</p>

@@ -1,13 +1,13 @@
 ---
 use_custom_name: false
-custom_name: ''
+custom_name: ""
 show_correct_answer: true
 show_feedback_Icon: true
 scripts: {}
 variable_replacements: []
 variable_replacement_strategy: original_first
 adaptive_marking_penalty: 0
-custom_marking_algorithm: ''
+custom_marking_algorithm: ""
 extend_base_marking_algorithm: true
 unit_tests: []
 show_preview: true
@@ -16,8 +16,8 @@ checking_accuracy: 0.001
 failure_rate: 1
 vset_range_points: 5
 vset_range:
-- 0
-- 1
+  - 0
+  - 1
 check_variable_names: false
 single_letter_variables: false
 allow_unknown_functions: true

@@ -4,7 +4,7 @@ variables:
   a: random(15,20,25,30,35)
   b: random(20,30,40,50,60)
 statement:
-  nl: | 
+  nl: |
     <p>
     Je wilt een paar schoenen kopen, je wacht speciaal tot het solden zijn.
     Oorspronkelijk kostte je paar schoenen {price} euro.
@@ -12,7 +12,7 @@ statement:
     <p>
     Op je paar schoenen staat {percent}% korting.
     </p>
-  en: | 
+  en: |
     <p>
     You want to buy a pair of shoes. Normally the pair of shoes costs {price} euro.
     </p>
@@ -22,14 +22,14 @@ statement:
   "{price}": $µ{b}$
   "{percent}": $µ{a}$
 parts:
-- type: jme
-  marks: 1
-  prompt:
-    nl: <p>Hoeveel moet je dan eigenlijk nog betalen voor je paar schoenen?</p>
-    en: <p>What is the current price of the pair of shoes?</p>
-  answer: "{b*(1-a/100)}"
+  - type: jme
+    marks: 1
+    prompt:
+      nl: <p>Hoeveel moet je dan eigenlijk nog betalen voor je paar schoenen?</p>
+      en: <p>What is the current price of the pair of shoes?</p>
+    answer: "{b*(1-a/100)}"
 advice:
-  nl: | 
+  nl: |
     <p>
     Je paar schoenen kostte oorspronkelijk {price} euro daar gaat nu {percent}% van af:
     </p>

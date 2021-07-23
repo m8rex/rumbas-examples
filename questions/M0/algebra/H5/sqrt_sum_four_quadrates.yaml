@@ -1,8 +1,8 @@
 ---
 type: normal
 statement:
-  nl: '<p>Geef de oplossing van de volgende wortel:</p>'
-  en: '<p>Give the solution for the following root:</p>'
+  nl: "<p>Geef de oplossing van de volgende wortel:</p>"
+  en: "<p>Give the solution for the following root:</p>"
 variables:
   a: random(1..10)
   a2: a^2
@@ -17,10 +17,10 @@ variables:
 variables_test:
   condition: f=ceil(f) and f < 21
 parts:
-- type: jme
-  prompt: $\sqrt{µ{a2}+µ{b2}+µ{c2}+µ{d2}}$
-  answer: "{f}"
-  marks: 1
+  - type: jme
+    prompt: $\sqrt{µ{a2}+µ{b2}+µ{c2}+µ{d2}}$
+    answer: "{f}"
+    marks: 1
 advice:
   nl: |
     <p>Deze berekening is FOUT:</p>
@@ -39,7 +39,7 @@ advice:
     \sqrt{µ{a2}+µ{b2}+µ{c2}+µ{d2}} & = \sqrt{µ{a2+b2+c2+d2}} \\
     & = µ{f}
     \end{align}
-  "{wrong}": | 
+  "{wrong}": |
     \begin{align}
     \sqrt{µ{a2}+µ{b2} + µ{c2}+ µ{d2}} & \neq \sqrt{µ{a2}} + \sqrt{µ{b2}} + \sqrt{µ{c2}} + \sqrt{µ{d2}}\\
     & \neq µ{a} + µ{b} + µ{c} + µ{d} \\

@@ -8,10 +8,10 @@ variables:
   a: random(2..5)
   b: random(2..4)
 parts:
-- type: jme
-  marks: 1
-  prompt: \[ (-µ{a}x+µ{b})^2 \]
-  answer: "{a*a}*x^2-{2*a*b}*x+{b*b}"
+  - type: jme
+    marks: 1
+    prompt: \[ (-µ{a}x+µ{b})^2 \]
+    answer: "{a*a}*x^2-{2*a*b}*x+{b*b}"
 advice:
   content: file:M0/algebra/H7/square_sum-advice.html
   "{ab2}": \[(a+b)^2=a^2+2ab+b^2\]

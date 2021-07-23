@@ -11,6 +11,6 @@ review:
   show_expected_answer: true
   show_advice: true
 advice_threshold: 0
-advice: ''
-intro: ''
+advice: ""
+intro: ""
 feedback_messages: []

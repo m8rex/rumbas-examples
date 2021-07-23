@@ -6,7 +6,7 @@ marks0: 0
 marks1: 0
 marks2: 1
 marks3: 0
-signtable: | 
+signtable: |
   \begin{array}{c|ccccc}
   x & & µ{((a+b)-((a+b)^2-4*a*b)^(1/2))/2} & & µ{((a+b)+((a+b)^2-4*a*b)^(1/2))/2} & \\ \hline
   x^2 -µ{a+b}x µ{a*b} & + & 0 & - & 0 & +

@@ -6,14 +6,14 @@ variables:
 variables_test:
   condition: ceil(sqrt(a)) <> sqrt(a)
 statement:
-  nl: '<p>Geef de oplossing van volgende som:</p>{notation}'
-  en: '<p>Find the solution of the following sum:</p>{notation}'
+  nl: "<p>Geef de oplossing van volgende som:</p>{notation}"
+  en: "<p>Find the solution of the following sum:</p>{notation}"
   "{notation}": file:notation-help.html
 parts:
-- marks: 1
-  type: jme
-  answer: (1+{b})*sqrt({a})
-  prompt: $\sqrt{µ{a}}+µ{b}\sqrt{µ{a}}$
+  - marks: 1
+    type: jme
+    answer: (1+{b})*sqrt({a})
+    prompt: $\sqrt{µ{a}}+µ{b}\sqrt{µ{a}}$
 advice:
   nl: |
     <p>

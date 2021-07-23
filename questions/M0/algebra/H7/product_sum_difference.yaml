@@ -8,10 +8,10 @@ variables:
   a: random(2..5)
   b: random(2..4)
 parts:
-- type: jme
-  marks: 1
-  prompt: \[ (µ{a}-µ{b}x)(µ{b}x+µ{a})\]
-  answer: "{a*a}-{b*b}*x^2"
+  - type: jme
+    marks: 1
+    prompt: \[ (µ{a}-µ{b}x)(µ{b}x+µ{a})\]
+    answer: "{a*a}-{b*b}*x^2"
 advice:
   content: file:M0/algebra/H7/product_sum_difference-advice.html
   "{abmin}": \[(a+b)(a-b)=a^2-b^2\]

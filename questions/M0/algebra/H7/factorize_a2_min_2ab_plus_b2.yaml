@@ -7,10 +7,10 @@ variables:
   a: random(2,4,6)
   b: random(3,5)
 parts:
-- type: jme
-  marks: 1
-  prompt: \[\var{a*a}x^2 - \var{2*a*b}x + \var{b*b}\]
-  answer: ({a}*x-{b})^2
+  - type: jme
+    marks: 1
+    prompt: \[\var{a*a}x^2 - \var{2*a*b}x + \var{b*b}\]
+    answer: ({a}*x-{b})^2
 advice:
   content: file:M0/algebra/H7/factorize_sum_three_terms-advice.html
   "{ab2}": \[a^2+2ab+b^2=(a+b)^2\]

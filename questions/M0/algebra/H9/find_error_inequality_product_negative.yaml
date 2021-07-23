@@ -26,25 +26,24 @@ statement:
       <li>if you don't notice an error you answer with "right"</li>
     </ol>.
 parts:
-- marks: 1
-  prompt:
-    content: 
-      \begin{align}
-      µ{a}x-µ{b}>µ{c}x & \underset{A}\Leftrightarrow -µ{b}>µ{c}x-µ{a}x\\
-      & \underset{B}\Leftrightarrow -µ{b}>µ{c-a}x \\ 
-      & \underset{C}\Leftrightarrow \frac{-µ{b}}{µ{c-a}}>x \\
-      & \underset{D}\Leftrightarrow µ{grens}>x\\
+  - marks: 1
+    prompt:
+      content: \begin{align}
+        µ{a}x-µ{b}>µ{c}x & \underset{A}\Leftrightarrow -µ{b}>µ{c}x-µ{a}x\\
+        & \underset{B}\Leftrightarrow -µ{b}>µ{c-a}x \\
+        & \underset{C}\Leftrightarrow \frac{-µ{b}}{µ{c-a}}>x \\
+        & \underset{D}\Leftrightarrow µ{grens}>x\\
         & \underset{E}\Rightarrow \text{ {text} } x \in ]-\infty,µ{grens}[
-      \end{align}
-    "{text}":
-      nl: de oplossing is
-      en: the solution is
-  type: pattern_match
-  match_mode: exact
-  pattern: C
-  display_answer: C
+        \end{align}
+      "{text}":
+        nl: de oplossing is
+        en: the solution is
+    type: pattern_match
+    match_mode: exact
+    pattern: C
+    display_answer: C
 advice:
-  content: 
+  content:
     nl: |
       <p>Er is een fout gebeurd in stap {step} want er wordt in die stap gedeeld door een negatief getal, namelijk {neg}, waardoor het ongelijkheidsteken wisselt van teken.</p>
       <p>De correcte uitwerking is</p> 
@@ -57,7 +56,7 @@ advice:
       {postamble}
   "{neg}": $µ{c-a}$
   "{step}": $C$
-  "{elab}": | 
+  "{elab}": |
     \begin{align}
     µ{a}x-µ{b}>µ{c}x & \underset{A}\Leftrightarrow -µ{b}>µ{c}x-µ{a}x\\
     & \underset{B}\Leftrightarrow -µ{b}>µ{c-a}x \\

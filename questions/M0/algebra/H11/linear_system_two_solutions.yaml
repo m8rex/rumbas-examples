@@ -12,26 +12,29 @@ variables:
   g: rij[5]
 statement: file:M0/algebra/H11/solve_system.html
 parts:
-- type: gapfill
-  prompt: "\\[\\begin{cases}<br/>\\var{a}x +\\var{b}y &amp;=\\var{c}\\\\\\var{d}x
-    +\\var{f}y &amp;=\\var{g}\\end{cases}\\]<p>$x=$[[0]]</p><p>$y=$[[1]]</p>"
-  marks: 0
-  gaps:
-  - type: number_entry
-    answer: "-3"
-    marks: 1
-    allow_fractions: false
-  - type: number_entry
-    answer: '6'
-    marks: 1
-    allow_fractions: false
+  - type: gapfill
+    prompt:
+      "\\[\\begin{cases}<br/>\\var{a}x +\\var{b}y &amp;=\\var{c}\\\\\\var{d}x
+      +\\var{f}y &amp;=\\var{g}\\end{cases}\\]<p>$x=$[[0]]</p><p>$y=$[[1]]</p>"
+    marks: 0
+    gaps:
+      - type: number_entry
+        answer: "-3"
+        marks: 1
+        allow_fractions: false
+      - type: number_entry
+        answer: "6"
+        marks: 1
+        allow_fractions: false
 advice:
-  nl: "<p>De oplossing van dit stelsel is {solx} en {soly}. Dit kan je bekomen door
+  nl:
+    "<p>De oplossing van dit stelsel is {solx} en {soly}. Dit kan je bekomen door
     de eerste vergelijking te herschrijven naar $y=\\ldots$, om nadien $y$ te substitueren
     in de 2e vergelijking.</p><p>In deze tweede vergelijking heb je nu enkel nog maar
     een vergelijking van $x$ en die kan je dus oplossen. Als je dan {solx} hebt bekomen,
     dan vul je dit opnieuw in bij $y=\\ldots$ om {soly} te bekomen.</p>{postamble}"
-  en: "<p>The solution of this sytem is {solx} and {soly}. This can be found by first
+  en:
+    "<p>The solution of this sytem is {solx} and {soly}. This can be found by first
     rewriting the first equation in the form $y=\\ldots$ and by then substituting
     $y$ in the second equation.</p><p>This second equation does only depend on $x$
     and can be solved. When you have found that {solx}, you enter this in $y=\\ldots$

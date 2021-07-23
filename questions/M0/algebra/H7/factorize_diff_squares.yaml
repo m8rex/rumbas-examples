@@ -7,10 +7,10 @@ variables:
   a: random(2,4,6)
   b: random(3,5)
 parts:
-- type: jme
-  marks: 1
-  prompt: \[\var{a*a}-\var{b*b}x^2\]
-  answer: ({a}+{b}x)({a}-{b}x)
+  - type: jme
+    marks: 1
+    prompt: \[\var{a*a}-\var{b*b}x^2\]
+    answer: ({a}+{b}x)({a}-{b}x)
 advice:
   content: file:M0/algebra/H7/factorize_diff_squares-advice.html
   "{abmin}": \[a^2-b^2=(a+b)(a-b) \]

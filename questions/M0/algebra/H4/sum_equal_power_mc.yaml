@@ -1,7 +1,7 @@
 ---
 type: normal
 statement:
-  nl: '<p>Stel je hebt de volgende som: {s}</p>'
+  nl: "<p>Stel je hebt de volgende som: {s}</p>"
   en: <p>Assume the sum {s}</p>
   "{s}": ${µ{a}^µ{ex}}+{µ{b}^µ{ex}}$
 variables:
@@ -9,40 +9,40 @@ variables:
   b: a+1
   ex: random(2..15)
 parts:
-- type: choose_one
-  prompt: file:statement-right.html
-  answers:
-  - statement:
-      nl: Dit is gelijk aan {expr} want je mag de grondtallen optellen omdat de machten gelijk zijn.
-      en: This equals {expr} because you can add the bases when the powers are equal.
-      "{expr}": $µ{a+b}^µ{ex}$
-    feedback:
-      nl: 'Fout, de gelijkheid van de machten maakt niet uit. Je kan dit ook narekenen: {expr1}. Dit is niet gelijk aan {expr2}.'
-      en: 'Wrong, the equality of the powers doesn''t matter. You can check this: {expr1}. This does not equal {expr2}.'
-      "{expr1}": $µ{a}^µ{ex}+µ{b}^µ{ex}=µ{a^ex}+µ{(b)^ex}=µ{a^ex+(b)^ex}$
-      "{expr2}": $µ{a+b}^µ{ex}=µ{(a+b)^(ex)}$
+  - type: choose_one
+    prompt: file:statement-right.html
+    answers:
+      - statement:
+          nl: Dit is gelijk aan {expr} want je mag de grondtallen optellen omdat de machten gelijk zijn.
+          en: This equals {expr} because you can add the bases when the powers are equal.
+          "{expr}": $µ{a+b}^µ{ex}$
+        feedback:
+          nl: "Fout, de gelijkheid van de machten maakt niet uit. Je kan dit ook narekenen: {expr1}. Dit is niet gelijk aan {expr2}."
+          en: "Wrong, the equality of the powers doesn't matter. You can check this: {expr1}. This does not equal {expr2}."
+          "{expr1}": $µ{a}^µ{ex}+µ{b}^µ{ex}=µ{a^ex}+µ{(b)^ex}=µ{a^ex+(b)^ex}$
+          "{expr2}": $µ{a+b}^µ{ex}=µ{(a+b)^(ex)}$
+        marks: 0
+      - statement:
+          nl: Dit is gelijk aan {expr} want je mag de grondtallen optellen omdat de machten gelijk zijn, daarnaast moet je ook de machten optellen.
+          en: This equals {expr} because you can add the bases when the powers are equal, on top of that you also need to add the powers.
+          "{expr}": $µ{a+b}^µ{2*ex}$
+        feedback:
+          nl: "Fout, de gelijkheid van de machten maakt niet uit. Je kan dit ook narekenen: {expr1}. Dit is niet gelijk aan {expr2}."
+          en: "Wrong, the equality of the powers doesn't matter. You can check this: {expr1}. This does not equal {expr2}."
+          "{expr1}": $µ{a}^µ{ex}+µ{b}^µ{ex}=µ{a^ex}+µ{(b)^ex}=µ{a^ex+(b)^ex}$
+          "{expr2}": $µ{a+b}^{2*µ{ex}}=µ{(a+b)^(2*ex)}$
+        marks: 0
+      - statement:
+          nl: Je kan dit niet als één macht schrijven omdat de grondtallen niet gelijk zijn.
+          en: You can't write this as one power because the bases aren't equal.
+        feedback:
+          nl: Juist, enkel als de grondtallen én de machten gelijk zijn, mag je de twee termen optellen.
+          en: Right, you can only add the two terms if both the bases and the powers are equal.
+        marks: 1
+    shuffle_answers: false
+    display: radio
+    columns: 1
     marks: 0
-  - statement:
-      nl: Dit is gelijk aan {expr} want je mag de grondtallen optellen omdat de machten gelijk zijn, daarnaast moet je ook de machten optellen.
-      en: This equals {expr} because you can add the bases when the powers are equal, on top of that you also need to add the powers.
-      "{expr}": $µ{a+b}^µ{2*ex}$
-    feedback:
-      nl: 'Fout, de gelijkheid van de machten maakt niet uit. Je kan dit ook narekenen: {expr1}. Dit is niet gelijk aan {expr2}.'
-      en: 'Wrong, the equality of the powers doesn''t matter. You can check this: {expr1}. This does not equal {expr2}.'
-      "{expr1}": $µ{a}^µ{ex}+µ{b}^µ{ex}=µ{a^ex}+µ{(b)^ex}=µ{a^ex+(b)^ex}$
-      "{expr2}": $µ{a+b}^{2*µ{ex}}=µ{(a+b)^(2*ex)}$
-    marks: 0
-  - statement:
-      nl: Je kan dit niet als één macht schrijven omdat de grondtallen niet gelijk zijn.
-      en: You can't write this as one power because the bases aren't equal.
-    feedback:
-      nl: Juist, enkel als de grondtallen én de machten gelijk zijn, mag je de twee termen optellen.
-      en: Right, you can only add the two terms if both the bases and the powers are equal.
-    marks: 1
-  shuffle_answers: false
-  display: radio
-  columns: 1
-  marks: 0
 advice:
   content: file:postamble.html
   "{chapter}": file:M0/algebra/H4.html

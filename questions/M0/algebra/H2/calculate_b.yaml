@@ -8,13 +8,13 @@ statement:
   content: file:expression_no_calculator.html
   "{expr}": \[\frac{\var{m} \cdot (\var{a}+\var{b}\cdot 0)}{\var{m}}-(\var{a/2}-1) \cdot 1 \cdot \var{m}\]
 parts:
-- type: number_entry
-  answer: a-(a/2-1)*m
-  marks: 1
-  allow_fractions: false
+  - type: number_entry
+    answer: a-(a/2-1)*m
+    marks: 1
+    allow_fractions: false
 advice:
   content: "{sol}{postamble}"
-  "{sol}": | 
+  "{sol}": |
     \begin{array}
     & \frac{\var{m} \cdot (\var{a}+\var{b}\cdot 0)}{\var{m}}-(\var{a/2}-1) \cdot 1 \cdot \var{m} \\
     & = (\var{a}+\var{b}\cdot 0)-(\var{a/2}-1)\cdot \var{m} \\

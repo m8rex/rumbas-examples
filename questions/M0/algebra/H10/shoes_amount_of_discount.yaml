@@ -12,7 +12,7 @@ statement:
     <p>
     Nu moet je maar {new-price} euro betalen.
     </p>
-  en: | 
+  en: |
     <p>
     You want to buy a pair of shoes. Normally the pair of shoes costs {price}
     euro.
@@ -22,14 +22,14 @@ statement:
   "{price}": $µ{b}$
   "{new-price}": $\var{b*(1-a/100)}$
 parts:
-- type: jme
-  marks: 1
-  prompt:
-    nl: <p>Hoeveel procent korting heb je nu eigenlijk gekregen op je paar schoenen?</p>
-    en: <p>What was the discount (in percentages) that you got on the pair of shoes?</p>
-  answer: "{(1-(b*(1-a/100))/b)*100}"
+  - type: jme
+    marks: 1
+    prompt:
+      nl: <p>Hoeveel procent korting heb je nu eigenlijk gekregen op je paar schoenen?</p>
+      en: <p>What was the discount (in percentages) that you got on the pair of shoes?</p>
+    answer: "{(1-(b*(1-a/100))/b)*100}"
 advice:
-  nl: | 
+  nl: |
     <p>
     Je paar schoenen kostte oorspronkelijk {price} euro en nu betaal je slechts {result} euro:
     </p>

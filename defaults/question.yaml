@@ -4,14 +4,14 @@ navigation:
   show_frontpage: false
   prevent_leaving: false
 variables_test:
-  condition: ''
+  condition: ""
   max_runs: 100
 extensions:
   jsx_graph: false
   stats: false
 preamble:
-  js: ''
-  css: ''
+  js: ""
+  css: ""
 custom_part_types: []
 variables: {}
 functions: {}

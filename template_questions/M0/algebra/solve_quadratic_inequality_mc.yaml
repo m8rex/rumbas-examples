@@ -9,25 +9,25 @@ statement:
   nl: <p>Wat is de oplossing van volgende tweedegraadsongelijkheid?</p>
   en: <p>Wat is the solution for the following quadratic inequality?</p>
 parts:
-- prompt: "template:prompt"
-  type: choose_one
-  answers:
-  - statement: $x \in ]-\infty,\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[\cup]\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$
-    feedback: ''
-    marks: "template:marks0"
-  - statement: $x \in ]-\infty,\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}] \cup [\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$
-    feedback: ''
-    marks: "template:marks1"
-  - statement: $x \in ]\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}[$
-    feedback: ''
-    marks: "template:marks2"
-  - statement: $x \in [\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}]$
-    feedback: ''
-    marks: "template:marks3"
-  shuffle_answers: false
-  marks: 0
-  columns: 1
-  display: radio
+  - prompt: "template:prompt"
+    type: choose_one
+    answers:
+      - statement: $x \in ]-\infty,\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[\cup]\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$
+        feedback: ""
+        marks: "template:marks0"
+      - statement: $x \in ]-\infty,\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}] \cup [\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$
+        feedback: ""
+        marks: "template:marks1"
+      - statement: $x \in ]\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}[$
+        feedback: ""
+        marks: "template:marks2"
+      - statement: $x \in [\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2},\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2}]$
+        feedback: ""
+        marks: "template:marks3"
+    shuffle_answers: false
+    marks: 0
+    columns: 1
+    display: radio
 advice:
   nl: |
     <p>We lossen eerst de volgende bijhorende tweedegraadsvergelijking op via de discriminant:</p>
