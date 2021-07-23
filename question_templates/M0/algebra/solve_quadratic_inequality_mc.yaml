@@ -11,7 +11,7 @@ statement:
 parts:
   - prompt: "template:prompt"
     type: choose_one
-    answers:
+    answer_data:
       - statement: $x \in ]-\infty,\var{((a+b)-((a+b)^2-4*a*b)^(1/2))/2}[\cup]\var{((a+b)+((a+b)^2-4*a*b)^(1/2))/2},+\infty[$
         feedback: ""
         marks: "template:marks0"

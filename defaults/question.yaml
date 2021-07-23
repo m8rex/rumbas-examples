@@ -9,9 +9,18 @@ variables_test:
 extensions:
   jsx_graph: false
   stats: false
+  geogebra: false
+  eukleides: false
 preamble:
   js: ""
   css: ""
 custom_part_types: []
 variables: {}
 functions: {}
+builtin_constants:
+  e: true
+  pi: true
+  i: true
+custom_constants: []
+diagnostic_topic_names: []
+resources: []

@@ -10,3 +10,4 @@ on_leave:
   action: none
 start_password: ""
 show_names_of_question_groups: false
+allow_printing: true

@@ -10,7 +10,7 @@ parts:
   - prompt: \[ \sqrt{µ{a}} \cdot \sqrt{µ{b}}\]
     type: choose_one
     marks: 0
-    answers:
+    answer_data:
       - statement:
           nl: Dit is gelijk aan {expr} want je mag de grondtallen vermenigvuldigen omdat het beiden vierkantswortels zijn.
           en: This equals {expr}. We are allowed to multiply the bases because they are both square roots.

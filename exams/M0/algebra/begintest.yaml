@@ -102,7 +102,7 @@ question_groups:
       - M0/algebra/H8/solve_quadratic_two_solutions
   - name:
       nl: Q12
-      en: Q1
+      en: Q12
     picking_strategy: random_subset
     pick_questions: 1
     questions:

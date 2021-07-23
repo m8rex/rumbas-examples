@@ -10,7 +10,7 @@ statement:
 parts:
   - type: choose_one
     prompt: file:statement-right.html
-    answers:
+    answer_data:
       - statement: Om deze breuken met elkaar te vermenigvuldigen, vermenigvuldig je teller met teller en noemer met noemer, de oplossing is $\frac{\var{b}}{\var{a*a}}$.
         feedback: Juist, om twee breuken met elkaar te vermenigvuldigen, vermenigvuldig je teller met teller en noemer met noemer.
         marks: 1
