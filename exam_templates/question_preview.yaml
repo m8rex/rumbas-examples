@@ -1,4 +1,5 @@
 ---
+type: normal
 locales:
   - name: nl
     numbas_locale: nl-NL
