@@ -1,7 +1,7 @@
 ---
 navigation:
-  allow_regenerate: true
-  show_frontpage: false
+  can_regenerate: true
+  show_title_page: false
   prevent_leaving: false
 variables_test:
   condition: ""

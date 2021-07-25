@@ -1,9 +1,9 @@
 ---
-allow_regenerate: true
-reverse: true
+can_regenerate: true
+can_move_to_previous: true
 browsing_enabled: true
-allow_steps: true
-show_frontpage: true
+show_steps: true
+show_title_page: true
 show_results_page: on_completion
 prevent_leaving: true
 on_leave:
