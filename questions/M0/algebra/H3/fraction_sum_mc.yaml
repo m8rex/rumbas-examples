@@ -10,7 +10,7 @@ statement:
 parts:
   - prompt: file:statement-right.html
     type: choose_one
-    answers:
+    answer_data:
       - statement:
           nl: 'Je kan deze breuken vereenvoudigen dankzij de teller $µ{b}$ en de noemer $µ{2*b}$, je verkrijgt: $\frac{1}{2} + \frac{µ{c}}{2}$.'
           en: You can simplify these fractions thanks to the numerator $µ{b}$ and the denominator $µ{2*b}$. This results in $\frac{1}{2} + \frac{µ{c}}{2}$.

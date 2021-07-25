@@ -5,7 +5,7 @@ variables:
   a: random(1..15)
 parts:
   - type: choose_one
-    answers:
+    answer_data:
       - statement:
           nl: Het getal 0 behoort tot $\mathbb{N}$ maar niet tot $\mathbb{Z}$.
           en: The number 0 is a member of $\mathbb{N}$ but not of $\mathbb{Z}$.

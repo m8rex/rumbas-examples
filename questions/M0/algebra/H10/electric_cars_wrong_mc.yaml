@@ -28,7 +28,7 @@ variables_test:
 parts:
   - type: choose_one
     prompt: file:statement-wrong.html
-    answers:
+    answer_data:
       - statement:
           nl: In het jaar 2017 waren er {nb2017} elektrische auto's.
           en: In the year 2017 there were {nb2017} electric cars.
