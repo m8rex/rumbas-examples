@@ -11,6 +11,17 @@ extensions:
   stats: false
   geogebra: false
   eukleides: false
+  chemistry: false
+  download_text_file: false
+  graphs: false
+  linear_algebra: false
+  linear_codes: false
+  optimisation: false
+  permutations: false
+  polynomials: false
+  quantities: false
+  random_person: false
+  written_number: false
 preamble:
   js: ""
   css: ""
