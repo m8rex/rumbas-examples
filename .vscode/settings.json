@@ -1,0 +1,6 @@
+{
+    "yaml.schemas": {
+        "question-schema.json": "/questions/**/*.yaml",
+        "exam-schema.json": "/exams/**/*.yaml"
+    }
+}

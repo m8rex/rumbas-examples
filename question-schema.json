@@ -1,0 +1,3377 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QuestionFileType",
+  "type": "object",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "template"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "required": ["template"],
+        "properties": {
+          "template": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "$ref": "#/definitions/YamlValue"
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "normal"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "required": [
+          "advice",
+          "builtin_constants",
+          "custom_constants",
+          "custom_part_types",
+          "diagnostic_topic_names",
+          "extensions",
+          "functions",
+          "navigation",
+          "parts",
+          "preamble",
+          "resources",
+          "statement",
+          "variables",
+          "variables_test"
+        ],
+        "properties": {
+          "advice": {
+            "$ref": "#/definitions/Value_TranslatableString"
+          },
+          "builtin_constants": {
+            "$ref": "#/definitions/Value_BuiltinConstants"
+          },
+          "custom_constants": {
+            "$ref": "#/definitions/Value_Array_of_CustomConstant"
+          },
+          "custom_part_types": {
+            "description": "The custom part types used in this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Array_of_CustomPartTypeDefinitionPath"
+              }
+            ]
+          },
+          "diagnostic_topic_names": {
+            "description": "The names of the topics used in diagnostic exams that this question belongs to",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Array_of_TranslatableString"
+              }
+            ]
+          },
+          "extensions": {
+            "$ref": "#/definitions/Value_Extensions"
+          },
+          "functions": {
+            "$ref": "#/definitions/Value_Map_of_Value_Function"
+          },
+          "navigation": {
+            "$ref": "#/definitions/Value_QuestionNavigation"
+          },
+          "parts": {
+            "$ref": "#/definitions/Value_Array_of_Value_QuestionPart"
+          },
+          "preamble": {
+            "$ref": "#/definitions/Value_Preamble"
+          },
+          "resources": {
+            "$ref": "#/definitions/Value_Array_of_Value_ResourcePath"
+          },
+          "statement": {
+            "$ref": "#/definitions/Value_TranslatableString"
+          },
+          "variables": {
+            "$ref": "#/definitions/Value_Map_of_Value_VariableRepresentation"
+          },
+          "variables_test": {
+            "$ref": "#/definitions/Value_VariablesTest"
+          }
+        }
+      }
+    }
+  ],
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["template", "normal"]
+    }
+  },
+  "definitions": {
+    "AnswerStyle": {
+      "type": "string",
+      "enum": [
+        "english",
+        "english-plain",
+        "english-si",
+        "european",
+        "european-plain",
+        "french-si",
+        "indian",
+        "scientific",
+        "swiss"
+      ]
+    },
+    "BuiltinConstants": {
+      "description": "Specify which builtin constants should be enabled",
+      "type": "object",
+      "required": ["e", "i", "pi"],
+      "properties": {
+        "e": {
+          "description": "Whether the constant e is enabled",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "i": {
+          "description": "Whether the constant i is enabled-",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "pi": {
+          "description": "Whether the constant pi is enabled",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        }
+      }
+    },
+    "CheckingType": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "relative_difference"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["max_difference"],
+            "properties": {
+              "max_difference": {
+                "$ref": "#/definitions/Value_double"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "absolute_difference"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["max_difference"],
+            "properties": {
+              "max_difference": {
+                "$ref": "#/definitions/Value_double"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "decimal_places"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["amount"],
+            "properties": {
+              "amount": {
+                "$ref": "#/definitions/Value_uint"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "significant_figures"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["amount"],
+            "properties": {
+              "amount": {
+                "$ref": "#/definitions/Value_uint"
+              }
+            }
+          }
+        }
+      ],
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "relative_difference",
+            "absolute_difference",
+            "decimal_places",
+            "significant_figures"
+          ]
+        }
+      }
+    },
+    "ChooseOneDisplay": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "display": {
+                "const": "dropdown"
+              }
+            }
+          },
+          "then": true
+        },
+        {
+          "if": {
+            "properties": {
+              "display": {
+                "const": "radio"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["columns"],
+            "properties": {
+              "columns": {
+                "type": "integer",
+                "format": "uint",
+                "minimum": 0.0
+              }
+            }
+          }
+        }
+      ],
+      "required": ["display"],
+      "properties": {
+        "display": {
+          "type": "string",
+          "enum": ["dropdown", "radio"]
+        }
+      }
+    },
+    "CustomConstant": {
+      "description": "A custom constant",
+      "type": "object",
+      "required": ["name", "tex", "value"],
+      "properties": {
+        "name": {
+          "description": "The name of the constant",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_String"
+            }
+          ]
+        },
+        "tex": {
+          "description": "The tex code use to display the constant",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_String"
+            }
+          ]
+        },
+        "value": {
+          "description": "The value of the constant",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_String"
+            }
+          ]
+        }
+      }
+    },
+    "CustomPartInputTypeValue": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "CustomPartTypeDefinitionPath": {
+      "type": "string"
+    },
+    "ExamFunctionLanguage": {
+      "type": "string",
+      "enum": ["jme", "javascript"]
+    },
+    "ExamFunctionType": {
+      "type": "string",
+      "enum": [
+        "boolean",
+        "decimal",
+        "dict",
+        "expression",
+        "html",
+        "integer",
+        "keypair",
+        "list",
+        "matrix",
+        "nothing",
+        "number",
+        "range",
+        "rational",
+        "set",
+        "string",
+        "vector",
+        "ggbapplet"
+      ]
+    },
+    "Extensions": {
+      "description": "Specify which extensions should be enabled",
+      "type": "object",
+      "required": [
+        "chemistry",
+        "download_text_file",
+        "eukleides",
+        "geogebra",
+        "graphs",
+        "jsx_graph",
+        "linear_algebra",
+        "linear_codes",
+        "optimisation",
+        "permutations",
+        "polynomials",
+        "quantities",
+        "random_person",
+        "stats",
+        "written_number"
+      ],
+      "properties": {
+        "chemistry": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "download_text_file": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "eukleides": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "geogebra": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "graphs": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "jsx_graph": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "linear_algebra": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "linear_codes": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "optimisation": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "permutations": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "polynomials": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "quantities": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "random_person": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "stats": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "written_number": {
+          "$ref": "#/definitions/Value_Boolean"
+        }
+      }
+    },
+    "FileString": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 5,
+          "pattern": "^file:.*$"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "Function": {
+      "type": "object",
+      "required": ["definition", "language", "output_type", "parameters"],
+      "properties": {
+        "definition": {
+          "$ref": "#/definitions/Value_FileString"
+        },
+        "language": {
+          "$ref": "#/definitions/Value_ExamFunctionLanguage"
+        },
+        "output_type": {
+          "$ref": "#/definitions/Value_ExamFunctionType"
+        },
+        "parameters": {
+          "$ref": "#/definitions/Value_Array_of_Tuple_of_String_and_ExamFunctionType"
+        }
+      }
+    },
+    "JMEAnswerSimplification": {
+      "type": "object",
+      "required": [
+        "cancel_factors",
+        "cancel_terms",
+        "collect_like_fractions",
+        "collect_numbers",
+        "constants_first",
+        "expand_brackets",
+        "order_canonical",
+        "simplify_basic",
+        "simplify_fractions",
+        "simplify_no_leading_minus",
+        "simplify_other_numbers",
+        "simplify_sqrt_division",
+        "simplify_sqrt_products",
+        "simplify_sqrt_square",
+        "simplify_trigonometric",
+        "simplify_unit_denominator",
+        "simplify_unit_factor",
+        "simplify_unit_power",
+        "simplify_zero_base",
+        "simplify_zero_factor",
+        "simplify_zero_power",
+        "simplify_zero_term",
+        "use_times_dot"
+      ],
+      "properties": {
+        "cancel_factors": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "cancel_terms": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "collect_like_fractions": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "collect_numbers": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "constants_first": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "expand_brackets": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "order_canonical": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_basic": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_fractions": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_no_leading_minus": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_other_numbers": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_sqrt_division": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_sqrt_products": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_sqrt_square": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_trigonometric": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_unit_denominator": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_unit_factor": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_unit_power": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_zero_base": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_zero_factor": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_zero_power": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "simplify_zero_term": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "use_times_dot": {
+          "$ref": "#/definitions/Value_Boolean"
+        }
+      }
+    },
+    "JMELengthRestriction": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValueType_JMERestriction"
+        }
+      ],
+      "required": ["length"],
+      "properties": {
+        "length": {
+          "$ref": "#/definitions/Value_uint"
+        }
+      }
+    },
+    "JMEPatternRestriction": {
+      "type": "object",
+      "required": ["message", "name_to_compare", "partial_credit", "pattern"],
+      "properties": {
+        "message": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        },
+        "name_to_compare": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "partial_credit": {
+          "$ref": "#/definitions/Value_double"
+        },
+        "pattern": {
+          "$ref": "#/definitions/Value_String"
+        }
+      }
+    },
+    "JMERestriction": {
+      "type": "object",
+      "required": ["message", "partial_credit"],
+      "properties": {
+        "message": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        },
+        "partial_credit": {
+          "$ref": "#/definitions/Value_double"
+        }
+      }
+    },
+    "JMEStringRestriction": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValueType_JMERestriction"
+        }
+      ],
+      "required": ["show_strings", "strings"],
+      "properties": {
+        "show_strings": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "strings": {
+          "$ref": "#/definitions/Value_Array_of_TranslatableString"
+        }
+      }
+    },
+    "JMEValueGenerator": {
+      "type": "object",
+      "required": ["name", "value"],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/Value_FileString"
+        },
+        "value": {
+          "$ref": "#/definitions/Value_FileString"
+        }
+      }
+    },
+    "MatchAnswerWithItemsDisplay": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "display": {
+                "const": "radio"
+              }
+            }
+          },
+          "then": true
+        },
+        {
+          "if": {
+            "properties": {
+              "display": {
+                "const": "check"
+              }
+            }
+          },
+          "then": true
+        }
+      ],
+      "required": ["display"],
+      "properties": {
+        "display": {
+          "type": "string",
+          "enum": ["radio", "check"]
+        }
+      }
+    },
+    "MatchAnswersItem": {
+      "type": "object",
+      "required": ["answer_marks", "statement"],
+      "properties": {
+        "answer_marks": {
+          "description": "Map points to strings of answers ! use anchors in yaml",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Array_of_MatchAnswersItemMarks"
+            }
+          ]
+        },
+        "statement": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        }
+      }
+    },
+    "MatchAnswersItemMarks": {
+      "type": "object",
+      "required": ["answer", "marks"],
+      "properties": {
+        "answer": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        },
+        "marks": {
+          "$ref": "#/definitions/Value_Primitive"
+        }
+      }
+    },
+    "MatchAnswersWithChoicesLayout": {
+      "type": "object",
+      "required": ["expression", "type"],
+      "properties": {
+        "expression": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/MatchAnswersWithChoicesLayoutType"
+        }
+      }
+    },
+    "MatchAnswersWithChoicesLayoutType": {
+      "type": "string",
+      "enum": ["all", "lowertriangle"]
+    },
+    "MultipleChoiceAnswer": {
+      "type": "object",
+      "required": ["feedback", "marks", "statement"],
+      "properties": {
+        "feedback": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        },
+        "marks": {
+          "$ref": "#/definitions/Value_Primitive"
+        },
+        "statement": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        }
+      }
+    },
+    "MultipleChoiceAnswerData": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MultipleChoiceAnswer"
+          }
+        },
+        {
+          "$ref": "#/definitions/MultipleChoiceAnswerDataNumbasLike"
+        }
+      ]
+    },
+    "MultipleChoiceAnswerDataNumbasLike": {
+      "type": "object",
+      "required": ["answers", "feedback", "marks"],
+      "properties": {
+        "answers": {
+          "$ref": "#/definitions/Value_VariableValued_for_Array_of_TranslatableString"
+        },
+        "feedback": {
+          "$ref": "#/definitions/Value_Noneable_Array_of_TranslatableString"
+        },
+        "marks": {
+          "$ref": "#/definitions/Value_VariableValued_for_Array_of_Primitive"
+        }
+      }
+    },
+    "MultipleChoiceMatchAnswerData": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "item_based"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["answers", "items"],
+            "properties": {
+              "answers": {
+                "description": "Values of the answers",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Array_of_Value_TranslatableString"
+                  }
+                ]
+              },
+              "items": {
+                "description": "Items for which the answer can be selected",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Array_of_Value_MatchAnswersItem"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "numbas_like"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": ["answers", "choices", "marks"],
+            "properties": {
+              "answers": {
+                "$ref": "#/definitions/Value_VariableValued_for_Array_of_TranslatableString"
+              },
+              "choices": {
+                "$ref": "#/definitions/Value_VariableValued_for_Array_of_TranslatableString"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_VariableValued_for_Array_of_Array_of_Primitive"
+              }
+            }
+          }
+        }
+      ],
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["item_based", "numbas_like"]
+        }
+      }
+    },
+    "MultipleChoiceWarningType": {
+      "type": "string",
+      "enum": ["none", "prevent"]
+    },
+    "Noneable_Array_of_JMEValueGenerator": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["none"]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/JMEValueGenerator"
+          }
+        }
+      ]
+    },
+    "Noneable_Array_of_TranslatableString": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["none"]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TranslatableString"
+          }
+        }
+      ]
+    },
+    "Noneable_JMELengthRestriction": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["none"]
+        },
+        {
+          "$ref": "#/definitions/JMELengthRestriction"
+        }
+      ]
+    },
+    "Noneable_JMEPatternRestriction": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["none"]
+        },
+        {
+          "$ref": "#/definitions/JMEPatternRestriction"
+        }
+      ]
+    },
+    "Noneable_JMEStringRestriction": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["none"]
+        },
+        {
+          "$ref": "#/definitions/JMEStringRestriction"
+        }
+      ]
+    },
+    "Noneable_VariableValued_for_uint": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["none"]
+        },
+        {
+          "$ref": "#/definitions/VariableValued_for_uint"
+        }
+      ]
+    },
+    "Noneable_uint": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": ["none"]
+        },
+        {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        }
+      ]
+    },
+    "NumberEntryAnswer": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/FileString"
+        },
+        {
+          "type": "object",
+          "required": ["from", "to"],
+          "properties": {
+            "from": {
+              "$ref": "#/definitions/FileString"
+            },
+            "to": {
+              "$ref": "#/definitions/FileString"
+            }
+          }
+        }
+      ]
+    },
+    "PatternMatchMode": {
+      "type": "string",
+      "enum": ["regex", "exact"]
+    },
+    "Preamble": {
+      "type": "object",
+      "required": ["css", "js"],
+      "properties": {
+        "css": {
+          "description": "The CSS to add to the outputfiles",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_FileString"
+            }
+          ]
+        },
+        "js": {
+          "description": "The JavaScript to add to the outputfiles",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_FileString"
+            }
+          ]
+        }
+      }
+    },
+    "Primitive": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        {
+          "type": "number",
+          "format": "double"
+        }
+      ]
+    },
+    "QuestionNavigation": {
+      "type": "object",
+      "required": ["can_regenerate", "confirm_when_leaving", "show_title_page"],
+      "properties": {
+        "can_regenerate": {
+          "description": "Whether the student can regenerate the question Old name was `allow_regenerate`",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "confirm_when_leaving": {
+          "description": "Whether the student will be asked to confirm when leaving the exam.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_title_page": {
+          "description": "Whether the title page should be shown. Old name was `show_frontpage`",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        }
+      }
+    },
+    "QuestionPart": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/QuestionPartBuiltin"
+        },
+        {
+          "$ref": "#/definitions/QuestionPartCustom"
+        }
+      ]
+    },
+    "QuestionPartBuiltin": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "jme"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "allow_unknown_functions",
+              "answer",
+              "answer_check",
+              "answer_simplification",
+              "check_variable_names",
+              "custom_marking_algorithm",
+              "custom_name",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "failure_rate",
+              "implicit_function_composition",
+              "marks",
+              "max_length",
+              "may_not_have",
+              "min_length",
+              "minimum_marks",
+              "must_have",
+              "must_match_pattern",
+              "prompt",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "show_preview",
+              "single_letter_variables",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "value_generators",
+              "variable_replacement_strategy",
+              "vset_range",
+              "vset_range_points"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "allow_unknown_functions": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "answer": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "answer_check": {
+                "$ref": "#/definitions/Value_CheckingType"
+              },
+              "answer_simplification": {
+                "$ref": "#/definitions/Value_JMEAnswerSimplification"
+              },
+              "check_variable_names": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "failure_rate": {
+                "$ref": "#/definitions/Value_double"
+              },
+              "implicit_function_composition": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "max_length": {
+                "$ref": "#/definitions/Value_Noneable_JMELengthRestriction"
+              },
+              "may_not_have": {
+                "$ref": "#/definitions/Value_Noneable_JMEStringRestriction"
+              },
+              "min_length": {
+                "$ref": "#/definitions/Value_Noneable_JMELengthRestriction"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "must_have": {
+                "$ref": "#/definitions/Value_Noneable_JMEStringRestriction"
+              },
+              "must_match_pattern": {
+                "$ref": "#/definitions/Value_Noneable_JMEPatternRestriction"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_preview": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "single_letter_variables": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "value_generators": {
+                "$ref": "#/definitions/Value_Noneable_Array_of_JMEValueGenerator"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              },
+              "vset_range": {
+                "$ref": "#/definitions/Value_Array_size_2_of_double"
+              },
+              "vset_range_points": {
+                "$ref": "#/definitions/Value_uint"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "gapfill"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "custom_marking_algorithm",
+              "custom_name",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "gaps",
+              "marks",
+              "minimum_marks",
+              "prompt",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "sort_answers",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "gaps": {
+                "description": "The gaps",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Array_of_QuestionPart"
+                  }
+                ]
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "sort_answers": {
+                "description": "Whether the answers should be sorted",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Boolean"
+                  }
+                ]
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "choose_one"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/definitions/ValueType_ChooseOneDisplay"
+              }
+            ],
+            "required": [
+              "adaptive_marking_penalty",
+              "answer_data",
+              "custom_marking_algorithm",
+              "custom_name",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "has_to_select_option",
+              "marks",
+              "minimum_marks",
+              "prompt",
+              "show_cell_answer_state",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "shuffle_answers",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "answer_data": {
+                "description": "Old name was `answers`",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_MultipleChoiceAnswerData"
+                  }
+                ]
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "has_to_select_option": {
+                "description": "Whether the student has to select an option (if false: can submit without selecting)",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Boolean"
+                  }
+                ]
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_cell_answer_state": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "shuffle_answers": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "choose_multiple"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "answer_data",
+              "columns",
+              "custom_marking_algorithm",
+              "custom_name",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "marks",
+              "minimum_marks",
+              "prompt",
+              "should_select_at_least",
+              "should_select_at_most",
+              "show_cell_answer_state",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "shuffle_answers",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy",
+              "wrong_nb_answers_warning_type"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "answer_data": {
+                "description": "Old name was `answers`",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_MultipleChoiceAnswerData"
+                  }
+                ]
+              },
+              "columns": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "should_select_at_least": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "should_select_at_most": {
+                "$ref": "#/definitions/Value_Noneable_uint"
+              },
+              "show_cell_answer_state": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "shuffle_answers": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              },
+              "wrong_nb_answers_warning_type": {
+                "description": "What to do if the student picks the wrong number of responses? Either \"none\" (do nothing), \"prevent\" (don’t let the student submit), or \"warn\" (show a warning but let them submit)",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_MultipleChoiceWarningType"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "match_answers"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/definitions/ValueType_MatchAnswerWithItemsDisplay"
+              }
+            ],
+            "required": [
+              "adaptive_marking_penalty",
+              "answer_data",
+              "custom_marking_algorithm",
+              "custom_name",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "layout",
+              "marks",
+              "minimum_marks",
+              "prompt",
+              "should_select_at_least",
+              "should_select_at_most",
+              "show_cell_answer_state",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "shuffle_answers",
+              "shuffle_items",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy",
+              "wrong_nb_answers_warning_type"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "answer_data": {
+                "description": "Old name was `answers`",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_MultipleChoiceMatchAnswerData"
+                  }
+                ]
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "layout": {
+                "$ref": "#/definitions/Value_MatchAnswersWithChoicesLayout"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "should_select_at_least": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "should_select_at_most": {
+                "$ref": "#/definitions/Value_Noneable_uint"
+              },
+              "show_cell_answer_state": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "shuffle_answers": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "shuffle_items": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              },
+              "wrong_nb_answers_warning_type": {
+                "description": "What to do if the student picks the wrong number of responses? Either \"none\" (do nothing), \"prevent\" (don’t let the student submit), or \"warn\" (show a warning but let them submit)",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_MultipleChoiceWarningType"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "number_entry"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "allow_fractions",
+              "allowed_notation_styles",
+              "answer",
+              "custom_marking_algorithm",
+              "custom_name",
+              "display_correct_as_fraction",
+              "display_correct_in_style",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "fractions_must_be_reduced",
+              "hint_fraction",
+              "marks",
+              "minimum_marks",
+              "partial_credit_if_fraction_not_reduced",
+              "prompt",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "allow_fractions": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "allowed_notation_styles": {
+                "$ref": "#/definitions/Value_Array_of_AnswerStyle"
+              },
+              "answer": {
+                "$ref": "#/definitions/Value_NumberEntryAnswer"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "display_correct_as_fraction": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "display_correct_in_style": {
+                "$ref": "#/definitions/Value_AnswerStyle"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "fractions_must_be_reduced": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "hint_fraction": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "partial_credit_if_fraction_not_reduced": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "pattern_match"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "case_sensitive",
+              "custom_marking_algorithm",
+              "custom_name",
+              "display_answer",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "marks",
+              "match_mode",
+              "minimum_marks",
+              "partial_credit",
+              "pattern",
+              "prompt",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "case_sensitive": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "display_answer": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "match_mode": {
+                "$ref": "#/definitions/Value_PatternMatchMode"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "partial_credit": {
+                "$ref": "#/definitions/Value_double"
+              },
+              "pattern": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "information"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "custom_marking_algorithm",
+              "custom_name",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "marks",
+              "minimum_marks",
+              "prompt",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "extension"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "custom_marking_algorithm",
+              "custom_name",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "marks",
+              "minimum_marks",
+              "prompt",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "matrix"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "adaptive_marking_penalty",
+              "allow_fractions",
+              "correct_answer",
+              "custom_marking_algorithm",
+              "custom_name",
+              "dimensions",
+              "display_correct_as_fraction",
+              "enable_minimum_marks",
+              "extend_base_marking_algorithm",
+              "mark_partial_by_cells",
+              "marks",
+              "max_absolute_deviation",
+              "minimum_marks",
+              "prompt",
+              "show_correct_answer",
+              "show_feedback_icon",
+              "steps",
+              "steps_penalty",
+              "use_custom_name",
+              "variable_replacement_strategy"
+            ],
+            "properties": {
+              "adaptive_marking_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "allow_fractions": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "correct_answer": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "custom_marking_algorithm": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "custom_name": {
+                "$ref": "#/definitions/Value_String"
+              },
+              "dimensions": {
+                "$ref": "#/definitions/Value_QuestionPartMatrixDimensions"
+              },
+              "display_correct_as_fraction": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "enable_minimum_marks": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "extend_base_marking_algorithm": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "mark_partial_by_cells": {
+                "description": "If this is set to true, the student will be awarded marks according to the proportion of cells that are marked correctly. If this is not ticked, they will only receive the marks for the part if they get every cell right. If their answer does not have the same dimensions as the correct answer, they are always awarded zero marks.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Boolean"
+                  }
+                ]
+              },
+              "marks": {
+                "$ref": "#/definitions/Value_Primitive"
+              },
+              "max_absolute_deviation": {
+                "description": "If the absolute difference between the student’s value for a particular cell and the correct answer’s is less than this value, then it will be marked as correct.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_double"
+                  }
+                ]
+              },
+              "minimum_marks": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "prompt": {
+                "$ref": "#/definitions/Value_TranslatableString"
+              },
+              "show_correct_answer": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "show_feedback_icon": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "steps": {
+                "$ref": "#/definitions/Value_Array_of_QuestionPart"
+              },
+              "steps_penalty": {
+                "$ref": "#/definitions/Value_uint"
+              },
+              "use_custom_name": {
+                "$ref": "#/definitions/Value_Boolean"
+              },
+              "variable_replacement_strategy": {
+                "$ref": "#/definitions/Value_VariableReplacementStrategy"
+              }
+            }
+          }
+        }
+      ],
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "jme",
+            "gapfill",
+            "choose_one",
+            "choose_multiple",
+            "match_answers",
+            "number_entry",
+            "pattern_match",
+            "information",
+            "extension",
+            "matrix"
+          ]
+        }
+      }
+    },
+    "QuestionPartCustom": {
+      "type": "object",
+      "required": [
+        "adaptive_marking_penalty",
+        "custom_marking_algorithm",
+        "custom_name",
+        "enable_minimum_marks",
+        "extend_base_marking_algorithm",
+        "marks",
+        "minimum_marks",
+        "prompt",
+        "settings",
+        "show_correct_answer",
+        "show_feedback_icon",
+        "steps",
+        "steps_penalty",
+        "type",
+        "use_custom_name",
+        "variable_replacement_strategy"
+      ],
+      "properties": {
+        "adaptive_marking_penalty": {
+          "$ref": "#/definitions/Value_uint"
+        },
+        "custom_marking_algorithm": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "custom_name": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "enable_minimum_marks": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "extend_base_marking_algorithm": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "marks": {
+          "$ref": "#/definitions/Value_Primitive"
+        },
+        "minimum_marks": {
+          "$ref": "#/definitions/Value_uint"
+        },
+        "prompt": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        },
+        "settings": {
+          "$ref": "#/definitions/Value_Map_of_CustomPartInputTypeValue"
+        },
+        "show_correct_answer": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "show_feedback_icon": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "steps": {
+          "$ref": "#/definitions/Value_Array_of_QuestionPart"
+        },
+        "steps_penalty": {
+          "$ref": "#/definitions/Value_uint"
+        },
+        "type": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "use_custom_name": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "variable_replacement_strategy": {
+          "$ref": "#/definitions/Value_VariableReplacementStrategy"
+        }
+      }
+    },
+    "QuestionPartMatrixDimension": {
+      "anyOf": [
+        {
+          "type": "object",
+          "required": ["Fixed"],
+          "properties": {
+            "Fixed": {
+              "$ref": "#/definitions/VariableValued_for_uint"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["Resizable"],
+          "properties": {
+            "Resizable": {
+              "$ref": "#/definitions/QuestionPartMatrixRangedDimension"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "QuestionPartMatrixDimensions": {
+      "type": "object",
+      "required": ["columns", "rows"],
+      "properties": {
+        "columns": {
+          "$ref": "#/definitions/Value_QuestionPartMatrixDimension"
+        },
+        "rows": {
+          "$ref": "#/definitions/Value_QuestionPartMatrixDimension"
+        }
+      }
+    },
+    "QuestionPartMatrixRangedDimension": {
+      "type": "object",
+      "required": ["default", "max", "min"],
+      "properties": {
+        "default": {
+          "description": "The default size",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_VariableValued_for_uint"
+            }
+          ]
+        },
+        "max": {
+          "description": "The maximal size, if this is none, there is no limit",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Noneable_VariableValued_for_uint"
+            }
+          ]
+        },
+        "min": {
+          "description": "The minimal size",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_VariableValued_for_uint"
+            }
+          ]
+        }
+      }
+    },
+    "ResourcePath": {
+      "type": "object",
+      "required": ["resource_name", "resource_path"],
+      "properties": {
+        "resource_name": {
+          "type": "string"
+        },
+        "resource_path": {
+          "type": "string"
+        }
+      }
+    },
+    "TemplateString": {
+      "type": "string",
+      "minLength": 9,
+      "pattern": "^template:.*$"
+    },
+    "TranslatableString": {
+      "description": "A translatable string\n\nIn yaml it should be specified as either - a simple string: \"this is a string\" - a file string: file:<path> - A map that maps locales on formattables strings and parts like \"{func}\" (between {}) to values.",
+      "anyOf": [
+        {
+          "description": "Maps locales on formattable strings and parts like \"{func}\" (between {}) to values",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Value_TranslatableString"
+          }
+        },
+        {
+          "description": "A file reference or string",
+          "allOf": [
+            {
+              "$ref": "#/definitions/FileString"
+            }
+          ]
+        }
+      ]
+    },
+    "ValidValueType_for_AnswerStyle": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/AnswerStyle"
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_AnswerStyle": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AnswerStyle"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_CustomConstant": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomConstant"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_CustomPartTypeDefinitionPath": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomPartTypeDefinitionPath"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_MatchAnswersItemMarks": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MatchAnswersItemMarks"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_QuestionPart": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuestionPart"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TranslatableString"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Tuple_of_String_and_ExamFunctionType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/definitions/ExamFunctionType"
+              }
+            ],
+            "maxItems": 2,
+            "minItems": 2
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_MatchAnswersItem": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_MatchAnswersItem"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_QuestionPart": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_QuestionPart"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_ResourcePath": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_ResourcePath"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_TranslatableString"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_size_2_of_double": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          },
+          "maxItems": 2,
+          "minItems": 2
+        }
+      ]
+    },
+    "ValidValueType_for_Boolean": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    },
+    "ValidValueType_for_BuiltinConstants": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/BuiltinConstants"
+        }
+      ]
+    },
+    "ValidValueType_for_CheckingType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/CheckingType"
+        }
+      ]
+    },
+    "ValidValueType_for_ChooseOneDisplay": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/ChooseOneDisplay"
+        }
+      ]
+    },
+    "ValidValueType_for_ExamFunctionLanguage": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/ExamFunctionLanguage"
+        }
+      ]
+    },
+    "ValidValueType_for_ExamFunctionType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/ExamFunctionType"
+        }
+      ]
+    },
+    "ValidValueType_for_Extensions": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Extensions"
+        }
+      ]
+    },
+    "ValidValueType_for_FileString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/FileString"
+        }
+      ]
+    },
+    "ValidValueType_for_Function": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Function"
+        }
+      ]
+    },
+    "ValidValueType_for_JMEAnswerSimplification": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/JMEAnswerSimplification"
+        }
+      ]
+    },
+    "ValidValueType_for_JMERestriction": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/JMERestriction"
+        }
+      ]
+    },
+    "ValidValueType_for_Map_of_CustomPartInputTypeValue": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CustomPartInputTypeValue"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Map_of_Value_Function": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Value_Function"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Map_of_Value_VariableRepresentation": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Value_VariableRepresentation"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_MatchAnswerWithItemsDisplay": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/MatchAnswerWithItemsDisplay"
+        }
+      ]
+    },
+    "ValidValueType_for_MatchAnswersItem": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/MatchAnswersItem"
+        }
+      ]
+    },
+    "ValidValueType_for_MatchAnswersWithChoicesLayout": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/MatchAnswersWithChoicesLayout"
+        }
+      ]
+    },
+    "ValidValueType_for_MultipleChoiceAnswerData": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/MultipleChoiceAnswerData"
+        }
+      ]
+    },
+    "ValidValueType_for_MultipleChoiceMatchAnswerData": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/MultipleChoiceMatchAnswerData"
+        }
+      ]
+    },
+    "ValidValueType_for_MultipleChoiceWarningType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/MultipleChoiceWarningType"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_Array_of_JMEValueGenerator": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_Array_of_JMEValueGenerator"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_Array_of_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_Array_of_TranslatableString"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_JMELengthRestriction": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_JMELengthRestriction"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_JMEPatternRestriction": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_JMEPatternRestriction"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_JMEStringRestriction": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_JMEStringRestriction"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_VariableValued_for_uint": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_VariableValued_for_uint"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_uint": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_uint"
+        }
+      ]
+    },
+    "ValidValueType_for_NumberEntryAnswer": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/NumberEntryAnswer"
+        }
+      ]
+    },
+    "ValidValueType_for_PatternMatchMode": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/PatternMatchMode"
+        }
+      ]
+    },
+    "ValidValueType_for_Preamble": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Preamble"
+        }
+      ]
+    },
+    "ValidValueType_for_Primitive": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Primitive"
+        }
+      ]
+    },
+    "ValidValueType_for_QuestionNavigation": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/QuestionNavigation"
+        }
+      ]
+    },
+    "ValidValueType_for_QuestionPart": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/QuestionPart"
+        }
+      ]
+    },
+    "ValidValueType_for_QuestionPartMatrixDimension": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/QuestionPartMatrixDimension"
+        }
+      ]
+    },
+    "ValidValueType_for_QuestionPartMatrixDimensions": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/QuestionPartMatrixDimensions"
+        }
+      ]
+    },
+    "ValidValueType_for_ResourcePath": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/ResourcePath"
+        }
+      ]
+    },
+    "ValidValueType_for_String": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "ValidValueType_for_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/TranslatableString"
+        }
+      ]
+    },
+    "ValidValueType_for_VariableReplacementStrategy": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariableReplacementStrategy"
+        }
+      ]
+    },
+    "ValidValueType_for_VariableRepresentation": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariableRepresentation"
+        }
+      ]
+    },
+    "ValidValueType_for_VariableTemplateType": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariableTemplateType"
+        }
+      ]
+    },
+    "ValidValueType_for_VariableValued_for_Array_of_Array_of_Primitive": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariableValued_for_Array_of_Array_of_Primitive"
+        }
+      ]
+    },
+    "ValidValueType_for_VariableValued_for_Array_of_Primitive": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariableValued_for_Array_of_Primitive"
+        }
+      ]
+    },
+    "ValidValueType_for_VariableValued_for_Array_of_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariableValued_for_Array_of_TranslatableString"
+        }
+      ]
+    },
+    "ValidValueType_for_VariableValued_for_uint": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariableValued_for_uint"
+        }
+      ]
+    },
+    "ValidValueType_for_VariablesTest": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/VariablesTest"
+        }
+      ]
+    },
+    "ValidValueType_for_double": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "number",
+          "format": "double"
+        }
+      ]
+    },
+    "ValidValueType_for_uint": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        }
+      ]
+    },
+    "ValueType_AnswerStyle": {
+      "$ref": "#/definitions/ValidValueType_for_AnswerStyle"
+    },
+    "ValueType_Array_of_AnswerStyle": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_AnswerStyle"
+    },
+    "ValueType_Array_of_CustomConstant": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_CustomConstant"
+    },
+    "ValueType_Array_of_CustomPartTypeDefinitionPath": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_CustomPartTypeDefinitionPath"
+    },
+    "ValueType_Array_of_MatchAnswersItemMarks": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_MatchAnswersItemMarks"
+    },
+    "ValueType_Array_of_QuestionPart": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_QuestionPart"
+    },
+    "ValueType_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_TranslatableString"
+    },
+    "ValueType_Array_of_Tuple_of_String_and_ExamFunctionType": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Tuple_of_String_and_ExamFunctionType"
+    },
+    "ValueType_Array_of_Value_MatchAnswersItem": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_MatchAnswersItem"
+    },
+    "ValueType_Array_of_Value_QuestionPart": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_QuestionPart"
+    },
+    "ValueType_Array_of_Value_ResourcePath": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_ResourcePath"
+    },
+    "ValueType_Array_of_Value_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_TranslatableString"
+    },
+    "ValueType_Array_size_2_of_double": {
+      "$ref": "#/definitions/ValidValueType_for_Array_size_2_of_double"
+    },
+    "ValueType_Boolean": {
+      "$ref": "#/definitions/ValidValueType_for_Boolean"
+    },
+    "ValueType_BuiltinConstants": {
+      "$ref": "#/definitions/ValidValueType_for_BuiltinConstants"
+    },
+    "ValueType_CheckingType": {
+      "$ref": "#/definitions/ValidValueType_for_CheckingType"
+    },
+    "ValueType_ChooseOneDisplay": {
+      "$ref": "#/definitions/ValidValueType_for_ChooseOneDisplay"
+    },
+    "ValueType_ExamFunctionLanguage": {
+      "$ref": "#/definitions/ValidValueType_for_ExamFunctionLanguage"
+    },
+    "ValueType_ExamFunctionType": {
+      "$ref": "#/definitions/ValidValueType_for_ExamFunctionType"
+    },
+    "ValueType_Extensions": {
+      "$ref": "#/definitions/ValidValueType_for_Extensions"
+    },
+    "ValueType_FileString": {
+      "$ref": "#/definitions/ValidValueType_for_FileString"
+    },
+    "ValueType_Function": {
+      "$ref": "#/definitions/ValidValueType_for_Function"
+    },
+    "ValueType_JMEAnswerSimplification": {
+      "$ref": "#/definitions/ValidValueType_for_JMEAnswerSimplification"
+    },
+    "ValueType_JMERestriction": {
+      "$ref": "#/definitions/ValidValueType_for_JMERestriction"
+    },
+    "ValueType_Map_of_CustomPartInputTypeValue": {
+      "$ref": "#/definitions/ValidValueType_for_Map_of_CustomPartInputTypeValue"
+    },
+    "ValueType_Map_of_Value_Function": {
+      "$ref": "#/definitions/ValidValueType_for_Map_of_Value_Function"
+    },
+    "ValueType_Map_of_Value_VariableRepresentation": {
+      "$ref": "#/definitions/ValidValueType_for_Map_of_Value_VariableRepresentation"
+    },
+    "ValueType_MatchAnswerWithItemsDisplay": {
+      "$ref": "#/definitions/ValidValueType_for_MatchAnswerWithItemsDisplay"
+    },
+    "ValueType_MatchAnswersItem": {
+      "$ref": "#/definitions/ValidValueType_for_MatchAnswersItem"
+    },
+    "ValueType_MatchAnswersWithChoicesLayout": {
+      "$ref": "#/definitions/ValidValueType_for_MatchAnswersWithChoicesLayout"
+    },
+    "ValueType_MultipleChoiceAnswerData": {
+      "$ref": "#/definitions/ValidValueType_for_MultipleChoiceAnswerData"
+    },
+    "ValueType_MultipleChoiceMatchAnswerData": {
+      "$ref": "#/definitions/ValidValueType_for_MultipleChoiceMatchAnswerData"
+    },
+    "ValueType_MultipleChoiceWarningType": {
+      "$ref": "#/definitions/ValidValueType_for_MultipleChoiceWarningType"
+    },
+    "ValueType_Noneable_Array_of_JMEValueGenerator": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_Array_of_JMEValueGenerator"
+    },
+    "ValueType_Noneable_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_Array_of_TranslatableString"
+    },
+    "ValueType_Noneable_JMELengthRestriction": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_JMELengthRestriction"
+    },
+    "ValueType_Noneable_JMEPatternRestriction": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_JMEPatternRestriction"
+    },
+    "ValueType_Noneable_JMEStringRestriction": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_JMEStringRestriction"
+    },
+    "ValueType_Noneable_VariableValued_for_uint": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_VariableValued_for_uint"
+    },
+    "ValueType_Noneable_uint": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_uint"
+    },
+    "ValueType_NumberEntryAnswer": {
+      "$ref": "#/definitions/ValidValueType_for_NumberEntryAnswer"
+    },
+    "ValueType_PatternMatchMode": {
+      "$ref": "#/definitions/ValidValueType_for_PatternMatchMode"
+    },
+    "ValueType_Preamble": {
+      "$ref": "#/definitions/ValidValueType_for_Preamble"
+    },
+    "ValueType_Primitive": {
+      "$ref": "#/definitions/ValidValueType_for_Primitive"
+    },
+    "ValueType_QuestionNavigation": {
+      "$ref": "#/definitions/ValidValueType_for_QuestionNavigation"
+    },
+    "ValueType_QuestionPart": {
+      "$ref": "#/definitions/ValidValueType_for_QuestionPart"
+    },
+    "ValueType_QuestionPartMatrixDimension": {
+      "$ref": "#/definitions/ValidValueType_for_QuestionPartMatrixDimension"
+    },
+    "ValueType_QuestionPartMatrixDimensions": {
+      "$ref": "#/definitions/ValidValueType_for_QuestionPartMatrixDimensions"
+    },
+    "ValueType_ResourcePath": {
+      "$ref": "#/definitions/ValidValueType_for_ResourcePath"
+    },
+    "ValueType_String": {
+      "$ref": "#/definitions/ValidValueType_for_String"
+    },
+    "ValueType_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_TranslatableString"
+    },
+    "ValueType_VariableReplacementStrategy": {
+      "$ref": "#/definitions/ValidValueType_for_VariableReplacementStrategy"
+    },
+    "ValueType_VariableRepresentation": {
+      "$ref": "#/definitions/ValidValueType_for_VariableRepresentation"
+    },
+    "ValueType_VariableTemplateType": {
+      "$ref": "#/definitions/ValidValueType_for_VariableTemplateType"
+    },
+    "ValueType_VariableValued_for_Array_of_Array_of_Primitive": {
+      "$ref": "#/definitions/ValidValueType_for_VariableValued_for_Array_of_Array_of_Primitive"
+    },
+    "ValueType_VariableValued_for_Array_of_Primitive": {
+      "$ref": "#/definitions/ValidValueType_for_VariableValued_for_Array_of_Primitive"
+    },
+    "ValueType_VariableValued_for_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_VariableValued_for_Array_of_TranslatableString"
+    },
+    "ValueType_VariableValued_for_uint": {
+      "$ref": "#/definitions/ValidValueType_for_VariableValued_for_uint"
+    },
+    "ValueType_VariablesTest": {
+      "$ref": "#/definitions/ValidValueType_for_VariablesTest"
+    },
+    "ValueType_double": {
+      "$ref": "#/definitions/ValidValueType_for_double"
+    },
+    "ValueType_uint": {
+      "$ref": "#/definitions/ValidValueType_for_uint"
+    },
+    "Value_AnswerStyle": {
+      "$ref": "#/definitions/ValueType_AnswerStyle"
+    },
+    "Value_Array_of_AnswerStyle": {
+      "$ref": "#/definitions/ValueType_Array_of_AnswerStyle"
+    },
+    "Value_Array_of_CustomConstant": {
+      "$ref": "#/definitions/ValueType_Array_of_CustomConstant"
+    },
+    "Value_Array_of_CustomPartTypeDefinitionPath": {
+      "$ref": "#/definitions/ValueType_Array_of_CustomPartTypeDefinitionPath"
+    },
+    "Value_Array_of_MatchAnswersItemMarks": {
+      "$ref": "#/definitions/ValueType_Array_of_MatchAnswersItemMarks"
+    },
+    "Value_Array_of_QuestionPart": {
+      "$ref": "#/definitions/ValueType_Array_of_QuestionPart"
+    },
+    "Value_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValueType_Array_of_TranslatableString"
+    },
+    "Value_Array_of_Tuple_of_String_and_ExamFunctionType": {
+      "$ref": "#/definitions/ValueType_Array_of_Tuple_of_String_and_ExamFunctionType"
+    },
+    "Value_Array_of_Value_MatchAnswersItem": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_MatchAnswersItem"
+    },
+    "Value_Array_of_Value_QuestionPart": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_QuestionPart"
+    },
+    "Value_Array_of_Value_ResourcePath": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_ResourcePath"
+    },
+    "Value_Array_of_Value_TranslatableString": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_TranslatableString"
+    },
+    "Value_Array_size_2_of_double": {
+      "$ref": "#/definitions/ValueType_Array_size_2_of_double"
+    },
+    "Value_Boolean": {
+      "$ref": "#/definitions/ValueType_Boolean"
+    },
+    "Value_BuiltinConstants": {
+      "$ref": "#/definitions/ValueType_BuiltinConstants"
+    },
+    "Value_CheckingType": {
+      "$ref": "#/definitions/ValueType_CheckingType"
+    },
+    "Value_ExamFunctionLanguage": {
+      "$ref": "#/definitions/ValueType_ExamFunctionLanguage"
+    },
+    "Value_ExamFunctionType": {
+      "$ref": "#/definitions/ValueType_ExamFunctionType"
+    },
+    "Value_Extensions": {
+      "$ref": "#/definitions/ValueType_Extensions"
+    },
+    "Value_FileString": {
+      "$ref": "#/definitions/ValueType_FileString"
+    },
+    "Value_Function": {
+      "$ref": "#/definitions/ValueType_Function"
+    },
+    "Value_JMEAnswerSimplification": {
+      "$ref": "#/definitions/ValueType_JMEAnswerSimplification"
+    },
+    "Value_Map_of_CustomPartInputTypeValue": {
+      "$ref": "#/definitions/ValueType_Map_of_CustomPartInputTypeValue"
+    },
+    "Value_Map_of_Value_Function": {
+      "$ref": "#/definitions/ValueType_Map_of_Value_Function"
+    },
+    "Value_Map_of_Value_VariableRepresentation": {
+      "$ref": "#/definitions/ValueType_Map_of_Value_VariableRepresentation"
+    },
+    "Value_MatchAnswersItem": {
+      "$ref": "#/definitions/ValueType_MatchAnswersItem"
+    },
+    "Value_MatchAnswersWithChoicesLayout": {
+      "$ref": "#/definitions/ValueType_MatchAnswersWithChoicesLayout"
+    },
+    "Value_MultipleChoiceAnswerData": {
+      "$ref": "#/definitions/ValueType_MultipleChoiceAnswerData"
+    },
+    "Value_MultipleChoiceMatchAnswerData": {
+      "$ref": "#/definitions/ValueType_MultipleChoiceMatchAnswerData"
+    },
+    "Value_MultipleChoiceWarningType": {
+      "$ref": "#/definitions/ValueType_MultipleChoiceWarningType"
+    },
+    "Value_Noneable_Array_of_JMEValueGenerator": {
+      "$ref": "#/definitions/ValueType_Noneable_Array_of_JMEValueGenerator"
+    },
+    "Value_Noneable_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValueType_Noneable_Array_of_TranslatableString"
+    },
+    "Value_Noneable_JMELengthRestriction": {
+      "$ref": "#/definitions/ValueType_Noneable_JMELengthRestriction"
+    },
+    "Value_Noneable_JMEPatternRestriction": {
+      "$ref": "#/definitions/ValueType_Noneable_JMEPatternRestriction"
+    },
+    "Value_Noneable_JMEStringRestriction": {
+      "$ref": "#/definitions/ValueType_Noneable_JMEStringRestriction"
+    },
+    "Value_Noneable_VariableValued_for_uint": {
+      "$ref": "#/definitions/ValueType_Noneable_VariableValued_for_uint"
+    },
+    "Value_Noneable_uint": {
+      "$ref": "#/definitions/ValueType_Noneable_uint"
+    },
+    "Value_NumberEntryAnswer": {
+      "$ref": "#/definitions/ValueType_NumberEntryAnswer"
+    },
+    "Value_PatternMatchMode": {
+      "$ref": "#/definitions/ValueType_PatternMatchMode"
+    },
+    "Value_Preamble": {
+      "$ref": "#/definitions/ValueType_Preamble"
+    },
+    "Value_Primitive": {
+      "$ref": "#/definitions/ValueType_Primitive"
+    },
+    "Value_QuestionNavigation": {
+      "$ref": "#/definitions/ValueType_QuestionNavigation"
+    },
+    "Value_QuestionPart": {
+      "$ref": "#/definitions/ValueType_QuestionPart"
+    },
+    "Value_QuestionPartMatrixDimension": {
+      "$ref": "#/definitions/ValueType_QuestionPartMatrixDimension"
+    },
+    "Value_QuestionPartMatrixDimensions": {
+      "$ref": "#/definitions/ValueType_QuestionPartMatrixDimensions"
+    },
+    "Value_ResourcePath": {
+      "$ref": "#/definitions/ValueType_ResourcePath"
+    },
+    "Value_String": {
+      "$ref": "#/definitions/ValueType_String"
+    },
+    "Value_TranslatableString": {
+      "$ref": "#/definitions/ValueType_TranslatableString"
+    },
+    "Value_VariableReplacementStrategy": {
+      "$ref": "#/definitions/ValueType_VariableReplacementStrategy"
+    },
+    "Value_VariableRepresentation": {
+      "$ref": "#/definitions/ValueType_VariableRepresentation"
+    },
+    "Value_VariableTemplateType": {
+      "$ref": "#/definitions/ValueType_VariableTemplateType"
+    },
+    "Value_VariableValued_for_Array_of_Array_of_Primitive": {
+      "$ref": "#/definitions/ValueType_VariableValued_for_Array_of_Array_of_Primitive"
+    },
+    "Value_VariableValued_for_Array_of_Primitive": {
+      "$ref": "#/definitions/ValueType_VariableValued_for_Array_of_Primitive"
+    },
+    "Value_VariableValued_for_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValueType_VariableValued_for_Array_of_TranslatableString"
+    },
+    "Value_VariableValued_for_uint": {
+      "$ref": "#/definitions/ValueType_VariableValued_for_uint"
+    },
+    "Value_VariablesTest": {
+      "$ref": "#/definitions/ValueType_VariablesTest"
+    },
+    "Value_double": {
+      "$ref": "#/definitions/ValueType_double"
+    },
+    "Value_uint": {
+      "$ref": "#/definitions/ValueType_uint"
+    },
+    "Variable": {
+      "type": "object",
+      "required": ["definition", "description", "group", "template_type"],
+      "properties": {
+        "definition": {
+          "$ref": "#/definitions/Value_FileString"
+        },
+        "description": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "group": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "template_type": {
+          "$ref": "#/definitions/Value_VariableTemplateType"
+        }
+      }
+    },
+    "VariableReplacementStrategy": {
+      "type": "string",
+      "enum": ["original_first"]
+    },
+    "VariableRepresentation": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_String"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_double"
+          }
+        },
+        {
+          "$ref": "#/definitions/Variable"
+        },
+        {
+          "type": "number",
+          "format": "double"
+        },
+        {
+          "$ref": "#/definitions/VariableStringRepresentation"
+        }
+      ]
+    },
+    "VariableStringRepresentation": {
+      "type": "string"
+    },
+    "VariableTemplateType": {
+      "description": "The different template_types for a variable",
+      "type": "string",
+      "enum": [
+        "anything",
+        "list_of_numbers",
+        "list_of_strings",
+        "long_string",
+        "number",
+        "random_range",
+        "range",
+        "string"
+      ]
+    },
+    "VariableValued_for_Array_of_Array_of_Primitive": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Primitive"
+            }
+          }
+        }
+      ]
+    },
+    "VariableValued_for_Array_of_Primitive": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Primitive"
+          }
+        }
+      ]
+    },
+    "VariableValued_for_Array_of_TranslatableString": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TranslatableString"
+          }
+        }
+      ]
+    },
+    "VariableValued_for_uint": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        }
+      ]
+    },
+    "VariablesTest": {
+      "type": "object",
+      "required": ["condition", "max_runs"],
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "max_runs": {
+          "$ref": "#/definitions/Value_uint"
+        }
+      }
+    },
+    "YamlValue": true
+  }
+}

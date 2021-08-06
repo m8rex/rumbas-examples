@@ -1,0 +1,1529 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExamFileType",
+  "type": "object",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "template"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "required": [
+          "template"
+        ],
+        "properties": {
+          "template": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "$ref": "#/definitions/YamlValue"
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "normal"
+          }
+        }
+      },
+      "then": {
+        "description": "An Exam",
+        "type": "object",
+        "required": [
+          "feedback",
+          "locales",
+          "name",
+          "navigation",
+          "numbas_settings",
+          "question_groups",
+          "timing"
+        ],
+        "properties": {
+          "feedback": {
+            "description": "The feedback settings for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Feedback"
+              }
+            ]
+          },
+          "locales": {
+            "description": "All locales for which the exam should be generated",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Array_of_Value_Locale"
+              }
+            ]
+          },
+          "name": {
+            "description": "The name of the exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_TranslatableString"
+              }
+            ]
+          },
+          "navigation": {
+            "description": "The navigation settings for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_NormalNavigation"
+              }
+            ]
+          },
+          "numbas_settings": {
+            "description": "The settings to set for numbas",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_NumbasSettings"
+              }
+            ]
+          },
+          "question_groups": {
+            "description": "The questions groups for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Array_of_Value_QuestionGroup"
+              }
+            ]
+          },
+          "timing": {
+            "description": "The timing settings for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Timing"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "diagnostic"
+          }
+        }
+      },
+      "then": {
+        "description": "A Diagnostic Exam",
+        "type": "object",
+        "required": [
+          "diagnostic",
+          "feedback",
+          "locales",
+          "name",
+          "navigation",
+          "numbas_settings",
+          "question_groups",
+          "timing"
+        ],
+        "properties": {
+          "diagnostic": {
+            "description": "The diagnostic data",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Diagnostic"
+              }
+            ]
+          },
+          "feedback": {
+            "description": "The feedback settings for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Feedback"
+              }
+            ]
+          },
+          "locales": {
+            "description": "All locales for which the exam should be generated",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Array_of_Value_Locale"
+              }
+            ]
+          },
+          "name": {
+            "description": "The name of the exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_TranslatableString"
+              }
+            ]
+          },
+          "navigation": {
+            "description": "The navigation settings for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_DiagnosticNavigation"
+              }
+            ]
+          },
+          "numbas_settings": {
+            "description": "The settings to set for numbas",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_NumbasSettings"
+              }
+            ]
+          },
+          "question_groups": {
+            "description": "The questions groups for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Array_of_Value_QuestionGroup"
+              }
+            ]
+          },
+          "timing": {
+            "description": "The timing settings for this exam",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Value_Timing"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "template",
+        "normal",
+        "diagnostic"
+      ]
+    }
+  },
+  "definitions": {
+    "Diagnostic": {
+      "description": "Information needed for a diagnostic test",
+      "type": "object",
+      "required": [
+        "objectives",
+        "script",
+        "topics"
+      ],
+      "properties": {
+        "objectives": {
+          "description": "The learning objectives,",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Array_of_LearningObjective"
+            }
+          ]
+        },
+        "script": {
+          "description": "The script to use",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_DiagnosticScript"
+            }
+          ]
+        },
+        "topics": {
+          "description": "The learning topics",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Array_of_LearningTopic"
+            }
+          ]
+        }
+      }
+    },
+    "DiagnosticNavigation": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValueType_NavigationSharedData"
+        }
+      ],
+      "required": [
+        "on_leave"
+      ],
+      "properties": {
+        "on_leave": {
+          "description": "Action to execute when a student changes question or tries to end the exam.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_LeaveAction"
+            }
+          ]
+        }
+      }
+    },
+    "DiagnosticScript": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "mastery",
+            "diagnosys"
+          ]
+        },
+        {
+          "type": "object",
+          "required": [
+            "custom"
+          ],
+          "properties": {
+            "custom": {
+              "$ref": "#/definitions/TranslatableString"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Feedback": {
+      "type": "object",
+      "required": [
+        "advice",
+        "allow_reveal_answer",
+        "feedback_messages",
+        "intro",
+        "percentage_needed_to_pass",
+        "review",
+        "show_answer_state",
+        "show_current_marks",
+        "show_maximum_marks",
+        "show_name_of_student"
+      ],
+      "properties": {
+        "advice": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        },
+        "allow_reveal_answer": {
+          "description": "Whether the 'reveal answer' button is present",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "feedback_messages": {
+          "$ref": "#/definitions/Value_Array_of_Value_FeedbackMessage"
+        },
+        "intro": {
+          "$ref": "#/definitions/Value_TranslatableString"
+        },
+        "percentage_needed_to_pass": {
+          "$ref": "#/definitions/Value_Noneable_double"
+        },
+        "review": {
+          "$ref": "#/definitions/Value_Review"
+        },
+        "show_answer_state": {
+          "description": "Whether answer feedback is shown (right or wrong etc)",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_current_marks": {
+          "description": "Whether current marks are shown during exam or not (show_actual_mark in numbas)",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_maximum_marks": {
+          "description": "Whether the maximal mark for a question (or the total exam) is shown (show_total_mark of numbas)",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_name_of_student": {
+          "$ref": "#/definitions/Value_Boolean"
+        }
+      }
+    },
+    "FeedbackMessage": {
+      "type": "object",
+      "required": [
+        "message",
+        "threshold"
+      ],
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "threshold": {
+          "type": "string"
+        }
+      }
+    },
+    "FileString": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 5,
+          "pattern": "^file:.*$"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "LearningObjective": {
+      "description": "A Learning Objective",
+      "type": "object",
+      "required": [
+        "description",
+        "name"
+      ],
+      "properties": {
+        "description": {
+          "description": "A description",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_TranslatableString"
+            }
+          ]
+        },
+        "name": {
+          "description": "The name",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_TranslatableString"
+            }
+          ]
+        }
+      }
+    },
+    "LearningTopic": {
+      "description": "A learning Topic",
+      "type": "object",
+      "required": [
+        "depends_on",
+        "description",
+        "name",
+        "objectives"
+      ],
+      "properties": {
+        "depends_on": {
+          "description": "List of names of topic on which this topic depends",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Array_of_TranslatableString"
+            }
+          ]
+        },
+        "description": {
+          "description": "A description",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_TranslatableString"
+            }
+          ]
+        },
+        "name": {
+          "description": "The name",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_TranslatableString"
+            }
+          ]
+        },
+        "objectives": {
+          "description": "List of names of objectives",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Array_of_TranslatableString"
+            }
+          ]
+        }
+      }
+    },
+    "LeaveAction": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "none"
+              }
+            }
+          },
+          "then": true
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "warn_if_not_attempted"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "message"
+            ],
+            "properties": {
+              "message": {
+                "$ref": "#/definitions/TranslatableString"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "prevent_if_not_attempted"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "message"
+            ],
+            "properties": {
+              "message": {
+                "$ref": "#/definitions/TranslatableString"
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "action"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "none",
+            "warn_if_not_attempted",
+            "prevent_if_not_attempted"
+          ]
+        }
+      }
+    },
+    "Locale": {
+      "type": "object",
+      "required": [
+        "name",
+        "numbas_locale"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/Value_String"
+        },
+        "numbas_locale": {
+          "description": "The locale to use in the Numbas interface",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_SupportedLocale"
+            }
+          ]
+        }
+      }
+    },
+    "NavigationSharedData": {
+      "type": "object",
+      "required": [
+        "allow_printing",
+        "can_regenerate",
+        "confirm_when_leaving",
+        "show_names_of_question_groups",
+        "show_steps",
+        "show_title_page",
+        "start_password"
+      ],
+      "properties": {
+        "allow_printing": {
+          "description": "Whether the student is allowed to print the exam",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "can_regenerate": {
+          "description": "Whether the student can regenerate questions Old name was `allow_regenerate`",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "confirm_when_leaving": {
+          "description": "Whether the student will be asked to confirm when leaving the exam.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_names_of_question_groups": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "show_steps": {
+          "description": "If false,  then part steps will not be offered to the student, regardless of whether any have been defined in the exam’s questions Old name was `allow_steps`",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_title_page": {
+          "description": "Whether the title page should be shown. Old name was `show_frontpage`",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "start_password": {
+          "description": "Password to begin the exam",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_FileString"
+            }
+          ]
+        }
+      }
+    },
+    "Noneable_double": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        },
+        {
+          "type": "number",
+          "format": "double"
+        }
+      ]
+    },
+    "Noneable_uint": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        },
+        {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        }
+      ]
+    },
+    "NormalNavigation": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "sequential"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/definitions/ValueType_NavigationSharedData"
+              }
+            ],
+            "required": [
+              "browsing_enabled",
+              "can_move_to_previous",
+              "on_leave",
+              "show_results_page"
+            ],
+            "properties": {
+              "browsing_enabled": {
+                "description": "Whether the student can jump to any question.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Boolean"
+                  }
+                ]
+              },
+              "can_move_to_previous": {
+                "description": "Whether the student can move back to previous question Old name was `reverse`",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_Boolean"
+                  }
+                ]
+              },
+              "on_leave": {
+                "description": "Action to execute when a student changes question or tries to end the exam.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_LeaveAction"
+                  }
+                ]
+              },
+              "show_results_page": {
+                "description": "When the results page should be shown",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Value_ShowResultsPage"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "menu"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "#/definitions/ValueType_NavigationSharedData"
+              }
+            ]
+          }
+        }
+      ],
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "sequential",
+            "menu"
+          ]
+        }
+      }
+    },
+    "NumbasSettings": {
+      "type": "object",
+      "required": [
+        "locale",
+        "theme"
+      ],
+      "properties": {
+        "locale": {
+          "$ref": "#/definitions/Value_SupportedLocale"
+        },
+        "theme": {
+          "$ref": "#/definitions/Value_String"
+        }
+      }
+    },
+    "PickingStrategy": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "picking_strategy": {
+                "const": "all_ordered"
+              }
+            }
+          },
+          "then": true
+        },
+        {
+          "if": {
+            "properties": {
+              "picking_strategy": {
+                "const": "all_shuffled"
+              }
+            }
+          },
+          "then": true
+        },
+        {
+          "if": {
+            "properties": {
+              "picking_strategy": {
+                "const": "random_subset"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "pick_questions"
+            ],
+            "properties": {
+              "pick_questions": {
+                "type": "integer",
+                "format": "uint",
+                "minimum": 0.0
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "picking_strategy"
+      ],
+      "properties": {
+        "picking_strategy": {
+          "type": "string",
+          "enum": [
+            "all_ordered",
+            "all_shuffled",
+            "random_subset"
+          ]
+        }
+      }
+    },
+    "QuestionGroup": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ValueType_PickingStrategy"
+        }
+      ],
+      "required": [
+        "name",
+        "questions"
+      ],
+      "properties": {
+        "name": {
+          "description": "The name",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_TranslatableString"
+            }
+          ]
+        },
+        "questions": {
+          "description": "The questions",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Array_of_Value_QuestionPath"
+            }
+          ]
+        }
+      }
+    },
+    "QuestionPath": {
+      "type": "string"
+    },
+    "Review": {
+      "type": "object",
+      "required": [
+        "show_advice",
+        "show_expected_answer",
+        "show_feedback",
+        "show_score"
+      ],
+      "properties": {
+        "show_advice": {
+          "description": "Show advice while reviewing",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_expected_answer": {
+          "description": "Show expected answer while reviewing",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_feedback": {
+          "description": "Show feedback while reviewing",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        },
+        "show_score": {
+          "description": "Whether to show score in result overview page",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_Boolean"
+            }
+          ]
+        }
+      }
+    },
+    "ShowResultsPage": {
+      "type": "string",
+      "enum": [
+        "on_completion",
+        "never"
+      ]
+    },
+    "SupportedLocale": {
+      "description": "Locales supported by Numbas",
+      "type": "string",
+      "enum": [
+        "ar-SA",
+        "de-DE",
+        "en-GB",
+        "es-ES",
+        "fr-FR",
+        "he-IL",
+        "it-IT",
+        "ja-JP",
+        "ko-KR",
+        "nb-NO",
+        "nl-NL",
+        "pl-PL",
+        "pt-BR",
+        "sq-AL",
+        "sv-SE",
+        "tr-TR",
+        "vi-VN",
+        "zh-CN"
+      ]
+    },
+    "TemplateString": {
+      "type": "string",
+      "minLength": 9,
+      "pattern": "^template:.*$"
+    },
+    "TimeoutAction": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "none"
+              }
+            }
+          },
+          "then": true
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "warn"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "message"
+            ],
+            "properties": {
+              "message": {
+                "$ref": "#/definitions/TranslatableString"
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "action"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "none",
+            "warn"
+          ]
+        }
+      }
+    },
+    "Timing": {
+      "type": "object",
+      "required": [
+        "allow_pause",
+        "duration_in_seconds",
+        "on_timeout",
+        "timed_warning"
+      ],
+      "properties": {
+        "allow_pause": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "duration_in_seconds": {
+          "$ref": "#/definitions/Value_Noneable_uint"
+        },
+        "on_timeout": {
+          "description": "Action to do on timeout",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_TimeoutAction"
+            }
+          ]
+        },
+        "timed_warning": {
+          "description": "Action to do five minutes before timeout",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Value_TimeoutAction"
+            }
+          ]
+        }
+      }
+    },
+    "TranslatableString": {
+      "description": "A translatable string\n\nIn yaml it should be specified as either - a simple string: \"this is a string\" - a file string: file:<path> - A map that maps locales on formattables strings and parts like \"{func}\" (between {}) to values.",
+      "anyOf": [
+        {
+          "description": "Maps locales on formattable strings and parts like \"{func}\" (between {}) to values",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Value_TranslatableString"
+          }
+        },
+        {
+          "description": "A file reference or string",
+          "allOf": [
+            {
+              "$ref": "#/definitions/FileString"
+            }
+          ]
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_LearningObjective": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LearningObjective"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_LearningTopic": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LearningTopic"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TranslatableString"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_FeedbackMessage": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_FeedbackMessage"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_Locale": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_Locale"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_QuestionGroup": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_QuestionGroup"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Array_of_Value_QuestionPath": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value_QuestionPath"
+          }
+        }
+      ]
+    },
+    "ValidValueType_for_Boolean": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    },
+    "ValidValueType_for_Diagnostic": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Diagnostic"
+        }
+      ]
+    },
+    "ValidValueType_for_DiagnosticNavigation": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/DiagnosticNavigation"
+        }
+      ]
+    },
+    "ValidValueType_for_DiagnosticScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/DiagnosticScript"
+        }
+      ]
+    },
+    "ValidValueType_for_Feedback": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Feedback"
+        }
+      ]
+    },
+    "ValidValueType_for_FeedbackMessage": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/FeedbackMessage"
+        }
+      ]
+    },
+    "ValidValueType_for_FileString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/FileString"
+        }
+      ]
+    },
+    "ValidValueType_for_LeaveAction": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/LeaveAction"
+        }
+      ]
+    },
+    "ValidValueType_for_Locale": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Locale"
+        }
+      ]
+    },
+    "ValidValueType_for_NavigationSharedData": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/NavigationSharedData"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_double": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_double"
+        }
+      ]
+    },
+    "ValidValueType_for_Noneable_uint": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Noneable_uint"
+        }
+      ]
+    },
+    "ValidValueType_for_NormalNavigation": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/NormalNavigation"
+        }
+      ]
+    },
+    "ValidValueType_for_NumbasSettings": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/NumbasSettings"
+        }
+      ]
+    },
+    "ValidValueType_for_PickingStrategy": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/PickingStrategy"
+        }
+      ]
+    },
+    "ValidValueType_for_QuestionGroup": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/QuestionGroup"
+        }
+      ]
+    },
+    "ValidValueType_for_QuestionPath": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/QuestionPath"
+        }
+      ]
+    },
+    "ValidValueType_for_Review": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Review"
+        }
+      ]
+    },
+    "ValidValueType_for_ShowResultsPage": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/ShowResultsPage"
+        }
+      ]
+    },
+    "ValidValueType_for_String": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "ValidValueType_for_SupportedLocale": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/SupportedLocale"
+        }
+      ]
+    },
+    "ValidValueType_for_TimeoutAction": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/TimeoutAction"
+        }
+      ]
+    },
+    "ValidValueType_for_Timing": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/Timing"
+        }
+      ]
+    },
+    "ValidValueType_for_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/TranslatableString"
+        }
+      ]
+    },
+    "ValueType_Array_of_LearningObjective": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_LearningObjective"
+    },
+    "ValueType_Array_of_LearningTopic": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_LearningTopic"
+    },
+    "ValueType_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_TranslatableString"
+    },
+    "ValueType_Array_of_Value_FeedbackMessage": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_FeedbackMessage"
+    },
+    "ValueType_Array_of_Value_Locale": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_Locale"
+    },
+    "ValueType_Array_of_Value_QuestionGroup": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_QuestionGroup"
+    },
+    "ValueType_Array_of_Value_QuestionPath": {
+      "$ref": "#/definitions/ValidValueType_for_Array_of_Value_QuestionPath"
+    },
+    "ValueType_Boolean": {
+      "$ref": "#/definitions/ValidValueType_for_Boolean"
+    },
+    "ValueType_Diagnostic": {
+      "$ref": "#/definitions/ValidValueType_for_Diagnostic"
+    },
+    "ValueType_DiagnosticNavigation": {
+      "$ref": "#/definitions/ValidValueType_for_DiagnosticNavigation"
+    },
+    "ValueType_DiagnosticScript": {
+      "$ref": "#/definitions/ValidValueType_for_DiagnosticScript"
+    },
+    "ValueType_Feedback": {
+      "$ref": "#/definitions/ValidValueType_for_Feedback"
+    },
+    "ValueType_FeedbackMessage": {
+      "$ref": "#/definitions/ValidValueType_for_FeedbackMessage"
+    },
+    "ValueType_FileString": {
+      "$ref": "#/definitions/ValidValueType_for_FileString"
+    },
+    "ValueType_LeaveAction": {
+      "$ref": "#/definitions/ValidValueType_for_LeaveAction"
+    },
+    "ValueType_Locale": {
+      "$ref": "#/definitions/ValidValueType_for_Locale"
+    },
+    "ValueType_NavigationSharedData": {
+      "$ref": "#/definitions/ValidValueType_for_NavigationSharedData"
+    },
+    "ValueType_Noneable_double": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_double"
+    },
+    "ValueType_Noneable_uint": {
+      "$ref": "#/definitions/ValidValueType_for_Noneable_uint"
+    },
+    "ValueType_NormalNavigation": {
+      "$ref": "#/definitions/ValidValueType_for_NormalNavigation"
+    },
+    "ValueType_NumbasSettings": {
+      "$ref": "#/definitions/ValidValueType_for_NumbasSettings"
+    },
+    "ValueType_PickingStrategy": {
+      "$ref": "#/definitions/ValidValueType_for_PickingStrategy"
+    },
+    "ValueType_QuestionGroup": {
+      "$ref": "#/definitions/ValidValueType_for_QuestionGroup"
+    },
+    "ValueType_QuestionPath": {
+      "$ref": "#/definitions/ValidValueType_for_QuestionPath"
+    },
+    "ValueType_Review": {
+      "$ref": "#/definitions/ValidValueType_for_Review"
+    },
+    "ValueType_ShowResultsPage": {
+      "$ref": "#/definitions/ValidValueType_for_ShowResultsPage"
+    },
+    "ValueType_String": {
+      "$ref": "#/definitions/ValidValueType_for_String"
+    },
+    "ValueType_SupportedLocale": {
+      "$ref": "#/definitions/ValidValueType_for_SupportedLocale"
+    },
+    "ValueType_TimeoutAction": {
+      "$ref": "#/definitions/ValidValueType_for_TimeoutAction"
+    },
+    "ValueType_Timing": {
+      "$ref": "#/definitions/ValidValueType_for_Timing"
+    },
+    "ValueType_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_TranslatableString"
+    },
+    "Value_Array_of_LearningObjective": {
+      "$ref": "#/definitions/ValueType_Array_of_LearningObjective"
+    },
+    "Value_Array_of_LearningTopic": {
+      "$ref": "#/definitions/ValueType_Array_of_LearningTopic"
+    },
+    "Value_Array_of_TranslatableString": {
+      "$ref": "#/definitions/ValueType_Array_of_TranslatableString"
+    },
+    "Value_Array_of_Value_FeedbackMessage": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_FeedbackMessage"
+    },
+    "Value_Array_of_Value_Locale": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_Locale"
+    },
+    "Value_Array_of_Value_QuestionGroup": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_QuestionGroup"
+    },
+    "Value_Array_of_Value_QuestionPath": {
+      "$ref": "#/definitions/ValueType_Array_of_Value_QuestionPath"
+    },
+    "Value_Boolean": {
+      "$ref": "#/definitions/ValueType_Boolean"
+    },
+    "Value_Diagnostic": {
+      "$ref": "#/definitions/ValueType_Diagnostic"
+    },
+    "Value_DiagnosticNavigation": {
+      "$ref": "#/definitions/ValueType_DiagnosticNavigation"
+    },
+    "Value_DiagnosticScript": {
+      "$ref": "#/definitions/ValueType_DiagnosticScript"
+    },
+    "Value_Feedback": {
+      "$ref": "#/definitions/ValueType_Feedback"
+    },
+    "Value_FeedbackMessage": {
+      "$ref": "#/definitions/ValueType_FeedbackMessage"
+    },
+    "Value_FileString": {
+      "$ref": "#/definitions/ValueType_FileString"
+    },
+    "Value_LeaveAction": {
+      "$ref": "#/definitions/ValueType_LeaveAction"
+    },
+    "Value_Locale": {
+      "$ref": "#/definitions/ValueType_Locale"
+    },
+    "Value_Noneable_double": {
+      "$ref": "#/definitions/ValueType_Noneable_double"
+    },
+    "Value_Noneable_uint": {
+      "$ref": "#/definitions/ValueType_Noneable_uint"
+    },
+    "Value_NormalNavigation": {
+      "$ref": "#/definitions/ValueType_NormalNavigation"
+    },
+    "Value_NumbasSettings": {
+      "$ref": "#/definitions/ValueType_NumbasSettings"
+    },
+    "Value_QuestionGroup": {
+      "$ref": "#/definitions/ValueType_QuestionGroup"
+    },
+    "Value_QuestionPath": {
+      "$ref": "#/definitions/ValueType_QuestionPath"
+    },
+    "Value_Review": {
+      "$ref": "#/definitions/ValueType_Review"
+    },
+    "Value_ShowResultsPage": {
+      "$ref": "#/definitions/ValueType_ShowResultsPage"
+    },
+    "Value_String": {
+      "$ref": "#/definitions/ValueType_String"
+    },
+    "Value_SupportedLocale": {
+      "$ref": "#/definitions/ValueType_SupportedLocale"
+    },
+    "Value_TimeoutAction": {
+      "$ref": "#/definitions/ValueType_TimeoutAction"
+    },
+    "Value_Timing": {
+      "$ref": "#/definitions/ValueType_Timing"
+    },
+    "Value_TranslatableString": {
+      "$ref": "#/definitions/ValueType_TranslatableString"
+    },
+    "YamlValue": true
+  }
+}
