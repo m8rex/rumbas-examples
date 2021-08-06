@@ -1,0 +1,810 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CustomPartTypeDefinition",
+  "type": "object",
+  "required": [
+    "can_be_gap",
+    "can_be_step",
+    "description",
+    "extensions",
+    "help_url",
+    "input_widget",
+    "marking_notes",
+    "marking_script",
+    "published",
+    "settings",
+    "type_name"
+  ],
+  "properties": {
+    "can_be_gap": {
+      "type": "boolean"
+    },
+    "can_be_step": {
+      "type": "boolean"
+    },
+    "description": {
+      "$ref": "#/definitions/TranslatableString"
+    },
+    "extensions": {
+      "$ref": "#/definitions/Extensions"
+    },
+    "help_url": {
+      "$ref": "#/definitions/TranslatableString"
+    },
+    "input_widget": {
+      "$ref": "#/definitions/CustomPartInputWidget"
+    },
+    "marking_notes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomPartMarkingNotes"
+      }
+    },
+    "marking_script": {
+      "$ref": "#/definitions/TranslatableString"
+    },
+    "published": {
+      "type": "boolean"
+    },
+    "settings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CustomPartTypeSetting"
+      }
+    },
+    "type_name": {
+      "$ref": "#/definitions/TranslatableString"
+    }
+  },
+  "definitions": {
+    "AnswerStyle": {
+      "type": "string",
+      "enum": [
+        "english",
+        "english-plain",
+        "english-si",
+        "european",
+        "european-plain",
+        "french-si",
+        "indian",
+        "scientific",
+        "swiss"
+      ]
+    },
+    "CustomPartInputOptionValue_for_Array_of_AnswerStyle": {
+      "type": "object",
+      "required": [
+        "static",
+        "value"
+      ],
+      "properties": {
+        "static": {
+          "description": "A static field takes the same value in every instance of the part type. A dynamic field is defined by a JME expression which is evaluated when the question is run.",
+          "type": "boolean"
+        },
+        "value": {
+          "description": "The value",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AnswerStyle"
+          }
+        }
+      }
+    },
+    "CustomPartInputOptionValue_for_Array_of_TranslatableString": {
+      "type": "object",
+      "required": [
+        "static",
+        "value"
+      ],
+      "properties": {
+        "static": {
+          "description": "A static field takes the same value in every instance of the part type. A dynamic field is defined by a JME expression which is evaluated when the question is run.",
+          "type": "boolean"
+        },
+        "value": {
+          "description": "The value",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TranslatableString"
+          }
+        }
+      }
+    },
+    "CustomPartInputOptionValue_for_Boolean": {
+      "type": "object",
+      "required": [
+        "static",
+        "value"
+      ],
+      "properties": {
+        "static": {
+          "description": "A static field takes the same value in every instance of the part type. A dynamic field is defined by a JME expression which is evaluated when the question is run.",
+          "type": "boolean"
+        },
+        "value": {
+          "description": "The value",
+          "type": "boolean"
+        }
+      }
+    },
+    "CustomPartInputOptionValue_for_TranslatableString": {
+      "type": "object",
+      "required": [
+        "static",
+        "value"
+      ],
+      "properties": {
+        "static": {
+          "description": "A static field takes the same value in every instance of the part type. A dynamic field is defined by a JME expression which is evaluated when the question is run.",
+          "type": "boolean"
+        },
+        "value": {
+          "description": "The value",
+          "allOf": [
+            {
+              "$ref": "#/definitions/TranslatableString"
+            }
+          ]
+        }
+      }
+    },
+    "CustomPartInputWidget": {
+      "type": "object",
+      "allOf": [
+        {
+          "description": "The student enters a single line of text.",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "string"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "allow_empty",
+              "correct_answer",
+              "hint"
+            ],
+            "properties": {
+              "allow_empty": {
+                "description": "If false, the part will only be marked if their answer is non-empty.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/CustomPartInputOptionValue_for_Boolean"
+                  }
+                ]
+              },
+              "correct_answer": {
+                "description": "A JME expression which evaluates to the expected answer to the part.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/TranslatableString"
+                  }
+                ]
+              },
+              "hint": {
+                "description": "A string displayed next to the input field, giving any necessary information about how to enter their answer.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/CustomPartInputOptionValue_for_TranslatableString"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "description": "The student enters a number, using any of the allowed notation styles. If the student’s answer is not a valid number, they are shown a warning and can not submit the part.",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "number"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "allow_fractions",
+              "allowed_notation_styles",
+              "correct_answer",
+              "hint"
+            ],
+            "properties": {
+              "allow_fractions": {
+                "description": "Allow the student to enter their answer as a fraction?",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/CustomPartInputOptionValue_for_Boolean"
+                  }
+                ]
+              },
+              "allowed_notation_styles": {
+                "$ref": "#/definitions/CustomPartInputOptionValue_for_Array_of_AnswerStyle"
+              },
+              "correct_answer": {
+                "description": "A JME expression which evaluates to the expected answer to the part.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/TranslatableString"
+                  }
+                ]
+              },
+              "hint": {
+                "description": "A string displayed next to the input field, giving any necessary information about how to enter their answer.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/CustomPartInputOptionValue_for_TranslatableString"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "description": "The student chooses one from a list of choices by selecting a radio button.",
+          "if": {
+            "properties": {
+              "type": {
+                "const": "radiogroup"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "choices",
+              "correct_answer",
+              "hint"
+            ],
+            "properties": {
+              "choices": {
+                "description": "The labels for the choices to offer to the student.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/CustomPartInputOptionValue_for_Array_of_TranslatableString"
+                  }
+                ]
+              },
+              "correct_answer": {
+                "description": "A JME expression which evaluates to the expected answer to the part.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/TranslatableString"
+                  }
+                ]
+              },
+              "hint": {
+                "description": "A string displayed next to the input field, giving any necessary information about how to enter their answer.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/CustomPartInputOptionValue_for_TranslatableString"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "radiogroup"
+          ]
+        }
+      }
+    },
+    "CustomPartMarkingNotes": {
+      "type": "object",
+      "required": [
+        "definition",
+        "description",
+        "name"
+      ],
+      "properties": {
+        "definition": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomPartTypeSetting": {
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "input_type": {
+                "const": "checkbox"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "default_value",
+              "hint",
+              "label",
+              "name"
+            ],
+            "properties": {
+              "default_value": {
+                "description": "The initial value of the setting in the question editor. If the setting has a sensible default value, set it here. If the value of the setting is likely to be different for each instance of this part type, leave this blank.",
+                "type": "boolean"
+              },
+              "help_url": {
+                "description": "The address of documentation explaining this setting in further depth.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hint": {
+                "description": "Use this field to give further guidance to question authors about this setting, if the label is not enough. For example, you might use this to say what data type a JME code setting should evaluate to.",
+                "type": "string"
+              },
+              "label": {
+                "description": "The label shown next to the setting in the question editor. Try to make it as clear as possible what the setting is for. For example, a checkbox which dictates whether an input hint is shown should be labelled something like “Hide the input hint?” rather than “Input hint visibility” - the latter doesn’t tell the question author whether ticking the checkbox will result in the input hint appearing or not.",
+                "type": "string"
+              },
+              "name": {
+                "description": "A short name for this setting, used to refer to it in the part type’s answer input or marking algorithm. The name should uniquely identify the setting, but doesn’t need to be very descriptive - the label can do that.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "input_type": {
+                "const": "code"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "default_value",
+              "evaluate",
+              "hint",
+              "label",
+              "name"
+            ],
+            "properties": {
+              "default_value": {
+                "description": "The initial value of the setting in the question editor. If the setting has a sensible default value, set it here. If the value of the setting is likely to be different for each instance of this part type, leave this blank.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Primitive"
+                  }
+                ]
+              },
+              "evaluate": {
+                "type": "boolean"
+              },
+              "help_url": {
+                "description": "The address of documentation explaining this setting in further depth.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hint": {
+                "description": "Use this field to give further guidance to question authors about this setting, if the label is not enough. For example, you might use this to say what data type a JME code setting should evaluate to.",
+                "type": "string"
+              },
+              "label": {
+                "description": "The label shown next to the setting in the question editor. Try to make it as clear as possible what the setting is for. For example, a checkbox which dictates whether an input hint is shown should be labelled something like “Hide the input hint?” rather than “Input hint visibility” - the latter doesn’t tell the question author whether ticking the checkbox will result in the input hint appearing or not.",
+                "type": "string"
+              },
+              "name": {
+                "description": "A short name for this setting, used to refer to it in the part type’s answer input or marking algorithm. The name should uniquely identify the setting, but doesn’t need to be very descriptive - the label can do that.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "input_type": {
+                "const": "mathematical_expression"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "default_value",
+              "hint",
+              "label",
+              "name",
+              "subvars"
+            ],
+            "properties": {
+              "default_value": {
+                "description": "The initial value of the setting in the question editor. If the setting has a sensible default value, set it here. If the value of the setting is likely to be different for each instance of this part type, leave this blank.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Primitive"
+                  }
+                ]
+              },
+              "help_url": {
+                "description": "The address of documentation explaining this setting in further depth.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hint": {
+                "description": "Use this field to give further guidance to question authors about this setting, if the label is not enough. For example, you might use this to say what data type a JME code setting should evaluate to.",
+                "type": "string"
+              },
+              "label": {
+                "description": "The label shown next to the setting in the question editor. Try to make it as clear as possible what the setting is for. For example, a checkbox which dictates whether an input hint is shown should be labelled something like “Hide the input hint?” rather than “Input hint visibility” - the latter doesn’t tell the question author whether ticking the checkbox will result in the input hint appearing or not.",
+                "type": "string"
+              },
+              "name": {
+                "description": "A short name for this setting, used to refer to it in the part type’s answer input or marking algorithm. The name should uniquely identify the setting, but doesn’t need to be very descriptive - the label can do that.",
+                "type": "string"
+              },
+              "subvars": {
+                "description": "If this is ticked, then JME expressions enclosed in curly braces will be evaluated and the results substituted back into the string.",
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "input_type": {
+                "const": "string"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "default_value",
+              "hint",
+              "label",
+              "name",
+              "subvars"
+            ],
+            "properties": {
+              "default_value": {
+                "description": "The initial value of the setting in the question editor. If the setting has a sensible default value, set it here. If the value of the setting is likely to be different for each instance of this part type, leave this blank.",
+                "type": "string"
+              },
+              "help_url": {
+                "description": "The address of documentation explaining this setting in further depth.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hint": {
+                "description": "Use this field to give further guidance to question authors about this setting, if the label is not enough. For example, you might use this to say what data type a JME code setting should evaluate to.",
+                "type": "string"
+              },
+              "label": {
+                "description": "The label shown next to the setting in the question editor. Try to make it as clear as possible what the setting is for. For example, a checkbox which dictates whether an input hint is shown should be labelled something like “Hide the input hint?” rather than “Input hint visibility” - the latter doesn’t tell the question author whether ticking the checkbox will result in the input hint appearing or not.",
+                "type": "string"
+              },
+              "name": {
+                "description": "A short name for this setting, used to refer to it in the part type’s answer input or marking algorithm. The name should uniquely identify the setting, but doesn’t need to be very descriptive - the label can do that.",
+                "type": "string"
+              },
+              "subvars": {
+                "description": "If this is ticked, then JME expressions enclosed in curly braces will be evaluated and the results substituted back into the text when the question is run. Otherwise, the string will be untouched.",
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "input_type": {
+                "const": "dropdown"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "choices",
+              "default_value",
+              "hint",
+              "label",
+              "name"
+            ],
+            "properties": {
+              "choices": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/CustomPartTypeSettingDropDownChoice"
+                }
+              },
+              "default_value": {
+                "description": "The initial value of the setting in the question editor. If the setting has a sensible default value, set it here. If the value of the setting is likely to be different for each instance of this part type, leave this blank.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Primitive"
+                  }
+                ]
+              },
+              "help_url": {
+                "description": "The address of documentation explaining this setting in further depth.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hint": {
+                "description": "Use this field to give further guidance to question authors about this setting, if the label is not enough. For example, you might use this to say what data type a JME code setting should evaluate to.",
+                "type": "string"
+              },
+              "label": {
+                "description": "The label shown next to the setting in the question editor. Try to make it as clear as possible what the setting is for. For example, a checkbox which dictates whether an input hint is shown should be labelled something like “Hide the input hint?” rather than “Input hint visibility” - the latter doesn’t tell the question author whether ticking the checkbox will result in the input hint appearing or not.",
+                "type": "string"
+              },
+              "name": {
+                "description": "A short name for this setting, used to refer to it in the part type’s answer input or marking algorithm. The name should uniquely identify the setting, but doesn’t need to be very descriptive - the label can do that.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "input_type": {
+                "const": "percent"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "default_value",
+              "hint",
+              "label",
+              "name"
+            ],
+            "properties": {
+              "default_value": {
+                "description": "The initial value of the setting in the question editor. If the setting has a sensible default value, set it here. If the value of the setting is likely to be different for each instance of this part type, leave this blank.",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/Primitive"
+                  }
+                ]
+              },
+              "help_url": {
+                "description": "The address of documentation explaining this setting in further depth.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "hint": {
+                "description": "Use this field to give further guidance to question authors about this setting, if the label is not enough. For example, you might use this to say what data type a JME code setting should evaluate to.",
+                "type": "string"
+              },
+              "label": {
+                "description": "The label shown next to the setting in the question editor. Try to make it as clear as possible what the setting is for. For example, a checkbox which dictates whether an input hint is shown should be labelled something like “Hide the input hint?” rather than “Input hint visibility” - the latter doesn’t tell the question author whether ticking the checkbox will result in the input hint appearing or not.",
+                "type": "string"
+              },
+              "name": {
+                "description": "A short name for this setting, used to refer to it in the part type’s answer input or marking algorithm. The name should uniquely identify the setting, but doesn’t need to be very descriptive - the label can do that.",
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "input_type"
+      ],
+      "properties": {
+        "input_type": {
+          "type": "string",
+          "enum": [
+            "checkbox",
+            "code",
+            "mathematical_expression",
+            "string",
+            "dropdown",
+            "percent"
+          ]
+        }
+      }
+    },
+    "CustomPartTypeSettingDropDownChoice": {
+      "type": "object",
+      "required": [
+        "label",
+        "value"
+      ],
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/Primitive"
+        },
+        "value": {
+          "$ref": "#/definitions/Primitive"
+        }
+      }
+    },
+    "Extensions": {
+      "description": "Specify which extensions should be enabled",
+      "type": "object",
+      "required": [
+        "chemistry",
+        "download_text_file",
+        "eukleides",
+        "geogebra",
+        "graphs",
+        "jsx_graph",
+        "linear_algebra",
+        "linear_codes",
+        "optimisation",
+        "permutations",
+        "polynomials",
+        "quantities",
+        "random_person",
+        "stats",
+        "written_number"
+      ],
+      "properties": {
+        "chemistry": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "download_text_file": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "eukleides": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "geogebra": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "graphs": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "jsx_graph": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "linear_algebra": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "linear_codes": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "optimisation": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "permutations": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "polynomials": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "quantities": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "random_person": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "stats": {
+          "$ref": "#/definitions/Value_Boolean"
+        },
+        "written_number": {
+          "$ref": "#/definitions/Value_Boolean"
+        }
+      }
+    },
+    "FileString": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 5,
+          "pattern": "^file:.*$"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "Primitive": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        {
+          "type": "number",
+          "format": "double"
+        }
+      ]
+    },
+    "TemplateString": {
+      "type": "string",
+      "minLength": 9,
+      "pattern": "^template:.*$"
+    },
+    "TranslatableString": {
+      "description": "A translatable string\n\nIn yaml it should be specified as either - a simple string: \"this is a string\" - a file string: file:<path> - A map that maps locales on formattables strings and parts like \"{func}\" (between {}) to values.",
+      "anyOf": [
+        {
+          "description": "Maps locales on formattable strings and parts like \"{func}\" (between {}) to values",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Value_TranslatableString"
+          }
+        },
+        {
+          "description": "A file reference or string",
+          "allOf": [
+            {
+              "$ref": "#/definitions/FileString"
+            }
+          ]
+        }
+      ]
+    },
+    "ValidValueType_for_Boolean": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    },
+    "ValidValueType_for_TranslatableString": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TemplateString"
+        },
+        {
+          "$ref": "#/definitions/TranslatableString"
+        }
+      ]
+    },
+    "ValueType_Boolean": {
+      "$ref": "#/definitions/ValidValueType_for_Boolean"
+    },
+    "ValueType_TranslatableString": {
+      "$ref": "#/definitions/ValidValueType_for_TranslatableString"
+    },
+    "Value_Boolean": {
+      "$ref": "#/definitions/ValueType_Boolean"
+    },
+    "Value_TranslatableString": {
+      "$ref": "#/definitions/ValueType_TranslatableString"
+    }
+  }
+}
