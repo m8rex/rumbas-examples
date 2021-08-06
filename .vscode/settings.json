@@ -1,0 +1,7 @@
+{
+    "yaml.schemas": {
+        ".vscode/schemas/question.json": ["/questions/**/*.yaml", "/question_templates/**/*.yaml"],
+        ".vscode/schemas/exam.json": ["/exams/**/*.yaml", "/exam_templates/**/*.yaml"],
+        ".vscode/schemas/custom-part-type.json": ["/custom_part_types/**/*.yaml"]
+    }
+}
