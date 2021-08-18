@@ -6,7 +6,7 @@ variables:
   a: random(5,6,8)
 statement:
   content: file:expression_no_calculator.html
-  "{expr}": \( (\var{a} \cdot \var{m} + 1) \cdot (-\var{b}) + \left(\frac{\var{m} \cdot \var{a}}{\var{m} }+(-\var{2*b})\right) \cdot \var{m} \)
+  "{expr}": \[ (\var{a} \cdot \var{m} + 1) \cdot (-\var{b}) + \left(\frac{\var{m} \cdot \var{a}}{\var{m} }+(-\var{2*b})\right) \cdot \var{m} \]
 parts:
   - type: number_entry
     answer: "{(a*m+1)*(-b) + (a - 2*b)*m}"
