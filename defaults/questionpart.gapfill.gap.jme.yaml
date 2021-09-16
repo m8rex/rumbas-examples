@@ -42,6 +42,14 @@ answer_simplification:
   simplify_sqrt_division: true
   simplify_sqrt_square: true
   simplify_other_numbers: true
+answer_display:
+  broken_as_fractions: false
+  mixed_fractions: false
+  flat_fractions: false
+  vector_as_row: false
+  always_show_multiplication_sign: false
+  use_dot_as_multiplication_sign: false
+  matrices_without_parentheses: false
 max_length: none
 min_length: none
 must_have: none
