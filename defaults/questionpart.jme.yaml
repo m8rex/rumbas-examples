@@ -50,8 +50,15 @@ answer_simplification:
   cancel_factors: true
   collect_like_fractions: true
   order_canonical: false
-  use_times_dot: true
   expand_brackets: false
+answer_display:
+  broken_as_fractions: false
+  mixed_fractions: false
+  flat_fractions: false
+  vector_as_row: false
+  always_show_multiplication_sign: false
+  use_dot_as_multiplication_sign: false
+  matrices_without_parentheses: false
 max_length: none
 min_length: none
 must_have: none
